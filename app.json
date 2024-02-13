@@ -3,8 +3,23 @@
     "name": "lja",
     "slug": "lja",
     "version": "1.0.0",
+    "scheme": "lja",
+    "ios": {
+      "config": {
+        "usesNonExemptEncryption": false
+      }
+    },
     "assetBundlePatterns": [
       "**/*"
+    ],
+    "plugins": [
+      [
+        "expo-secure-store",
+        {
+          "faceIDPermission": "Allow LJA to access your Face ID biometric data."
+        }
+      ],
+      "expo-router"
     ]
   }
 }
