@@ -1,20 +1,13 @@
-import { Text, View } from 'react-native';
+import { Text } from 'react-native'
+import Header from '../Header'
+import { ContainerPage } from '../../style'
 
-import { useSession } from '../../ctx';
+export default function Home() {
 
-import { Container, BtnSignIn, TextBtn } from '../../style'
-
-export default function Index() {
-  const { signOut } = useSession();
   return (
-    <Container>
-      <BtnSignIn
-        onPress={() => {
-          // The `app/(app)/_layout.tsx` will redirect to the sign-in screen.
-          signOut();
-        }}>
-        <TextBtn>Sign Out</TextBtn>
-      </BtnSignIn>
-    </Container>
+    <ContainerPage>
+      <Header title='Home' cor='#e6fcf1' />
+      <Text>Principal stack</Text>
+    </ContainerPage>
   );
 }

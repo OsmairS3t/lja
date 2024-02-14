@@ -1,4 +1,5 @@
-import { Redirect, Stack } from 'expo-router';
+import { Redirect, Tabs } from 'expo-router';
+import { MaterialIcons } from '@expo/vector-icons'
 
 import { useSession } from '../../ctx';
 import { Text } from 'react-native';
@@ -20,5 +21,38 @@ export default function AppLayout() {
   }
 
   // This layout can be deferred because it's not the root layout.
-  return <Stack />;
+  return (
+      <Tabs 
+        screenOptions={{
+          headerTintColor: 'white',
+          headerShown: false,
+          tabBarActiveTintColor: '#000000',
+          tabBarStyle: {
+              height: 60,
+              backgroundColor: '#ffffff',
+              borderWidth: 0,
+              borderColor: '#ffffff',
+          },
+}}
+      >
+        <Tabs.Screen name='events' options={{
+          title: 'Eventos',
+          tabBarIconStyle: { width: 100, height: 100, },
+          tabBarIcon: ({ size, color }) => <MaterialIcons name='event-note' size={32} color={color} />
+        }} />
+
+        <Tabs.Screen name='index' options={{
+          title: 'Home',
+          tabBarIconStyle: { width: 100, height: 100, },
+          tabBarIcon: ({ size, color }) => <MaterialIcons name='home' size={32} color={color} />
+        }} />
+
+        <Tabs.Screen name='lounge' options={{
+          title: 'Lounge',
+          tabBarIconStyle: { width: 100, height: 100, },
+          tabBarIcon: ({ size, color }) => <MaterialIcons name='fastfood' size={32} color={color} />
+        }} />
+
+      </Tabs>
+    )
 }
