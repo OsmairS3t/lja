@@ -11,11 +11,14 @@ export const Container = styled.View<Props>`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 5px;
+  padding-right: 10px;
   background-color: ${({ colorBackground }) => colorBackground};
 `;
 
-export const HeaderLogo = styled(Image)`
-`;
+export const HeaderLogo = styled(Image)``;
 
 
 export const HeaderTitle = styled.Text`

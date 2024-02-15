@@ -1,15 +1,17 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import Header from '../Header';
 
-import { ContainerPage } from '../../style';
+import { Container, ContainerPage } from '../../style';
 
 const Event: React.FC = () => {
   return (
-    <ContainerPage>
-      <Header title='Eventos' cor='#fcd68d' />
-      <Text>Aqui voce vera os eventos</Text>
-    </ContainerPage>
+    <Container>
+      <Header title='Eventos' cor='#cccccc' />
+      <ContainerPage>
+        <Text>Aqui voce vera os eventos</Text>
+      </ContainerPage>
+    </Container>
     )
 }
 

@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
     flex: 1;
     justify-content: center;
     align-items: center;
+    width: fit-content;
 `;
 
 export const Logo = styled.View`
@@ -58,7 +59,7 @@ export const TextBtn = styled.Text`
 `;
 
 export const ContainerPage = styled.View`
-    margin-top: 32px;
+    margin-top: 5px;
     margin-left: 20px;
     margin-right: 20px;
     flex: 1;

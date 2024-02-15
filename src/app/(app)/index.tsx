@@ -1,13 +1,15 @@
 import { Text } from 'react-native'
 import Header from '../Header'
-import { ContainerPage } from '../../style'
+import { Container, ContainerPage } from '../../style'
 
 export default function Home() {
 
   return (
-    <ContainerPage>
-      <Header title='Home' cor='#e6fcf1' />
-      <Text>Principal stack</Text>
-    </ContainerPage>
+    <Container>
+      <Header title='Home' cor='#cccccc' />
+      <ContainerPage>
+        <Text>Principal stack</Text>
+      </ContainerPage>
+    </Container>
   );
 }

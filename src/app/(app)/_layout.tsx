@@ -41,6 +41,12 @@ export default function AppLayout() {
           tabBarIcon: ({ size, color }) => <MaterialIcons name='event-note' size={32} color={color} />
         }} />
 
+        <Tabs.Screen name='escalas' options={{
+          title: 'Escalas',
+          tabBarIconStyle: { width: 100, height: 100, },
+          tabBarIcon: ({ size, color }) => <MaterialIcons name='view-list' size={32} color={color} />
+        }} />
+
         <Tabs.Screen name='index' options={{
           title: 'Home',
           tabBarIconStyle: { width: 100, height: 100, },

@@ -1,19 +1,18 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 import Header from '../Header';
 
 import { Container, ContainerPage } from '../../style';
 
-const Lounge: React.FC = () => {
+const Escalas: React.FC = () => {
   return (
     <Container>
-      <Header title='Lounge' cor='#cccccc' />
+      <Header title='Escalas' cor='#cccccc' />
       <ContainerPage>
-        <Text>Nem de lounge isso é um Lounge</Text>
+        <Text>Escalado com sucesso</Text>
       </ContainerPage>
     </Container>
     )
-
 }
 
-export default Lounge;
+export default Escalas;
