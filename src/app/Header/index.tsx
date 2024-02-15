@@ -12,11 +12,11 @@ export default function Header({ title, cor }: Props) {
 
   return (
     <Container colorBackground={cor}>
-      <HeaderLogo source={require('../../assets/logo.png')} />
-      <HeaderTitle>{title}</HeaderTitle>
       <TouchableOpacity onPress={() => {signOut()}}>
         <HeaderSignOut name='logout' size={32} />
       </TouchableOpacity>
+      <HeaderTitle>{title}</HeaderTitle>
+      <HeaderLogo source={require('../../assets/logo.png')} />
     </Container>
   )
 }

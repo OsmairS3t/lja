@@ -60,7 +60,31 @@ export const TextBtn = styled.Text`
 
 export const ContainerPage = styled.View`
     margin-top: 5px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 14px;
+    margin-right: 14px;
     flex: 1;
+`;
+
+export const TitlePage = styled.Text`
+  width: fit-content;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 14px 0px;
+`;
+
+export const BtnSubmit = styled.Pressable`
+    margin-top: 14px;
+    justify-content: center;
+    align-items: center;
+    background-color: #214153;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    height: 60px;
+`;
+
+export const TextBtnSubmit = styled.Text`
+    font-weight: bold;
+    font-size: 30px;
+    color: #ffffff;
 `;
