@@ -15,7 +15,7 @@ export const Btn = styled.Pressable`
   justify-content: center;
   align-items: center;
   height: 40px;
-  width: 150px;
+  width: 180px;
   `;
 
 export const TextBtn = styled.Text`
@@ -41,4 +41,42 @@ export const TextResumePrice = styled.Text`
   font-size: 35px;
   color: #ffffff;
 `;
-  
+
+export const BlockListView = styled.ScrollView`
+  width: 100%;
+  height: 100%;
+`;
+
+export const BlockProduct = styled.View`
+  background-color: #ffffff;
+  width: 380px;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const BlockProductText = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const GroupIncomeOutcome = styled.View`
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const TextTitleProduct = styled.Text`
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+export const TextPriceProduct = styled.Text`
+  font-size: 24px;
+  font-weight: bold;
+`;
+
+export const TextSubTitleProduct = styled.Text``;
+

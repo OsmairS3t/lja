@@ -1,18 +1,25 @@
 import styled from 'styled-components/native';
 
+export const ContainerLogin = styled.View`
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    width: fit-content;
+    height: 100%;
+`;
+
 export const Container = styled.SafeAreaView`
     flex: 1;
     justify-content: center;
     align-items: center;
     width: fit-content;
+    background-color: #63768D; 
 `;
 
-export const Logo = styled.View`
+export const Logo = styled.Image`
     margin-bottom: 10px;
     width: 150px;
     height: 150px;
-    border: 1px solid gray;
-    border-radius: 8px;
 `;
 
 export const Form = styled.View`
@@ -29,28 +36,42 @@ export const GroupInput = styled.View`
 `;
 
 export const LabelItem = styled.Text`
-    margin-bottom: 5px;
-    font-size: 14px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #ffffff;
 `;
 
 export const InputItem = styled.TextInput`
     width: 100%;
     height: 60px;
-    border: 1px solid #eaeaea;
     padding: 10px;
     font-size: 14px;
+    border-radius: 10px;
+    background-color: #E1E1E6;
 `;
 
 export const BtnSignIn = styled.Pressable`
     padding: 10px;
     width: 340px;
-    height: 60px;
+    height: 70px;
+    margin-top: 40px;
     justify-content: center;
     align-items: center;
     border-width: 1px;
-    border-radius: 8px;
-    border-color: #000044;
-    background-color: #000066;
+    border-radius: 15px;
+    background-color: #63768D;
+`;
+
+export const GroupRegister = styled.View`
+    margin-top: 14px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+export const TextRegister = styled.Text`
+    color: #ffffff;
+    font-size: 16px;
 `;
 
 export const TextBtn = styled.Text`

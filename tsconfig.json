@@ -2,5 +2,18 @@
   "compilerOptions": {
     "strict": true
   },
+  "baseUrl": "./",
+  "paths": {
+    "@assets/*": [
+      "./src/assets/*"
+    ],
+    "@styles/*": [
+      "./src/app/styles/*"
+    ]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
   "extends": "expo/tsconfig.base"
 }

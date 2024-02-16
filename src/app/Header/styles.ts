@@ -15,7 +15,24 @@ export const Container = styled.View<Props>`
   padding-top: 40px;
   padding-bottom: 5px;
   padding-right: 10px;
+  padding-left: 10px;
   background-color: ${({ colorBackground }) => colorBackground};
+`;
+
+export const GroupUser = styled.View`
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+`;
+
+export const GroupUserName = styled.View``;
+
+export const PhotoUser = styled.Image``;
+
+export const TextUser = styled.Text`
+  font-size: 12px;
+  color: #000000;
 `;
 
 export const HeaderLogo = styled(Image)``;

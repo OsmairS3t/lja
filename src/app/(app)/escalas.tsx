@@ -58,7 +58,7 @@ const Escalas: React.FC = () => {
               <TextItem>Recepção:</TextItem>
               <TextItem>Fulano de tal</TextItem>
             </GroupItemsText>
-            <BtnMinus name='minus-circle' size={40} />
+            <BtnMinus name='trash-2' size={24} />
           </GroupItemsView>
           
           <GroupItemsView>
@@ -66,7 +66,7 @@ const Escalas: React.FC = () => {
               <TextItem>Mídia:</TextItem>
               <TextItem>Fulano de tal</TextItem>
             </GroupItemsText>
-            <BtnMinus name='minus-circle' size={40} />
+            <BtnMinus name='trash-2' size={24} />
           </GroupItemsView>
           
           <GroupItemsView>
@@ -74,7 +74,7 @@ const Escalas: React.FC = () => {
               <TextItem>Lanchonete:</TextItem>
               <TextItem>Fulano de tal</TextItem>
             </GroupItemsText>
-            <BtnMinus name='minus-circle' size={40} />
+            <BtnMinus name='trash-2' size={24} />
           </GroupItemsView>
           
           <GroupItemsView>
@@ -82,7 +82,7 @@ const Escalas: React.FC = () => {
               <TextItem>Abertura:</TextItem>
               <TextItem>Fulano de tal</TextItem>
             </GroupItemsText>
-            <BtnMinus name='minus-circle' size={40} />
+            <BtnMinus name='trash-2' size={24} />
           </GroupItemsView>
           
         </ListIncluded>
