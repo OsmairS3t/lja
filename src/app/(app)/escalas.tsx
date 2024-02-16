@@ -12,6 +12,8 @@ import {
   TitleItems, 
   GroupItemsView, 
   GroupItemsText,
+  GroupItemsOrder,
+  IconOrder,
   TextItem } from '../styles/escalas';
 
 const Escalas: React.FC = () => {
@@ -58,7 +60,11 @@ const Escalas: React.FC = () => {
               <TextItem>Recepção:</TextItem>
               <TextItem>Fulano de tal</TextItem>
             </GroupItemsText>
-            <BtnMinus name='trash-2' size={24} />
+            <GroupItemsOrder>
+              <IconOrder name='arrow-up' size={24} />
+              <IconOrder name='arrow-down' size={24} />
+              <BtnMinus name='trash-2' size={24} />
+            </GroupItemsOrder>
           </GroupItemsView>
           
           <GroupItemsView>
@@ -66,7 +72,11 @@ const Escalas: React.FC = () => {
               <TextItem>Mídia:</TextItem>
               <TextItem>Fulano de tal</TextItem>
             </GroupItemsText>
-            <BtnMinus name='trash-2' size={24} />
+            <GroupItemsOrder>
+              <IconOrder name='arrow-up' size={24} />
+              <IconOrder name='arrow-down' size={24} />
+              <BtnMinus name='trash-2' size={24} />
+            </GroupItemsOrder>
           </GroupItemsView>
           
           <GroupItemsView>
@@ -74,7 +84,11 @@ const Escalas: React.FC = () => {
               <TextItem>Lanchonete:</TextItem>
               <TextItem>Fulano de tal</TextItem>
             </GroupItemsText>
-            <BtnMinus name='trash-2' size={24} />
+            <GroupItemsOrder>
+              <IconOrder name='arrow-up' size={24} />
+              <IconOrder name='arrow-down' size={24} />
+              <BtnMinus name='trash-2' size={24} />
+            </GroupItemsOrder>
           </GroupItemsView>
           
           <GroupItemsView>
@@ -82,7 +96,11 @@ const Escalas: React.FC = () => {
               <TextItem>Abertura:</TextItem>
               <TextItem>Fulano de tal</TextItem>
             </GroupItemsText>
-            <BtnMinus name='trash-2' size={24} />
+            <GroupItemsOrder>
+              <IconOrder name='arrow-up' size={24} />
+              <IconOrder name='arrow-down' size={24} />
+              <BtnMinus name='trash-2' size={24} />
+            </GroupItemsOrder>
           </GroupItemsView>
           
         </ListIncluded>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'expo-router';
+import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import Header from '../Header';
 
@@ -16,19 +16,19 @@ import { TitleButton,
   GroupIncomeOutcome,
   TextTitleProduct,
   TextPriceProduct,
-  TextSubTitleProduct } from '../styles/lounge'
+  TextSubTitleProduct } from '../styles/financeiro'
 
 const Lounge: React.FC = () => {
 
   return (
     <Container>
-      <Header title='Lounge' cor='#cccccc' />
+      <Header title='Financeiro' cor='#cccccc' />
       <ContainerPage>
         <TitleButton>
-          <Btn>
+          <Btn onPress={ () => router.replace('../cadastros/lancamento') }>
             <TextBtn>+ Lançamento</TextBtn>
           </Btn>
-          <Btn>
+          <Btn onPress={ () => router.replace('../listas/lancamentos') }>
             <TextBtn>Listar</TextBtn>
           </Btn>
         </TitleButton>

@@ -7,7 +7,7 @@ import { Container, ContainerPage } from '../../style';
 const Event: React.FC = () => {
   return (
     <Container>
-      <Header title='Eventos' cor='#cccccc' />
+      <Header title='Agenda' cor='#cccccc' />
       <ContainerPage>
         <Text>Aqui voce vera os eventos</Text>
       </ContainerPage>

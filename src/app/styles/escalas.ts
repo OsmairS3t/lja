@@ -56,8 +56,17 @@ export const GroupItemsView = styled.View`
 `;
 
 export const GroupItemsText = styled.View`
-  gap: 8px;
+  
 `;
+
+export const GroupItemsOrder = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+`;
+
+export const IconOrder = styled(Feather)``;
 
 export const TextItem = styled.Text`
   font-size: 20px;

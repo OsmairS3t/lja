@@ -20,6 +20,9 @@
         }
       ],
       "expo-router"
-    ]
+    ],
+    "experiments": {
+      "tsconfigPaths": false
+    }
   }
 }

@@ -10,6 +10,7 @@ import {
   TextUser,
 } from './styles';
 import { useSession } from '../../ctx';
+import { router } from 'expo-router';
 
 interface Props{
   title?: string;
@@ -21,7 +22,8 @@ export default function Header({ title, cor }: Props) {
 
   return (
     <Container colorBackground={cor}>
-      <TouchableOpacity onPress={() => {signOut()}}>
+      {/* <TouchableOpacity onPress={() => {signOut()}}> */}
+      <TouchableOpacity onPress={() => router.replace('../componentes/user')}>
         <GroupUser>
           <PhotoUser source={require('../../assets/photo.png')} />
           <GroupUserName>

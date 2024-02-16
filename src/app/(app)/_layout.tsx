@@ -35,8 +35,8 @@ export default function AppLayout() {
           },
 }}
       >
-        <Tabs.Screen name='events' options={{
-          title: 'Eventos',
+        <Tabs.Screen name='agenda' options={{
+          title: 'Agenda',
           tabBarIconStyle: { width: 100, height: 100, },
           tabBarIcon: ({ size, color }) => <MaterialIcons name='event-note' size={32} color={color} />
         }} />
@@ -53,10 +53,10 @@ export default function AppLayout() {
           tabBarIcon: ({ size, color }) => <MaterialIcons name='home' size={32} color={color} />
         }} />
 
-        <Tabs.Screen name='lounge' options={{
-          title: 'Lounge',
+        <Tabs.Screen name='financeiro' options={{
+          title: 'Financeiro',
           tabBarIconStyle: { width: 100, height: 100, },
-          tabBarIcon: ({ size, color }) => <MaterialIcons name='fastfood' size={32} color={color} />
+          tabBarIcon: ({ size, color }) => <MaterialIcons name='attach-money' size={32} color={color} />
         }} />
 
       </Tabs>
