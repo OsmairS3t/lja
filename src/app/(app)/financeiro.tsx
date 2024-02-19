@@ -4,11 +4,12 @@ import { Feather } from '@expo/vector-icons';
 import Header from '../Header';
 
 import { Container, ContainerPage, TitlePage } from '../../style';
-import { TitleButton, 
-  Btn, 
-  TextBtn, 
-  BlockResume, 
-  TextResumeTitle, 
+import {
+  TitleButton,
+  Btn,
+  TextBtn,
+  BlockResume,
+  TextResumeTitle,
   TextResumePrice,
   BlockListView,
   BlockProduct,
@@ -16,19 +17,23 @@ import { TitleButton,
   GroupIncomeOutcome,
   TextTitleProduct,
   TextPriceProduct,
-  TextSubTitleProduct } from '../styles/financeiro'
+  TextSubTitleProduct,
+} from '../styles/financeiro';
 
-const Lounge: React.FC = () => {
+export default function Financeiro() {
+  function handleRoute(url: string) {
+    router.replace(url);
+  }
 
   return (
     <Container>
-      <Header title='Financeiro' cor='#cccccc' />
+      <Header title="Financeiro" cor="#cccccc" />
       <ContainerPage>
         <TitleButton>
-          <Btn onPress={ () => router.replace('../cadastros/lancamento') }>
+          <Btn onPress={() => handleRoute('../cadastros/lancamento')}>
             <TextBtn>+ Lançamento</TextBtn>
           </Btn>
-          <Btn onPress={ () => router.replace('../listas/lancamentos') }>
+          <Btn onPress={() => handleRoute('../listas/lancamentos')}>
             <TextBtn>Listar</TextBtn>
           </Btn>
         </TitleButton>
@@ -47,7 +52,7 @@ const Lounge: React.FC = () => {
             </BlockProductText>
             <BlockProductText>
               <GroupIncomeOutcome>
-                <Feather name='chevrons-up' size={24} />
+                <Feather name="chevrons-up" size={24} />
                 <TextSubTitleProduct>Entrada</TextSubTitleProduct>
               </GroupIncomeOutcome>
               <TextSubTitleProduct>01/01/2024</TextSubTitleProduct>
@@ -61,7 +66,7 @@ const Lounge: React.FC = () => {
             </BlockProductText>
             <BlockProductText>
               <GroupIncomeOutcome>
-                <Feather name='chevrons-up' size={24} />
+                <Feather name="chevrons-up" size={24} />
                 <TextSubTitleProduct>Entrada</TextSubTitleProduct>
               </GroupIncomeOutcome>
               <TextSubTitleProduct>01/01/2024</TextSubTitleProduct>
@@ -75,7 +80,7 @@ const Lounge: React.FC = () => {
             </BlockProductText>
             <BlockProductText>
               <GroupIncomeOutcome>
-                <Feather name='chevrons-up' size={24} />
+                <Feather name="chevrons-up" size={24} />
                 <TextSubTitleProduct>Entrada</TextSubTitleProduct>
               </GroupIncomeOutcome>
               <TextSubTitleProduct>01/01/2024</TextSubTitleProduct>
@@ -89,18 +94,14 @@ const Lounge: React.FC = () => {
             </BlockProductText>
             <BlockProductText>
               <GroupIncomeOutcome>
-                <Feather name='chevrons-down' size={24} />
+                <Feather name="chevrons-down" size={24} />
                 <TextSubTitleProduct>Saída</TextSubTitleProduct>
               </GroupIncomeOutcome>
               <TextSubTitleProduct>01/01/2024</TextSubTitleProduct>
             </BlockProductText>
           </BlockProduct>
-
         </BlockListView>
       </ContainerPage>
     </Container>
-    )
-
+  );
 }
-
-export default Lounge;

@@ -59,6 +59,10 @@ export default function AppLayout() {
           tabBarIcon: ({ size, color }) => <MaterialIcons name='attach-money' size={32} color={color} />
         }} />
 
+        <Tabs.Screen name='user' options={{
+          href: null,
+        }} />
+
       </Tabs>
     )
 }

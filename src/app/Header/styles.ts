@@ -12,6 +12,7 @@ export const Container = styled.View<Props>`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 110px;
   padding-top: 40px;
   padding-bottom: 5px;
   padding-right: 10px;
@@ -45,4 +46,3 @@ export const HeaderTitle = styled.Text`
 
 export const HeaderSignOut = styled(MaterialIcons)`
 `;
-

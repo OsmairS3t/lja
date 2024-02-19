@@ -1,4 +1,4 @@
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, useWindowDimensions } from 'react-native'
 import { 
   Container, 
   HeaderTitle, 
@@ -7,10 +7,12 @@ import {
   GroupUser,
   GroupUserName,
   PhotoUser,
-  TextUser,
+  TextUser
 } from './styles';
 import { useSession } from '../../ctx';
 import { router } from 'expo-router';
+import { useState } from 'react';
+import MenuUser from '../componentes/menuUser';
 
 interface Props{
   title?: string;
@@ -18,12 +20,17 @@ interface Props{
 }
 
 export default function Header({ title, cor }: Props) {
+  const [isOpenMenu, setIsOpenMenu] = useState(false)
+  const { height, width} = useWindowDimensions();
   const { signOut } = useSession()
 
-  return (
+  function handleToggleMenu() {
+    router.navigate('../(app)/user')
+  }
+
+return (
     <Container colorBackground={cor}>
-      {/* <TouchableOpacity onPress={() => {signOut()}}> */}
-      <TouchableOpacity onPress={() => router.replace('../componentes/user')}>
+      <TouchableOpacity onPress={handleToggleMenu}>
         <GroupUser>
           <PhotoUser source={require('../../assets/photo.png')} />
           <GroupUserName>
@@ -34,6 +41,6 @@ export default function Header({ title, cor }: Props) {
       </TouchableOpacity>
       <HeaderTitle>{title}</HeaderTitle>
       <HeaderLogo source={require('../../assets/logo.png')} />
-    </Container>
+      </Container>
   )
 }

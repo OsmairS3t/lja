@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+interface PropsMenu {
+    widthSize: number;
+}
+
 export const ContainerLogin = styled.View`
     justify-content: center;
     align-items: center;
@@ -108,4 +112,30 @@ export const TextBtnSubmit = styled.Text`
     font-weight: bold;
     font-size: 30px;
     color: #ffffff;
+`;
+
+// Styles of menu user
+export const ContainerUserMenu = styled.View<PropsMenu>`
+    width: ${({widthSize}) => widthSize}px;
+    height: 320px;
+    padding: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4px;
+    background-color: #FFFFFF;
+`;
+
+export const GroupItem = styled.View`
+    width: '100%';
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+    gap: 10px;
+`;
+
+export const TextItem = styled.Text`
+  color: #000000;
+  font-size: 16px;
 `;

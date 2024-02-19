@@ -9,7 +9,7 @@ const Event: React.FC = () => {
     <Container>
       <Header title='Agenda' cor='#cccccc' />
       <ContainerPage>
-        <Text>Aqui voce vera os eventos</Text>
+        <Text>Agendamentos</Text>
       </ContainerPage>
     </Container>
     )
