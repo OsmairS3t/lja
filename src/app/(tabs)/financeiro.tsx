@@ -3,7 +3,7 @@ import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import Header from '../Header';
 
-import { Container, ContainerPage, TitlePage } from '../../style';
+import { Container, ContainerPage, TitlePage } from '../styles/global';
 import {
   TitleButton,
   Btn,

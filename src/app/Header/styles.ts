@@ -33,7 +33,7 @@ export const PhotoUser = styled.Image``;
 
 export const TextUser = styled.Text`
   font-size: 12px;
-  color: #000000;
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const HeaderLogo = styled(Image)``;
@@ -41,7 +41,7 @@ export const HeaderLogo = styled(Image)``;
 
 export const HeaderTitle = styled.Text`
   font-size: 24px;
-  color: #000000;
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const HeaderSignOut = styled(MaterialIcons)`

@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'expo-router';
-import { useWindowDimensions } from 'react-native';
 import Header from '../Header';
 
-import { Container, ContainerPage } from '../../style';
+import { Container, ContainerPage } from '../styles/global';
 import { 
   GroupTitle, 
   IconBack, 
@@ -19,7 +18,6 @@ import {
 import { Feather } from '@expo/vector-icons';
 
 export default function Lancamentos() {
-  const {height, width} = useWindowDimensions();
 
   return (
     <Container>

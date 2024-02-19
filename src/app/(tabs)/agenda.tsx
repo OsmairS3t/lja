@@ -2,17 +2,15 @@ import React from 'react';
 import { Text } from 'react-native';
 import Header from '../Header';
 
-import { Container, ContainerPage } from '../../style';
+import { Container, ContainerPage, TitlePage } from '../styles/global';
 
-const Event: React.FC = () => {
+export default function Agenda() {
   return (
     <Container>
       <Header title='Agenda' cor='#cccccc' />
       <ContainerPage>
-        <Text>Agendamentos</Text>
+      <TitlePage>Agendamentos</TitlePage>
       </ContainerPage>
     </Container>
     )
 }
-
-export default Event;

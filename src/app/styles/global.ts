@@ -7,7 +7,7 @@ interface PropsMenu {
 export const ContainerLogin = styled.View`
     justify-content: center;
     align-items: center;
-    background-color: #000000;
+    background-color: ${({theme}) =>theme.COLORS.BG_APP};
     width: fit-content;
     height: 100%;
 `;
@@ -17,7 +17,7 @@ export const Container = styled.SafeAreaView`
     justify-content: center;
     align-items: center;
     width: fit-content;
-    background-color: #63768D; 
+    background-color: ${({theme}) =>theme.COLORS.BG_APP2}; 
 `;
 
 export const Logo = styled.Image`
@@ -42,7 +42,7 @@ export const GroupInput = styled.View`
 export const LabelItem = styled.Text`
     margin-bottom: 10px;
     font-size: 16px;
-    color: #ffffff;
+    color: ${({theme}) =>theme.COLORS.TEXT_BLOCK};
 `;
 
 export const InputItem = styled.TextInput`
@@ -51,7 +51,7 @@ export const InputItem = styled.TextInput`
     padding: 10px;
     font-size: 14px;
     border-radius: 10px;
-    background-color: #E1E1E6;
+    background-color: ${({theme}) =>theme.COLORS.BG_INPUT};
 `;
 
 export const BtnSignIn = styled.Pressable`
@@ -63,7 +63,7 @@ export const BtnSignIn = styled.Pressable`
     align-items: center;
     border-width: 1px;
     border-radius: 15px;
-    background-color: #63768D;
+    background-color: ${({theme}) =>theme.COLORS.BG_SUBMIT};
 `;
 
 export const GroupRegister = styled.View`
@@ -74,13 +74,13 @@ export const GroupRegister = styled.View`
 `;
 
 export const TextRegister = styled.Text`
-    color: #ffffff;
+    color: ${({theme}) =>theme.COLORS.TEXT_BLOCK};
     font-size: 16px;
 `;
 
 export const TextBtn = styled.Text`
     font-size: 24px;
-    color: #ffffff;
+    color: ${({theme}) =>theme.COLORS.TEXT_BLOCK};
 `;
 
 export const ContainerPage = styled.View`
@@ -95,13 +95,15 @@ export const TitlePage = styled.Text`
   font-size: 20px;
   font-weight: bold;
   margin: 14px 0px;
+  color: ${({ theme }) => theme.COLORS.TEXT_TITLE};
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
 `;
 
 export const BtnSubmit = styled.Pressable`
     margin-top: 14px;
     justify-content: center;
     align-items: center;
-    background-color: #214153;
+    background-color: ${({theme}) =>theme.COLORS.BG_SUBMIT};
     border-radius: 10px;
     padding: 10px;
     width: 100%;
@@ -111,7 +113,7 @@ export const BtnSubmit = styled.Pressable`
 export const TextBtnSubmit = styled.Text`
     font-weight: bold;
     font-size: 30px;
-    color: #ffffff;
+    color: ${({theme}) =>theme.COLORS.TEXT_BLOCK};
 `;
 
 // Styles of menu user
@@ -122,7 +124,14 @@ export const ContainerUserMenu = styled.View<PropsMenu>`
     justify-content: flex-start;
     align-items: flex-start;
     gap: 4px;
-    background-color: #FFFFFF;
+    background-color: ${({theme}) =>theme.COLORS.BG_SCREEN};
+`;
+
+export const GroupNameUser = styled.View`
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 export const GroupItem = styled.View`
@@ -136,6 +145,20 @@ export const GroupItem = styled.View`
 `;
 
 export const TextItem = styled.Text`
-  color: #000000;
+  color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
   font-size: 16px;
+`;
+
+//styles of pages
+export const GroupTitle = styled.View`
+    width: 390px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 70px;
+`;
+
+export const Title = styled.Text`
+    font-size: 20px;
+    color: ${({theme}) =>theme.COLORS.TEXT_TITLE};
 `;

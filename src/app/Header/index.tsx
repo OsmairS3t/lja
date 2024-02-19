@@ -1,18 +1,16 @@
+import { useState } from 'react';
+import { router } from 'expo-router';
+import { useSession } from '../../ctx';
 import { TouchableOpacity, useWindowDimensions } from 'react-native'
 import { 
   Container, 
   HeaderTitle, 
-  HeaderSignOut, 
   HeaderLogo,
   GroupUser,
   GroupUserName,
   PhotoUser,
   TextUser
 } from './styles';
-import { useSession } from '../../ctx';
-import { router } from 'expo-router';
-import { useState } from 'react';
-import MenuUser from '../componentes/menuUser';
 
 interface Props{
   title?: string;
@@ -25,7 +23,7 @@ export default function Header({ title, cor }: Props) {
   const { signOut } = useSession()
 
   function handleToggleMenu() {
-    router.navigate('../(app)/user')
+    router.navigate('../(tabs)/user')
   }
 
 return (

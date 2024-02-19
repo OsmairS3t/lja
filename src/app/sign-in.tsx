@@ -13,7 +13,7 @@ import {
   GroupRegister,
   TextRegister,
   TextBtn
-  } from '../style'
+  } from './styles/global'
 
 export default function SignIn() {
   const { signIn } = useSession();

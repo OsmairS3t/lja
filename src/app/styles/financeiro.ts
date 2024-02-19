@@ -11,7 +11,7 @@ export const TitleButton = styled.View`
 
 export const Btn = styled.Pressable`
   border-radius: 8px;
-  background-color: #214153;
+  background-color: ${({ theme }) => theme.COLORS.BG_SUBMIT};
   justify-content: center;
   align-items: center;
   height: 40px;
@@ -20,7 +20,7 @@ export const Btn = styled.Pressable`
 
 export const TextBtn = styled.Text`
   font-size: 20px;
-  color: #ffffff;
+  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
 `;
 
 export const BlockResume = styled.View`
@@ -29,17 +29,17 @@ export const BlockResume = styled.View`
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background-color: #214153;
+    background-color: ${({ theme }) => theme.COLORS.BG_SUBMIT};
 `;
 
 export const TextResumeTitle = styled.Text`
   font-size: 16px;
-  color: #ffffff;
+  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
 `;
 
 export const TextResumePrice = styled.Text`
   font-size: 35px;
-  color: #ffffff;
+  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
 `;
 
 export const BlockListView = styled.ScrollView`
@@ -48,7 +48,7 @@ export const BlockListView = styled.ScrollView`
 `;
 
 export const BlockProduct = styled.View`
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.COLORS.BG_SCREEN};
   width: 380px;
   padding: 16px;
   border-radius: 10px;

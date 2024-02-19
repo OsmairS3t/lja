@@ -1,27 +1,20 @@
 export default {
     COLORS: {
-        BLACK: '#000000',
-        WHITE: '#FFFFFF',
+        BG_APP: '#000000',
+        BG_APP2: '#63768D',
+        BG_HEADER: '#FDFDFD',
+        BG_SCREEN: '#FFFFFF',
+        BG_BUTTON: '#63768D',
+        BG_INPUT: '#E1E1E6',
+        BG_SUBMIT: '#214153',
 
-        TEXT: '#000000',
-        TEXT_INPUT: '#000000',
-        TEXT_BUTTON_ENABLED: '#FFFFFF',
-        TEXT_BUTTON_DISABLED: '#858585',
+        BORDER_INPUT: '#29292E',
 
-        TITLE: '#000000',
-
-        BG_APP_FOOTER: '#00277A',
-        BG_HEADER_TRANSPARENT: '#ffffff6f',
-        BG_INPUT: '#EDEDED',
-
-        BORDER_INPUT: '#858585',
-        BORDER_INPUT_ACTIVE: '#000000',
-
-        SUCCESS: '#006b20',
-        SUCCESS_LIGHT: '#c4f8d3',
-
-        ERROR: '#92140C',
-        ERROR_LIGHT: '#eb7e76'
+        TEXT_DEFAULT: '#000000',
+        TEXT_BLOCK: '#FFFFFF',
+        TEXT_TITLE: '#FFFFFF',
+        TEXT_INPUT: '#29292E',
+        TEXT_PLACEHOLDER: '#63768D',
     },
     FONT_FAMILY: {
         REGULAR: 'IstokWeb_400Regular',

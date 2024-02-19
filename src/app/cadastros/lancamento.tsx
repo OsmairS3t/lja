@@ -3,8 +3,8 @@ import { Link } from 'expo-router';
 import { useWindowDimensions, Pressable } from 'react-native';
 import Header from '../Header';
 
-import { Container, ContainerPage, BtnSubmit, TextBtnSubmit } from '../../style';
-import { GroupTitle, IconBack, Title, Form, GroupInput, Input } from './styleslancamento'
+import { Container, ContainerPage, BtnSubmit, TextBtnSubmit } from '../styles/global';
+import { GroupTitle, IconBack, Title, Form, GroupInput, Input } from '../styles/cadlancamento'
 
 export default function Lancamento() {
   const {height, width} = useWindowDimensions();

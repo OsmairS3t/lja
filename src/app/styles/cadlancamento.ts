@@ -33,7 +33,7 @@ export const GroupInput = styled.View<Props>`
 `;
 
 export const Input = styled.TextInput`
-  background-color: #ffffff;
+  background-color: ${({theme}) =>theme.COLORS.BG_INPUT};
   height: 60px;
   width: 100%;
   border-radius: 10px;

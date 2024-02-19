@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../Header';
 
-import { Container, ContainerPage, TitlePage, BtnSubmit, TextBtnSubmit } from '../../style';
+import { Container, ContainerPage, TitlePage, BtnSubmit, TextBtnSubmit } from '../styles/global';
 import { 
   Form, 
   GroupInput, 

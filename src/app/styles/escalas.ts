@@ -21,7 +21,7 @@ export const InputForm = styled.TextInput`
   border: 1px;
   border-color: #29292E;
   border-radius: 10px;
-  background-color: #E1E1E6;
+  background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
   font-size: 20px;
 `;
 
@@ -34,7 +34,7 @@ export const ListIncluded = styled.ScrollView`
   padding: 0px 10px;
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.COLORS.BG_SCREEN};
 `;
 
 export const TitleItems = styled.Text`
@@ -52,7 +52,7 @@ export const GroupItemsView = styled.View`
   padding-bottom: 10px;
   border-bottom-width: 1px;
   border-bottom-style: dashed;
-  border-bottom-color: #e2e2e2;
+  border-bottom-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
 `;
 
 export const GroupItemsText = styled.View`
