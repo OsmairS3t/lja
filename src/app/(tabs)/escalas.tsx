@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pressable, View, Text } from 'react-native';
 import Modal from 'react-native-modal'
 import Header from '../Header';
-import { escalas } from '../../utils/database'
+import { reunioes, funcoes, servos, escalas } from '../../utils/database'
 
 import { Container, ContainerPage, TitlePage, BtnSubmit, TextBtnSubmit } from '../styles/global';
 import {
   Form,
   GroupInput,
   InputForm,
+  SelectForm,
   ListIncluded,
   BtnPlus,
   BtnMinus,
@@ -25,21 +26,37 @@ import {
   CloseModalServo,
   TextTitleModal
 } from '../styles/escalas';
+import Reunioes from '../cadastros/reunioes';
+import Funcoes from '../cadastros/funcoes';
+import Servos from '../cadastros/servos';
+import { Feather } from '@expo/vector-icons';
 
 const Escalas: React.FC = () => {
-  const [isModalVisibleReuniao, setModalVisibleReuniao] = useState(false);
-  const [isModalVisibleFuncao, setModalVisibleFuncao] = useState(false);
-  const [isModalVisibleServo, setModalVisibleServo] = useState(false);
+  const [isModalVisibleReuniao, setIsModalVisibleReuniao] = useState(false);
+  const [isModalVisibleFuncao, setIsModalVisibleFuncao] = useState(false);
+  const [isModalVisibleServo, setIsModalVisibleServo] = useState(false);
+  const [diasReunioes, setDiasReunioes] = useState<string[]>([])
+  const [diaReuniao, setDiaReuniao] = useState(0)
+  
+  function loadReunioes() {
+    reunioes.map(reun => {
+      setDiasReunioes([...diasReunioes, reun.dia])
+    })
+  }
+
+  useEffect(() => {
+    loadReunioes()
+  },[])
 
   function toggleModal(screen: string) {
     if (screen === 'reuniao') {
-      setModalVisibleReuniao(!isModalVisibleReuniao);
+      setIsModalVisibleReuniao(!isModalVisibleReuniao);
     }
     if (screen === 'funcao') {
-      setModalVisibleFuncao(!isModalVisibleFuncao);
+      setIsModalVisibleFuncao(!isModalVisibleFuncao);
     }
     if (screen === 'servo') {
-      setModalVisibleServo(!isModalVisibleServo);
+      setIsModalVisibleServo(!isModalVisibleServo);
     }
   };
 
@@ -51,10 +68,30 @@ const Escalas: React.FC = () => {
 
         <Form>
           <GroupInput>
-            <InputForm
-              placeholder='Dia da Reunião'
-              id='reuniao'
+            <SelectForm
+              data={diasReunioes}
+              onSelect={(selectedItem, index) => {
+                setDiaReuniao(index + 1)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                  return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                  return item
+              }}
+              defaultButtonText="Reuniao"
+              dropdownIconPosition='right'
+              renderDropdownIcon={() => (
+                  <Feather name="chevron-down" size={24} color="black" />
+              )}
+              buttonStyle={{
+                  width: 320,
+                  borderRadius: 10,
+                  justifyContent: 'flex-start',
+                  alignItems: 'center',
+              }}
             />
+
             <Pressable onPress={() => toggleModal('reuniao')}>
               <BtnPlus name='plus-circle' size={40} />
             </Pressable>
@@ -140,35 +177,44 @@ const Escalas: React.FC = () => {
         </ListIncluded>
 
         <Modal isVisible={isModalVisibleReuniao}>
-          <ContainerModal>
+          <ContainerModal size={630}>
             <HeaderModal>
               <TextTitleModal>Reuniões</TextTitleModal>
               <CloseModalReuniao onPress={() => toggleModal('reuniao')}>
                 <TextTitleModal>X</TextTitleModal>
               </CloseModalReuniao>
             </HeaderModal>
+
+            <Reunioes setCloseModal={setIsModalVisibleReuniao} />
+
           </ContainerModal>
         </Modal>
 
         <Modal isVisible={isModalVisibleFuncao}>
-          <ContainerModal>
+          <ContainerModal size={250}>
             <HeaderModal>
               <TextTitleModal>Função</TextTitleModal>
               <CloseModalFuncao onPress={() => toggleModal('funcao')}>
                 <TextTitleModal>X</TextTitleModal>
               </CloseModalFuncao>
             </HeaderModal>
+
+            <Funcoes setCloseModal={setIsModalVisibleFuncao} />
+
           </ContainerModal>
         </Modal>
 
         <Modal isVisible={isModalVisibleServo}>
-          <ContainerModal>
+          <ContainerModal size={370}>
             <HeaderModal>
               <TextTitleModal>Servos:</TextTitleModal>
               <CloseModalServo onPress={() => toggleModal('servo')}>
                 <TextTitleModal>X</TextTitleModal>
               </CloseModalServo>
             </HeaderModal>
+
+            <Servos setCloseModal={setIsModalVisibleServo} />
+
           </ContainerModal>
         </Modal>
       </ContainerPage>

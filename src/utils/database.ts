@@ -1,10 +1,82 @@
 export const users = [
   {
     id: 'a',
+    avatar: '',
     nome: 'Osmair Moreira de Araujo',
-    datanasc: '20/07/1977',
     email: 'osmairdev@gmail.com',
     senha: 'abcdef',
+  },
+]
+
+export const agendamentos = [
+  {
+      id: 'a',
+      reuniao: 'a',
+    }
+  ]
+  
+export const reunioes = [
+  {
+    id: 'a',
+    nome: 'Luz Jovem',
+    tema: 'A conquista',
+    pregador: 'Wanessa',
+    dia: '15/03/2024',
+    inicio: '20:00',
+    fim: '22:00',
+  }
+]
+
+export const funcoes = [
+  {
+    id: 'a',
+    funcao: 'Recepção',
+  },
+  {
+    id: 'b',
+    funcao: 'Mídia',
+  },
+  {
+    id: 'c',
+    funcao: 'Lanchonete',
+  },
+  {
+    id: 'd',
+    funcao: 'Abertura',
+  },
+  {
+    id: 'e',
+    funcao: 'Louvor',
+  },
+  {
+    id: 'f',
+    funcao: 'Oferta',
+  },
+  {
+    id: 'g',
+    funcao: 'Palavra',
+  },
+  {
+    id: 'h',
+    funcao: 'Encerramento',
+  },
+]
+
+export const servos = [
+  {
+    id: 'a',
+    nome: 'Osmair',
+    datanas: '20/07/1977',
+  },
+  {
+    id: 'a',
+    nome: 'Wanessa',
+    datanas: '13/02/1978',
+  },
+  {
+    id: 'a',
+    nome: 'Mateus',
+    datanas: '10/01/2000',
   },
 ]
 
@@ -65,17 +137,6 @@ export const lancamentos = [
       data: '01/03/2024',
       comprovante: 'file001.png',
   },
-]
-
-export const agendamentos = [
-    {
-        id: 'a',
-        datareuniao: '15/03/2024',
-        tema: 'A conquista',
-        pregador: 'Wanessa',
-        horarioinicio: '20:00',
-        horariofim: '22:00',
-    }
 ]
 
 export const categorias = [

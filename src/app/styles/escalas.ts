@@ -1,4 +1,5 @@
 import { Feather } from '@expo/vector-icons';
+import SelectDropdown from 'react-native-select-dropdown';
 import styled from 'styled-components/native'
 
 export const Form = styled.View`
@@ -13,6 +14,17 @@ export const GroupInput = styled.View`
   align-items: center;
   gap: 10px;
 `;
+
+export const SelectForm = styled(SelectDropdown)`
+  height: 60px;
+  padding: 14px;
+  border: 1px;
+  border-radius: 10px;
+  border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
+  background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
+  font-size: 20px;
+`;
+
 
 export const InputForm = styled.TextInput`
   width: 320px;
@@ -75,9 +87,13 @@ export const TextItem = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;
 
-export const ContainerModal = styled.View`
+interface PropsModal {
+  size: number;
+}
+
+export const ContainerModal = styled.View<PropsModal>`
   width: '80%';
-  height: 500px;
+  height: ${({ size }) => size}px;
   padding: 10px;
   justify-content: flex-start;
   align-items: center;

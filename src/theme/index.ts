@@ -16,6 +16,7 @@ export default {
         TEXT_TITLE: '#FFFFFF',
         TEXT_INPUT: '#29292E',
         TEXT_PLACEHOLDER: '#63768D',
+        TEXT_ERROR: '#990000',
 
         ICON_DEFAULT: '#FFFFFF',
     },
