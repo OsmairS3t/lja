@@ -6,6 +6,9 @@ import { reunioes, funcoes, servos, escalas } from '../../utils/database'
 
 import { Container, ContainerPage, TitlePage, BtnSubmit, TextBtnSubmit } from '../styles/global';
 import {
+  TitleHeader,
+  Btn,
+  TextBtn,
   Form,
   GroupInput,
   InputForm,
@@ -30,22 +33,48 @@ import Reunioes from '../cadastros/reunioes';
 import Funcoes from '../cadastros/funcoes';
 import Servos from '../cadastros/servos';
 import { Feather } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 const Escalas: React.FC = () => {
   const [isModalVisibleReuniao, setIsModalVisibleReuniao] = useState(false);
   const [isModalVisibleFuncao, setIsModalVisibleFuncao] = useState(false);
   const [isModalVisibleServo, setIsModalVisibleServo] = useState(false);
-  const [diasReunioes, setDiasReunioes] = useState<string[]>([])
-  const [diaReuniao, setDiaReuniao] = useState(0)
+  const [diasReunioes, setDiasReunioes] = useState<string[]>([]);
+  const [objFuncoes, setObjFuncoes] = useState<string[]>([]);
+  const [objServos, setObjServos] = useState<string[]>([]);
+  const [dateMeet, setDateMeet] = useState('')
+  const [diaReuniao, setDiaReuniao] = useState(0);
+  const [funcao, setFuncao] = useState(0);
+  const [servo, setServo] = useState(0);
   
   function loadReunioes() {
+    let arrReu:string[]=[]
     reunioes.map(reun => {
-      setDiasReunioes([...diasReunioes, reun.dia])
+      arrReu.push(reun.dia)
     })
+    setDiasReunioes(arrReu)
   }
-
+  
+  function loadFuncoes() {
+    let arrFun:string[]=[]
+    funcoes.map(fun => {
+      arrFun.push(fun.funcao)
+    })
+    setObjFuncoes(arrFun)
+  }
+  
+  function loadServos() {
+    let arrSer:string[]=[]
+    servos.map(ser => {
+      arrSer.push(ser.nome)
+    })
+    setObjServos(arrSer)
+  }
+  
   useEffect(() => {
     loadReunioes()
+    loadFuncoes()
+    loadServos()
   },[])
 
   function toggleModal(screen: string) {
@@ -59,12 +88,21 @@ const Escalas: React.FC = () => {
       setIsModalVisibleServo(!isModalVisibleServo);
     }
   };
+  
+  function handleRoute(url: string) {
+    router.replace(url);
+  }
 
   return (
     <Container>
       <Header title='Escalas' cor='#cccccc' />
       <ContainerPage>
-        <TitlePage>Escalas</TitlePage>
+        <TitleHeader>
+          <TitlePage>Incluir escalas:</TitlePage>
+          <Btn onPress={() => handleRoute('../listas/escalas')}>
+            <TextBtn>Listar</TextBtn>
+          </Btn>
+        </TitleHeader>
 
         <Form>
           <GroupInput>
@@ -72,6 +110,7 @@ const Escalas: React.FC = () => {
               data={diasReunioes}
               onSelect={(selectedItem, index) => {
                 setDiaReuniao(index + 1)
+                setDateMeet(selectedItem)
               }}
               buttonTextAfterSelection={(selectedItem, index) => {
                   return selectedItem
@@ -91,16 +130,34 @@ const Escalas: React.FC = () => {
                   alignItems: 'center',
               }}
             />
-
             <Pressable onPress={() => toggleModal('reuniao')}>
               <BtnPlus name='plus-circle' size={40} />
             </Pressable>
           </GroupInput>
 
           <GroupInput>
-            <InputForm
-              placeholder='Função'
-              id='funcao'
+          <SelectForm
+              data={objFuncoes}
+              onSelect={(selectedItem, index) => {
+                setFuncao(index + 1)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                  return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                  return item
+              }}
+              defaultButtonText="Funcao"
+              dropdownIconPosition='right'
+              renderDropdownIcon={() => (
+                  <Feather name="chevron-down" size={24} color="black" />
+              )}
+              buttonStyle={{
+                  width: 320,
+                  borderRadius: 10,
+                  justifyContent: 'flex-start',
+                  alignItems: 'center',
+              }}
             />
             <Pressable onPress={() => toggleModal('funcao')}>
               <BtnPlus name='plus-circle' size={40} />
@@ -108,9 +165,28 @@ const Escalas: React.FC = () => {
           </GroupInput>
 
           <GroupInput>
-            <InputForm
-              placeholder='Servo'
-              id='servo'
+          <SelectForm
+              data={objServos}
+              onSelect={(selectedItem, index) => {
+                setServo(index + 1)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                  return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                  return item
+              }}
+              defaultButtonText="Servo"
+              dropdownIconPosition='right'
+              renderDropdownIcon={() => (
+                  <Feather name="chevron-down" size={24} color="black" />
+              )}
+              buttonStyle={{
+                  width: 320,
+                  borderRadius: 10,
+                  justifyContent: 'flex-start',
+                  alignItems: 'center',
+              }}
             />
             <Pressable onPress={() => toggleModal('servo')}>
               <BtnPlus name='plus-circle' size={40} />
@@ -122,9 +198,7 @@ const Escalas: React.FC = () => {
           </BtnSubmit>
         </Form>
 
-        {escalas &&
-          <TitleItems>Incluidos para o dia {escalas[0].diareuniao}</TitleItems>
-        }
+        <TitleItems>Escala do dia {dateMeet}</TitleItems>
         <ListIncluded>
           <GroupItemsView>
             <GroupItemsText>

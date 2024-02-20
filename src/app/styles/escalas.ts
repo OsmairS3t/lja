@@ -2,6 +2,28 @@ import { Feather } from '@expo/vector-icons';
 import SelectDropdown from 'react-native-select-dropdown';
 import styled from 'styled-components/native'
 
+export const TitleHeader = styled.View`
+  width: 100%;
+  margin: 14px 0px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const Btn = styled.Pressable`
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.COLORS.BG_SUBMIT};
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 180px;
+  `;
+
+export const TextBtn = styled.Text`
+  font-size: 20px;
+  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+`;
+
 export const Form = styled.View`
   justify-content: center;
   align-items: flex-start;
@@ -45,9 +67,10 @@ export const BtnMinus = styled(Feather)``;
 
 export const ListIncluded = styled.ScrollView`
   margin-top: 10px;
+  margin-bottom: 14px;
   padding: 0px 10px;
   width: 100%;
-  height: 100%;
+  height: 340px;
   background-color: ${({ theme }) => theme.COLORS.BG_SCREEN};
 `;
 

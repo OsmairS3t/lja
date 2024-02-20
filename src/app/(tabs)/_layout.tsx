@@ -38,12 +38,6 @@ export default function AppLayout() {
           },
         }}
         >
-          <Tabs.Screen name='agenda' options={{
-            title: 'Agenda',
-            tabBarIconStyle: { width: 100, height: 100, },
-            tabBarIcon: ({ size, color }) => <MaterialIcons name='event-note' size={32} color={color} />
-          }} />
-
           <Tabs.Screen name='escalas' options={{
             title: 'Escalas',
             tabBarIconStyle: { width: 100, height: 100, },
