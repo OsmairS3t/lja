@@ -55,7 +55,16 @@ export const lancamentos = [
         valor: 10,
         data: '01/03/2024',
         comprovante: 'file001.png',
-    }
+    },
+    {
+      id:'b',
+      categoria: "Lanchonete",
+      tipo: "Entrada",
+      descricao: "Torta de frango",
+      valor: 15,
+      data: '01/03/2024',
+      comprovante: 'file001.png',
+  },
 ]
 
 export const agendamentos = [

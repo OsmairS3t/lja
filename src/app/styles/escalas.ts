@@ -25,7 +25,9 @@ export const InputForm = styled.TextInput`
   font-size: 20px;
 `;
 
-export const BtnPlus = styled(Feather)``;
+export const BtnPlus = styled(Feather)`
+  color: ${({ theme }) => theme.COLORS.ICON_DEFAULT};
+`;
 
 export const BtnMinus = styled(Feather)``;
 
@@ -40,7 +42,8 @@ export const ListIncluded = styled.ScrollView`
 export const TitleItems = styled.Text`
   margin-top: 14px;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 400;
+  color: ${({ theme }) => theme.COLORS.TEXT_TITLE};
 `;
 
 export const GroupItemsView = styled.View`
@@ -69,5 +72,45 @@ export const GroupItemsOrder = styled.View`
 export const IconOrder = styled(Feather)``;
 
 export const TextItem = styled.Text`
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;
+
+export const ContainerModal = styled.View`
+  width: '80%';
+  height: 500px;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: ${({ theme }) => theme.COLORS.BG_SCREEN};
+`;
+
+export const HeaderModal = styled.View`
+  width: 350px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const CloseModalReuniao = styled.Pressable`
+  padding: 5px;
+  justify-content: 'center';
+  align-items: 'center';
+`;
+
+export const CloseModalFuncao = styled.Pressable`
+  padding: 5px;
+  justify-content: 'center';
+  align-items: 'center';
+`;
+
+export const CloseModalServo = styled.Pressable`
+  padding: 5px;
+  justify-content: 'center';
+  align-items: 'center';
+`;
+
+export const TextTitleModal = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_SCREEN};
+`;
+

@@ -12,9 +12,12 @@ export default {
 
         TEXT_DEFAULT: '#000000',
         TEXT_BLOCK: '#FFFFFF',
+        TEXT_SCREEN: '#000000',
         TEXT_TITLE: '#FFFFFF',
         TEXT_INPUT: '#29292E',
         TEXT_PLACEHOLDER: '#63768D',
+
+        ICON_DEFAULT: '#FFFFFF',
     },
     FONT_FAMILY: {
         REGULAR: 'IstokWeb_400Regular',
