@@ -112,7 +112,7 @@ export const BtnSubmit = styled.Pressable`
 
 export const TextBtnSubmit = styled.Text`
     font-weight: bold;
-    font-size: 30px;
+    font-size: ${({theme}) =>theme.FONT_SIZE.XL}px;
     color: ${({theme}) =>theme.COLORS.TEXT_BLOCK};
 `;
 

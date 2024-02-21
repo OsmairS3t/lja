@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'expo-router';
+import Modal from 'react-native-modal';
 import Header from '../Header';
 
 import { Container, ContainerPage } from '../styles/global';
@@ -14,10 +15,21 @@ import {
   GroupIncomeOutcome,
   TextTitleProduct,
   TextPriceProduct,
-  TextSubTitleProduct } from './styles'
+  TextSubTitleProduct,
+  ContainerModal,
+  HeaderModal,
+  TextTitleModal,
+  TextCloseModal,
+  CloseModalFilter } from './styles'
 import { Feather } from '@expo/vector-icons';
+import { Pressable } from 'react-native';
 
 export default function Lancamentos() {
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  function toggleModal() {
+    setIsModalVisible(!isModalVisible);
+  }
 
   return (
     <Container>
@@ -29,7 +41,9 @@ export default function Lancamentos() {
             <IconBack name='arrow-left' size={24} />
           </Link>
           <Title>Listar Lançamentos</Title>
-          <IconFilter name='sliders' size={24} />
+          <Pressable onPress={toggleModal}>
+            <IconFilter name='sliders' size={24} />
+          </Pressable>
         </GroupTitle>
 
         <BlockListView>
@@ -47,6 +61,18 @@ export default function Lancamentos() {
             </BlockProductText>
           </BlockProduct>
         </BlockListView>
+
+        <Modal isVisible={isModalVisible}>
+          <ContainerModal size={250}>
+            <HeaderModal>
+              <TextTitleModal>Filtrar</TextTitleModal>
+              <CloseModalFilter onPress={toggleModal}>
+                <TextCloseModal>X</TextCloseModal>
+              </CloseModalFilter>
+            </HeaderModal>
+
+          </ContainerModal>
+        </Modal>
 
       </ContainerPage>
     </Container>

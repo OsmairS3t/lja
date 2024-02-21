@@ -14,7 +14,7 @@ export const agendamentos = [
       reuniao: 'a',
     }
   ]
-  
+
 export const reunioes = [
   {
     id: 'a',
@@ -140,24 +140,8 @@ export const lancamentos = [
 ]
 
 export const categorias = [
-    {
-        id: 'a',
-        nome: 'Oferta',
-        icone: 'dollar',
-    },
-    {
-        id: 'b',
-        nome: 'Lanchonete',
-        icone: 'dollar',
-    },
-    {
-        id: 'c',
-        nome: 'Produto',
-        icone: 'dollar',
-    },
-    {
-        id: 'd',
-        nome: 'Reunião',
-        icone: 'dollar',
-    },
+  'Lanchonete',
+  'Oferta',
+  'Produto',
+  'Reunião',
 ]

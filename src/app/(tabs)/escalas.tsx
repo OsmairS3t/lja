@@ -34,15 +34,15 @@ import Funcoes from '../cadastros/funcoes';
 import Servos from '../cadastros/servos';
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
+import { IServo } from '../../utils/interface';
 
 const Escalas: React.FC = () => {
   const [isModalVisibleReuniao, setIsModalVisibleReuniao] = useState(false);
   const [isModalVisibleFuncao, setIsModalVisibleFuncao] = useState(false);
   const [isModalVisibleServo, setIsModalVisibleServo] = useState(false);
-  const [diasReunioes, setDiasReunioes] = useState<string[]>([]);
+  const [objReunioes, setObjReunioes] = useState<string[]>([]);
   const [objFuncoes, setObjFuncoes] = useState<string[]>([]);
   const [objServos, setObjServos] = useState<string[]>([]);
-  const [dateMeet, setDateMeet] = useState('')
   const [diaReuniao, setDiaReuniao] = useState(0);
   const [funcao, setFuncao] = useState(0);
   const [servo, setServo] = useState(0);
@@ -52,7 +52,7 @@ const Escalas: React.FC = () => {
     reunioes.map(reun => {
       arrReu.push(reun.dia)
     })
-    setDiasReunioes(arrReu)
+    setObjReunioes(arrReu)
   }
   
   function loadFuncoes() {
@@ -93,6 +93,17 @@ const Escalas: React.FC = () => {
     router.replace(url);
   }
 
+  function handleSave() {
+    const data = {
+      id: 'a',
+      diareuniao: diaReuniao,
+      ordem: 1,
+      funcao: funcao,
+      servo: servo,
+    }
+    console.log(data)
+  }
+
   return (
     <Container>
       <Header title='Escalas' cor='#cccccc' />
@@ -107,10 +118,9 @@ const Escalas: React.FC = () => {
         <Form>
           <GroupInput>
             <SelectForm
-              data={diasReunioes}
+              data={objReunioes}
               onSelect={(selectedItem, index) => {
-                setDiaReuniao(index + 1)
-                setDateMeet(selectedItem)
+                setDiaReuniao(selectedItem)
               }}
               buttonTextAfterSelection={(selectedItem, index) => {
                   return selectedItem
@@ -139,7 +149,7 @@ const Escalas: React.FC = () => {
           <SelectForm
               data={objFuncoes}
               onSelect={(selectedItem, index) => {
-                setFuncao(index + 1)
+                setFuncao(selectedItem)
               }}
               buttonTextAfterSelection={(selectedItem, index) => {
                   return selectedItem
@@ -165,10 +175,10 @@ const Escalas: React.FC = () => {
           </GroupInput>
 
           <GroupInput>
-          <SelectForm
+            <SelectForm
               data={objServos}
               onSelect={(selectedItem, index) => {
-                setServo(index + 1)
+                setServo(selectedItem)
               }}
               buttonTextAfterSelection={(selectedItem, index) => {
                   return selectedItem
@@ -193,62 +203,66 @@ const Escalas: React.FC = () => {
             </Pressable>
           </GroupInput>
 
-          <BtnSubmit>
+          <BtnSubmit onPress={handleSave}>
             <TextBtnSubmit>Incluir</TextBtnSubmit>
           </BtnSubmit>
         </Form>
 
-        <TitleItems>Escala do dia {dateMeet}</TitleItems>
-        <ListIncluded>
-          <GroupItemsView>
-            <GroupItemsText>
-              <TextItem>Recepção:</TextItem>
-              <TextItem>Fulano de tal</TextItem>
-            </GroupItemsText>
-            <GroupItemsOrder>
-              <IconOrder name='arrow-up' size={24} />
-              <IconOrder name='arrow-down' size={24} />
-              <BtnMinus name='trash-2' size={24} />
-            </GroupItemsOrder>
-          </GroupItemsView>
+        {diaReuniao !== 0 &&
+          <View>
+            <TitleItems>Escala do dia {diaReuniao}</TitleItems>
+            <ListIncluded>
+              <GroupItemsView>
+                <GroupItemsText>
+                  <TextItem>Recepção:</TextItem>
+                  <TextItem>Fulano de tal</TextItem>
+                </GroupItemsText>
+                <GroupItemsOrder>
+                  <IconOrder name='arrow-up' size={24} />
+                  <IconOrder name='arrow-down' size={24} />
+                  <BtnMinus name='trash-2' size={24} />
+                </GroupItemsOrder>
+              </GroupItemsView>
 
-          <GroupItemsView>
-            <GroupItemsText>
-              <TextItem>Mídia:</TextItem>
-              <TextItem>Fulano de tal</TextItem>
-            </GroupItemsText>
-            <GroupItemsOrder>
-              <IconOrder name='arrow-up' size={24} />
-              <IconOrder name='arrow-down' size={24} />
-              <BtnMinus name='trash-2' size={24} />
-            </GroupItemsOrder>
-          </GroupItemsView>
+              <GroupItemsView>
+                <GroupItemsText>
+                  <TextItem>Mídia:</TextItem>
+                  <TextItem>Fulano de tal</TextItem>
+                </GroupItemsText>
+                <GroupItemsOrder>
+                  <IconOrder name='arrow-up' size={24} />
+                  <IconOrder name='arrow-down' size={24} />
+                  <BtnMinus name='trash-2' size={24} />
+                </GroupItemsOrder>
+              </GroupItemsView>
 
-          <GroupItemsView>
-            <GroupItemsText>
-              <TextItem>Lanchonete:</TextItem>
-              <TextItem>Fulano de tal</TextItem>
-            </GroupItemsText>
-            <GroupItemsOrder>
-              <IconOrder name='arrow-up' size={24} />
-              <IconOrder name='arrow-down' size={24} />
-              <BtnMinus name='trash-2' size={24} />
-            </GroupItemsOrder>
-          </GroupItemsView>
+              <GroupItemsView>
+                <GroupItemsText>
+                  <TextItem>Lanchonete:</TextItem>
+                  <TextItem>Fulano de tal</TextItem>
+                </GroupItemsText>
+                <GroupItemsOrder>
+                  <IconOrder name='arrow-up' size={24} />
+                  <IconOrder name='arrow-down' size={24} />
+                  <BtnMinus name='trash-2' size={24} />
+                </GroupItemsOrder>
+              </GroupItemsView>
 
-          <GroupItemsView>
-            <GroupItemsText>
-              <TextItem>Abertura:</TextItem>
-              <TextItem>Fulano de tal</TextItem>
-            </GroupItemsText>
-            <GroupItemsOrder>
-              <IconOrder name='arrow-up' size={24} />
-              <IconOrder name='arrow-down' size={24} />
-              <BtnMinus name='trash-2' size={24} />
-            </GroupItemsOrder>
-          </GroupItemsView>
+              <GroupItemsView>
+                <GroupItemsText>
+                  <TextItem>Abertura:</TextItem>
+                  <TextItem>Fulano de tal</TextItem>
+                </GroupItemsText>
+                <GroupItemsOrder>
+                  <IconOrder name='arrow-up' size={24} />
+                  <IconOrder name='arrow-down' size={24} />
+                  <BtnMinus name='trash-2' size={24} />
+                </GroupItemsOrder>
+              </GroupItemsView>
 
-        </ListIncluded>
+            </ListIncluded>
+          </View> 
+        }
 
         <Modal isVisible={isModalVisibleReuniao}>
           <ContainerModal size={630}>

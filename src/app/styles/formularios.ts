@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { TextInputMask } from "react-native-masked-text";
+import SelectDropdown from "react-native-select-dropdown";
 
 interface Props {
   direction ?: string;
@@ -32,6 +33,16 @@ export const Input = styled.TextInput`
   border: 1px;
   border-radius: 8px;
   border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
+`;
+
+export const Select = styled(SelectDropdown)`
+  height: 60px;
+  padding: 14px;
+  border: 1px;
+  border-radius: 10px;
+  border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
+  background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
+  font-size: 20px;
 `;
 
 export const InputMask = styled(TextInputMask)`

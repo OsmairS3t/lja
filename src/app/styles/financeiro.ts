@@ -19,7 +19,7 @@ export const Btn = styled.Pressable`
   `;
 
 export const TextBtn = styled.Text`
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
   color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
 `;
 
@@ -33,12 +33,12 @@ export const BlockResume = styled.View`
 `;
 
 export const TextResumeTitle = styled.Text`
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
 `;
 
 export const TextResumePrice = styled.Text`
-  font-size: 35px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.XXL}px;
   color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
 `;
 
@@ -50,6 +50,7 @@ export const BlockListView = styled.ScrollView`
 export const BlockProduct = styled.View`
   background-color: ${({ theme }) => theme.COLORS.BG_SCREEN};
   width: 380px;
+  height: 70px;
   padding: 16px;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -69,12 +70,12 @@ export const GroupIncomeOutcome = styled.View`
 `;
 
 export const TextTitleProduct = styled.Text`
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
   font-weight: bold;
 `;
 
 export const TextPriceProduct = styled.Text`
-  font-size: 24px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
   font-weight: bold;
 `;
 

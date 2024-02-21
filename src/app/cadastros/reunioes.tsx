@@ -118,8 +118,8 @@ export default function Reunioes({ setCloseModal }: Props) {
               value={value}
               keyboardType='phone-pad'
             />
-            )}
-            name='dia'
+          )}
+          name='dia'
         />
         {errors.dia && <ErrorMessage>{errors.dia.message}</ErrorMessage>}
       </GroupInput>

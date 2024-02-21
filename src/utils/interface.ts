@@ -46,7 +46,7 @@ export interface ILancamento  {
   tipo: string;
   descricao: string;
   valor: number;
-  data: string;
+  datalancamento: string;
   comprovante: string;
 }
 

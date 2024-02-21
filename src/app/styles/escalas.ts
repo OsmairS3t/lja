@@ -2,6 +2,10 @@ import { Feather } from '@expo/vector-icons';
 import SelectDropdown from 'react-native-select-dropdown';
 import styled from 'styled-components/native'
 
+interface PropsModal {
+  size: number;
+}
+
 export const TitleHeader = styled.View`
   width: 100%;
   margin: 14px 0px;
@@ -109,10 +113,6 @@ export const IconOrder = styled(Feather)``;
 export const TextItem = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;
-
-interface PropsModal {
-  size: number;
-}
 
 export const ContainerModal = styled.View<PropsModal>`
   width: '80%';
