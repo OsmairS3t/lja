@@ -9,18 +9,18 @@ export const TitleButton = styled.View`
   align-items: center;
 `;
 
-export const Btn = styled.Pressable`
+export const BtnThin = styled.Pressable`
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.COLORS.BG_SUBMIT};
   justify-content: center;
   align-items: center;
   height: 40px;
   width: 180px;
+  background-color: ${({ theme }) => theme.COLORS.BG_BUTTON};
   `;
 
 export const TextBtn = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_BUTTON};
 `;
 
 export const BlockResume = styled.View`
@@ -29,7 +29,7 @@ export const BlockResume = styled.View`
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background-color: ${({ theme }) => theme.COLORS.BG_SUBMIT};
+    background-color: ${({ theme }) => theme.COLORS.BG_BLOCK};
 `;
 
 export const TextResumeTitle = styled.Text`
@@ -48,7 +48,6 @@ export const BlockListView = styled.ScrollView`
 `;
 
 export const BlockProduct = styled.View`
-  background-color: ${({ theme }) => theme.COLORS.BG_SCREEN};
   width: 380px;
   height: 70px;
   padding: 16px;
@@ -56,6 +55,7 @@ export const BlockProduct = styled.View`
   margin-bottom: 10px;
   flex-direction: column;
   justify-content: center;
+  background-color: ${({ theme }) => theme.COLORS.BG_BLOCK};
 `;
 
 export const BlockProductText = styled.View`
@@ -70,14 +70,19 @@ export const GroupIncomeOutcome = styled.View`
 `;
 
 export const TextTitleProduct = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
   font-weight: bold;
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
 `;
 
 export const TextPriceProduct = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
   font-weight: bold;
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
 `;
 
-export const TextSubTitleProduct = styled.Text``;
+export const TextSubTitleProduct = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+`;
 

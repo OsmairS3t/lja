@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'expo-router';
-import { useWindowDimensions } from 'react-native';
+import { useWindowDimensions, Switch } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -8,7 +8,19 @@ import Header from '../Header';
 import { categorias } from '../../utils/database';
 
 import { Container, ContainerPage, BtnSubmit, TextBtnSubmit } from '../styles/global';
-import { GroupTitle, IconBack, Title, Form, GroupInput, Input, InputMask, Select, ErrorMessage } from '../styles/cadlancamento'
+import {
+  GroupTitle,
+  IconBack,
+  Title,
+  Form,
+  GroupInput,
+  GroupSwitch,
+  TextLabel,
+  Input,
+  InputMask,
+  Select,
+  ErrorMessage
+} from '../styles/cadlancamento'
 import { Feather } from '@expo/vector-icons';
 
 const lancamentoSchema = z.object({
@@ -24,16 +36,23 @@ interface ILanca {
 }
 
 export default function Lancamento() {
-  const {height, width} = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
   const [categoria, setCategoria] = useState();
-  const { handleSubmit, reset, control, formState:{ errors } } = useForm<ILanca>({
+  const [isSaida, setIsSaida] = useState(false);
+  const [tipo, setTipo] = useState('Entrada');
+  const { handleSubmit, reset, control, formState: { errors } } = useForm<ILanca>({
     resolver: zodResolver(lancamentoSchema)
   })
+
+  function toggleSwitch() {
+    setIsSaida(!isSaida)
+    tipo === 'Entrada' ? setTipo('Saida') : setTipo('Entrada')
+  }
 
   function handleSave(formData: ILanca) {
     const data = {
       categoria,
-      tipo: 'Entrada',
+      tipo,
       descricao: formData.descricao,
       valor: formData.valor,
       datalancamento: formData.datalancamento
@@ -46,7 +65,7 @@ export default function Lancamento() {
     <Container>
       <Header title='Financeiro' cor='#cccccc' />
       <ContainerPage>
-        
+
         <GroupTitle>
           <Link href='../financeiro'>
             <IconBack name='arrow-left' size={24} />
@@ -62,51 +81,43 @@ export default function Lancamento() {
                 setCategoria(selectedItem)
               }}
               buttonTextAfterSelection={(selectedItem, index) => {
-                  return selectedItem
+                return selectedItem
               }}
               rowTextForSelection={(item, index) => {
-                  return item
+                return item
               }}
               defaultButtonText="Categoria"
               dropdownIconPosition='right'
               renderDropdownIcon={() => (
-                  <Feather name="chevron-down" size={24} color="black" />
+                <Feather name="chevron-down" size={24} color="black" />
               )}
-              buttonStyle={{
-                  width: '100%',
-                  height: 60,
-                  borderRadius: 10,
-                  marginBottom: 10,
-                  backgroundColor: '#E1E1E6',
-                  borderColor: '#29292E',
-                  justifyContent: 'flex-start',
-                  alignItems: 'center',
-              }}
             />
           </GroupInput>
 
-          <GroupInput size={100} direction='row'>
-            <GroupInput size={40}>
-              <Input placeholder='Entrada' />
-            </GroupInput>
-            <GroupInput size={40}>
-              <Input placeholder='Saida' />
-            </GroupInput>
-          </GroupInput>
+          <GroupSwitch>
+            <Switch
+              trackColor={{ false: '#001d3f', true: '#001d3f' }}
+              thumbColor={isSaida ? '#ff2b2b' : '#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleSwitch}
+              value={isSaida}
+            />
+            <TextLabel>{tipo}</TextLabel>
+          </GroupSwitch>
 
           <GroupInput size={100}>
-          <Controller
+            <Controller
               control={control}
               rules={{
-              maxLength: 100,
+                maxLength: 100,
               }}
               render={({ field: { onChange, onBlur, value } }) => (
-              <Input
+                <Input
                   placeholder="Descrição"
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
-              />
+                />
               )}
               name="descricao"
             />
@@ -117,24 +128,24 @@ export default function Lancamento() {
             <Controller
               control={control}
               rules={{
-              maxLength: 100,
+                maxLength: 100,
               }}
               render={({ field: { onChange, onBlur, value } }) => (
-              <InputMask 
-                type='money'
-                options={{
-                  precision: 2,
-                  separator: ',',
-                  delimiter: '.',
-                  unit: 'R$',
-                  suffixUnit: ''
-                }}
-                placeholder="0.00"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                keyboardType='numeric'
-              />
+                <InputMask
+                  type='money'
+                  options={{
+                    precision: 2,
+                    separator: ',',
+                    delimiter: '.',
+                    unit: 'R$',
+                    suffixUnit: ''
+                  }}
+                  placeholder="0.00"
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  value={value}
+                  keyboardType='numeric'
+                />
               )}
               name="valor"
             />
@@ -142,13 +153,13 @@ export default function Lancamento() {
           </GroupInput>
 
           <GroupInput size={100}>
-          <Controller
+            <Controller
               control={control}
               rules={{
-              maxLength: 100,
+                maxLength: 100,
               }}
               render={({ field: { onChange, onBlur, value } }) => (
-                <InputMask 
+                <InputMask
                   type='datetime'
                   options={{
                     maskType: 'BRL',
@@ -173,6 +184,6 @@ export default function Lancamento() {
 
       </ContainerPage>
     </Container>
-    )
+  )
 }
 

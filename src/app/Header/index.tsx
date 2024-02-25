@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { router } from 'expo-router';
 import { useSession } from '../../ctx';
 import { TouchableOpacity, useWindowDimensions } from 'react-native'
-import { 
-  Container, 
-  HeaderTitle, 
+import {
+  Container,
+  HeaderTitle,
   HeaderLogo,
   GroupUser,
   GroupUserName,
@@ -12,22 +12,22 @@ import {
   TextUser
 } from './styles';
 
-interface Props{
+interface Props {
   title?: string;
   cor?: string;
 }
 
 export default function Header({ title, cor }: Props) {
   const [isOpenMenu, setIsOpenMenu] = useState(false)
-  const { height, width} = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
   const { signOut } = useSession()
 
   function handleToggleMenu() {
     router.navigate('../(tabs)/user')
   }
 
-return (
-    <Container colorBackground={cor}>
+  return (
+    <Container>
       <TouchableOpacity onPress={handleToggleMenu}>
         <GroupUser>
           <PhotoUser source={require('../../assets/photo.png')} />
@@ -39,6 +39,6 @@ return (
       </TouchableOpacity>
       <HeaderTitle>{title}</HeaderTitle>
       <HeaderLogo source={require('../../assets/logo.png')} />
-      </Container>
+    </Container>
   )
 }

@@ -17,19 +17,19 @@ export const GroupTitle = styled.View`
 `;
 
 export const IconBack = styled(Feather)`
-  color: ${({theme}) =>theme.COLORS.TEXT_BLOCK};
+  color: ${({theme}) =>theme.COLORS.ICON_DEFAULT};
 `
 
 export const Title = styled.Text`
   width: fit-content;
-  font-size: 20px;
   font-weight: bold;
-  color: ${({theme}) =>theme.COLORS.TEXT_BLOCK};
+  font-size: ${({theme}) =>theme.FONT_SIZE.LG}px;
+  color: ${({theme}) =>theme.COLORS.TEXT_TITLE};
 `;
 
 export const Form = styled.View<Props>`
-  width: ${({ size }) => size}px;
   padding: 14px;
+  width: ${({ size }) => size}px;
 `;
 
 export const GroupInput = styled.View<Props>`
@@ -45,8 +45,21 @@ export const Input = styled.TextInput`
   padding: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
+  border-width: 1px;
   border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
   background-color: ${({theme}) =>theme.COLORS.BG_INPUT};
+`;
+
+export const GroupSwitch = styled.View`
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const TextLabel = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const InputMask = styled(TextInputMask)`
@@ -61,12 +74,24 @@ export const InputMask = styled(TextInputMask)`
   background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
 `;
 
-export const Select = styled(SelectDropdown)`
+export const Select = styled(SelectDropdown).attrs(({ theme }) => ({
+  buttonStyle: {
+    width: '100%',
+    height: 60,
+    borderRadius: 10,
+    marginBottom: 10,
+    borderWidth: 1,
+    backgroundColor: theme.COLORS.BG_INPUT,
+    borderColor: theme.COLORS.BORDER_INPUT,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  }
+}))`
   height: 60px;
   padding: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
-  border: 1px;
+  border-width: 1px;
   border-radius: 10px;
   border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
   background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
@@ -74,7 +99,7 @@ export const Select = styled(SelectDropdown)`
 `;
 
 export const ErrorMessage = styled.Text`
+  margin-bottom: 10px;
   color: ${({ theme }) => theme.COLORS.TEXT_ERROR};
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
-  margin-bottom: 10px;
 `;

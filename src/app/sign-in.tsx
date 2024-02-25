@@ -1,26 +1,26 @@
 import { router } from 'expo-router';
 import { useSession } from '../ctx';
 
-import { 
+import {
   ContainerLogin,
-  Container, 
-  Logo, 
-  Form, 
-  GroupInput, 
-  LabelItem, 
-  InputItem, 
-  BtnSignIn, 
+  Container,
+  Logo,
+  Form,
+  GroupInput,
+  LabelItem,
+  InputItem,
+  BtnSignIn,
   GroupRegister,
   TextRegister,
   TextBtn
-  } from './styles/global'
+} from './styles/global'
 
 export default function SignIn() {
   const { signIn } = useSession();
-  
+
   return (
     <ContainerLogin>
-      <Logo source={require('../assets/logo_branco.png')} />
+      <Logo source={require('../assets/logo.png')} />
       <Form>
         <GroupInput>
           <InputItem id='email' keyboardType='email-address' placeholder='email@example.com' />
@@ -30,7 +30,7 @@ export default function SignIn() {
           <InputItem id='email' keyboardType='visible-password' placeholder='email@example.com' />
         </GroupInput>
 
-        <BtnSignIn 
+        <BtnSignIn
           onPress={() => {
             signIn();
             router.replace('/');
@@ -43,7 +43,7 @@ export default function SignIn() {
           <TextRegister>|</TextRegister>
           <TextRegister>Esqueci a senha</TextRegister>
         </GroupRegister>
-        
+
       </Form>
     </ContainerLogin>
   );

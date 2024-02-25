@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Pressable, View, Text } from 'react-native';
+import { Pressable, View, Text, Alert } from 'react-native';
 import Modal from 'react-native-modal'
 import Header from '../Header';
 import { reunioes, funcoes, servos, escalas } from '../../utils/database'
@@ -7,20 +7,21 @@ import { reunioes, funcoes, servos, escalas } from '../../utils/database'
 import { Container, ContainerPage, TitlePage, BtnSubmit, TextBtnSubmit } from '../styles/global';
 import {
   TitleHeader,
-  Btn,
+  BtnThin,
   TextBtn,
   Form,
   GroupInput,
   InputForm,
   SelectForm,
   ListIncluded,
-  BtnPlus,
-  BtnMinus,
+  IconList,
+  IconDefault,
   TitleItems,
+  ContainerEscala,
   GroupItemsView,
   GroupItemsText,
   GroupItemsOrder,
-  IconOrder,
+  GroupItemsListView,
   TextItem,
   ContainerModal,
   HeaderModal,
@@ -34,7 +35,7 @@ import Funcoes from '../cadastros/funcoes';
 import Servos from '../cadastros/servos';
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
-import { IServo } from '../../utils/interface';
+import { IEscala } from '../../utils/interface';
 
 const Escalas: React.FC = () => {
   const [isModalVisibleReuniao, setIsModalVisibleReuniao] = useState(false);
@@ -43,39 +44,34 @@ const Escalas: React.FC = () => {
   const [objReunioes, setObjReunioes] = useState<string[]>([]);
   const [objFuncoes, setObjFuncoes] = useState<string[]>([]);
   const [objServos, setObjServos] = useState<string[]>([]);
-  const [diaReuniao, setDiaReuniao] = useState(0);
+  const [listEscalas, setListEscalas] = useState<IEscala[]>(escalas)
+  const [diaReuniao, setDiaReuniao] = useState('');
   const [funcao, setFuncao] = useState(0);
   const [servo, setServo] = useState(0);
-  
+
   function loadReunioes() {
-    let arrReu:string[]=[]
+    let arrReu: string[] = []
     reunioes.map(reun => {
       arrReu.push(reun.dia)
     })
     setObjReunioes(arrReu)
   }
-  
+
   function loadFuncoes() {
-    let arrFun:string[]=[]
+    let arrFun: string[] = []
     funcoes.map(fun => {
       arrFun.push(fun.funcao)
     })
     setObjFuncoes(arrFun)
   }
-  
+
   function loadServos() {
-    let arrSer:string[]=[]
+    let arrSer: string[] = []
     servos.map(ser => {
       arrSer.push(ser.nome)
     })
     setObjServos(arrSer)
   }
-  
-  useEffect(() => {
-    loadReunioes()
-    loadFuncoes()
-    loadServos()
-  },[])
 
   function toggleModal(screen: string) {
     if (screen === 'reuniao') {
@@ -88,10 +84,6 @@ const Escalas: React.FC = () => {
       setIsModalVisibleServo(!isModalVisibleServo);
     }
   };
-  
-  function handleRoute(url: string) {
-    router.replace(url);
-  }
 
   function handleSave() {
     const data = {
@@ -104,73 +96,67 @@ const Escalas: React.FC = () => {
     console.log(data)
   }
 
+  useEffect(() => {
+    loadReunioes()
+    loadFuncoes()
+    loadServos()
+  }, [])
+
   return (
     <Container>
       <Header title='Escalas' cor='#cccccc' />
       <ContainerPage>
         <TitleHeader>
           <TitlePage>Incluir escalas:</TitlePage>
-          <Btn onPress={() => handleRoute('../listas/escalas')}>
+          <BtnThin onPress={() => router.replace('../listas/escalas')}>
             <TextBtn>Listar</TextBtn>
-          </Btn>
+          </BtnThin>
         </TitleHeader>
 
         <Form>
           <GroupInput>
             <SelectForm
               data={objReunioes}
-              onSelect={(selectedItem, index) => {
+              onSelect={(selectedItem: string, index) => {
                 setDiaReuniao(selectedItem)
               }}
-              buttonTextAfterSelection={(selectedItem, index) => {
-                  return selectedItem
+              buttonTextAfterSelection={(selectedItem: string, index) => {
+                return selectedItem
               }}
-              rowTextForSelection={(item, index) => {
-                  return item
+              rowTextForSelection={(item: string, index) => {
+                return item
               }}
               defaultButtonText="Reuniao"
               dropdownIconPosition='right'
               renderDropdownIcon={() => (
-                  <Feather name="chevron-down" size={24} color="black" />
+                <Feather name="chevron-down" size={24} color="black" />
               )}
-              buttonStyle={{
-                  width: 320,
-                  borderRadius: 10,
-                  justifyContent: 'flex-start',
-                  alignItems: 'center',
-              }}
             />
             <Pressable onPress={() => toggleModal('reuniao')}>
-              <BtnPlus name='plus-circle' size={40} />
+              <IconDefault name='plus-circle' size={40} />
             </Pressable>
           </GroupInput>
 
           <GroupInput>
-          <SelectForm
+            <SelectForm
               data={objFuncoes}
               onSelect={(selectedItem, index) => {
                 setFuncao(selectedItem)
               }}
               buttonTextAfterSelection={(selectedItem, index) => {
-                  return selectedItem
+                return selectedItem
               }}
               rowTextForSelection={(item, index) => {
-                  return item
+                return item
               }}
               defaultButtonText="Funcao"
               dropdownIconPosition='right'
               renderDropdownIcon={() => (
-                  <Feather name="chevron-down" size={24} color="black" />
+                <Feather name="chevron-down" size={24} color="black" />
               )}
-              buttonStyle={{
-                  width: 320,
-                  borderRadius: 10,
-                  justifyContent: 'flex-start',
-                  alignItems: 'center',
-              }}
             />
             <Pressable onPress={() => toggleModal('funcao')}>
-              <BtnPlus name='plus-circle' size={40} />
+              <IconDefault name='plus-circle' size={40} />
             </Pressable>
           </GroupInput>
 
@@ -181,25 +167,19 @@ const Escalas: React.FC = () => {
                 setServo(selectedItem)
               }}
               buttonTextAfterSelection={(selectedItem, index) => {
-                  return selectedItem
+                return selectedItem
               }}
               rowTextForSelection={(item, index) => {
-                  return item
+                return item
               }}
               defaultButtonText="Servo"
               dropdownIconPosition='right'
               renderDropdownIcon={() => (
-                  <Feather name="chevron-down" size={24} color="black" />
+                <Feather name="chevron-down" size={24} color="black" />
               )}
-              buttonStyle={{
-                  width: 320,
-                  borderRadius: 10,
-                  justifyContent: 'flex-start',
-                  alignItems: 'center',
-              }}
             />
             <Pressable onPress={() => toggleModal('servo')}>
-              <BtnPlus name='plus-circle' size={40} />
+              <IconDefault name='plus-circle' size={40} />
             </Pressable>
           </GroupInput>
 
@@ -208,60 +188,34 @@ const Escalas: React.FC = () => {
           </BtnSubmit>
         </Form>
 
-        {diaReuniao !== 0 &&
-          <View>
-            <TitleItems>Escala do dia {diaReuniao}</TitleItems>
+        {diaReuniao !== '' &&
+          <ContainerEscala>
+            <GroupItemsListView>
+              <TitleItems>Escala do dia {diaReuniao}</TitleItems>
+              <Pressable onPress={() => Alert.alert('Gerar Imagem ne.. ufa')}>
+                <IconDefault name='printer' size={24} />
+              </Pressable>
+            </GroupItemsListView>
             <ListIncluded>
-              <GroupItemsView>
-                <GroupItemsText>
-                  <TextItem>Recepção:</TextItem>
-                  <TextItem>Fulano de tal</TextItem>
-                </GroupItemsText>
-                <GroupItemsOrder>
-                  <IconOrder name='arrow-up' size={24} />
-                  <IconOrder name='arrow-down' size={24} />
-                  <BtnMinus name='trash-2' size={24} />
-                </GroupItemsOrder>
-              </GroupItemsView>
 
-              <GroupItemsView>
-                <GroupItemsText>
-                  <TextItem>Mídia:</TextItem>
-                  <TextItem>Fulano de tal</TextItem>
-                </GroupItemsText>
-                <GroupItemsOrder>
-                  <IconOrder name='arrow-up' size={24} />
-                  <IconOrder name='arrow-down' size={24} />
-                  <BtnMinus name='trash-2' size={24} />
-                </GroupItemsOrder>
-              </GroupItemsView>
-
-              <GroupItemsView>
-                <GroupItemsText>
-                  <TextItem>Lanchonete:</TextItem>
-                  <TextItem>Fulano de tal</TextItem>
-                </GroupItemsText>
-                <GroupItemsOrder>
-                  <IconOrder name='arrow-up' size={24} />
-                  <IconOrder name='arrow-down' size={24} />
-                  <BtnMinus name='trash-2' size={24} />
-                </GroupItemsOrder>
-              </GroupItemsView>
-
-              <GroupItemsView>
-                <GroupItemsText>
-                  <TextItem>Abertura:</TextItem>
-                  <TextItem>Fulano de tal</TextItem>
-                </GroupItemsText>
-                <GroupItemsOrder>
-                  <IconOrder name='arrow-up' size={24} />
-                  <IconOrder name='arrow-down' size={24} />
-                  <BtnMinus name='trash-2' size={24} />
-                </GroupItemsOrder>
-              </GroupItemsView>
+              {
+                listEscalas.map((escala, index) => (
+                  <GroupItemsView key={escala.id}>
+                    <GroupItemsText>
+                      <TextItem>{escala.funcao}:</TextItem>
+                      <TextItem>{escala.servo}</TextItem>
+                    </GroupItemsText>
+                    <GroupItemsOrder>
+                      <Pressable onPress={() => Alert.alert('Pronto ecluido! #SQN')}>
+                        <IconList name='trash-2' size={24} />
+                      </Pressable>
+                    </GroupItemsOrder>
+                  </GroupItemsView>
+                ))
+              }
 
             </ListIncluded>
-          </View> 
+          </ContainerEscala>
         }
 
         <Modal isVisible={isModalVisibleReuniao}>

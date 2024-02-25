@@ -6,7 +6,7 @@ import Header from '../Header';
 import { Container, ContainerPage, TitlePage } from '../styles/global';
 import {
   TitleButton,
-  Btn,
+  BtnThin,
   TextBtn,
   BlockResume,
   TextResumeTitle,
@@ -30,12 +30,12 @@ export default function Financeiro() {
       <Header title="Financeiro" cor="#cccccc" />
       <ContainerPage>
         <TitleButton>
-          <Btn onPress={() => handleRoute('../cadastros/lancamento')}>
+          <BtnThin onPress={() => handleRoute('../cadastros/lancamento')}>
             <TextBtn>+ Lançamento</TextBtn>
-          </Btn>
-          <Btn onPress={() => handleRoute('../listas/lancamentos')}>
+          </BtnThin>
+          <BtnThin onPress={() => handleRoute('../listas/lancamentos')}>
             <TextBtn>Listar</TextBtn>
-          </Btn>
+          </BtnThin>
         </TitleButton>
 
         <BlockResume>

@@ -23,6 +23,8 @@ export const GroupInput = styled.View<Props>`
 
 export const Label = styled.Text`
   font-weight: 500;
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
 `;
 
 export const Input = styled.TextInput`
@@ -33,6 +35,7 @@ export const Input = styled.TextInput`
   border: 1px;
   border-radius: 8px;
   border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
+  background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
 `;
 
 export const Select = styled(SelectDropdown)`
@@ -42,7 +45,6 @@ export const Select = styled(SelectDropdown)`
   border-radius: 10px;
   border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
   background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
-  font-size: 20px;
 `;
 
 export const InputMask = styled(TextInputMask)`
@@ -53,6 +55,7 @@ export const InputMask = styled(TextInputMask)`
   border: 1px;
   border-radius: 8px;
   border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
+  background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
 `;
 
 export const BtnSubmit = styled.Pressable`
@@ -61,15 +64,14 @@ export const BtnSubmit = styled.Pressable`
   align-items: center;
   width: 100%;
   height: 50px;
-  border: 1px;
+  border: 0px;
   border-radius: 8px;
-  border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
-  background-color: ${({ theme }) => theme.COLORS.BG_BUTTON};
+  background-color: ${({ theme }) => theme.COLORS.BG_SUBMIT};
 `;
 
 export const TextBtnSubmit = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_BUTTON};
 `;
 
 export const ErrorMessage = styled.Text`

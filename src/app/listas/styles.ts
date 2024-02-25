@@ -10,6 +10,7 @@ interface PropsModal {
 }
 
 export const GroupTitle = styled.View`
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -17,18 +18,18 @@ export const GroupTitle = styled.View`
 `;
 
 export const IconBack = styled(Feather)`
-  color:  ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color:  ${({ theme }) => theme.COLORS.ICON_DEFAULT};
 `
 
 export const IconFilter = styled(Feather)`
-  color:  ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color:  ${({ theme }) => theme.COLORS.ICON_DEFAULT};
 `
 
 export const Title = styled.Text`
   width: fit-content;
   font-weight: bold;
   font-size:  ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color:  ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color:  ${({ theme }) => theme.COLORS.TEXT_TITLE};
 `;
 
 export const BlockListView = styled.ScrollView`
@@ -37,14 +38,14 @@ export const BlockListView = styled.ScrollView`
 `;
 
 export const BlockProduct = styled.View`
-  background-color: #ffffff;
+  flex-direction: column;
+  justify-content: center;
   width: 380px;
   height: 70px;
   padding: 8px;
   border-radius: 10px;
   margin-bottom: 10px;
-  flex-direction: column;
-  justify-content: center;
+  background-color: ${({ theme }) => theme.COLORS.BG_BLOCK};
 `;
 
 export const BlockProductText = styled.View`
@@ -59,13 +60,13 @@ export const GroupIncomeOutcome = styled.View`
 `;
 
 export const TextTitleProduct = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
   font-weight: bold;
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
 `;
 
 export const TextPriceProduct = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
   font-weight: bold;
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
 `;
 
 export const TextSubTitleProduct = styled.Text``;
@@ -76,7 +77,7 @@ export const ContainerModal = styled.View<PropsModal>`
   padding: 10px;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${({ theme }) => theme.COLORS.BG_SCREEN};
+  background-color: ${({ theme }) => theme.COLORS.BG_BLOCK};
 `;
 
 export const HeaderModal = styled.View`
@@ -92,7 +93,7 @@ export const CloseModalFilter = styled.Pressable`
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: ${({ theme }) => theme.COLORS.TEXT_ERROR};
+  background-color: ${({ theme }) => theme.COLORS.BG_BUTTON_ERROR};
 `;
 
 export const TextCloseModal = styled.Text`
@@ -102,6 +103,6 @@ export const TextCloseModal = styled.Text`
 
 export const TextTitleModal = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_SCREEN};
+  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
 `;
 

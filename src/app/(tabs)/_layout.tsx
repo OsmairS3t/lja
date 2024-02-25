@@ -25,42 +25,42 @@ export default function AppLayout() {
   // This layout can be deferred because it's not the root layout.
   return (
     <ThemeProvider theme={theme}>
-      <Tabs 
+      <Tabs
         screenOptions={{
           headerTintColor: 'white',
           headerShown: false,
-          tabBarActiveTintColor: '#000000',
+          tabBarActiveTintColor: theme.COLORS.ICON_ACTIVE,
           tabBarStyle: {
-              height: 60,
-              backgroundColor: '#ffffff',
-              borderWidth: 0,
-              borderColor: '#ffffff',
+            height: 60,
+            backgroundColor: theme.COLORS.BG_HEADER,
+            borderWidth: 0,
+            borderColor: theme.COLORS.BG_HEADER,
           },
         }}
-        >
-          <Tabs.Screen name='escalas' options={{
-            title: 'Escalas',
-            tabBarIconStyle: { width: 100, height: 100, },
-            tabBarIcon: ({ size, color }) => <MaterialIcons name='view-list' size={32} color={color} />
-          }} />
+      >
+        <Tabs.Screen name='escalas' options={{
+          title: 'Escalas',
+          tabBarIconStyle: { width: 100, height: 100, },
+          tabBarIcon: ({ size, color }) => <MaterialIcons name='view-list' size={32} color={color} />
+        }} />
 
-          <Tabs.Screen name='index' options={{
-            title: 'Home',
-            tabBarIconStyle: { width: 100, height: 100, },
-            tabBarIcon: ({ size, color }) => <MaterialIcons name='home' size={32} color={color} />
-          }} />
+        <Tabs.Screen name='index' options={{
+          title: 'Home',
+          tabBarIconStyle: { width: 100, height: 100, },
+          tabBarIcon: ({ size, color }) => <MaterialIcons name='home' size={32} color={color} />
+        }} />
 
-          <Tabs.Screen name='financeiro' options={{
-            title: 'Financeiro',
-            tabBarIconStyle: { width: 100, height: 100, },
-            tabBarIcon: ({ size, color }) => <MaterialIcons name='attach-money' size={32} color={color} />
-          }} />
+        <Tabs.Screen name='financeiro' options={{
+          title: 'Financeiro',
+          tabBarIconStyle: { width: 100, height: 100, },
+          tabBarIcon: ({ size, color }) => <MaterialIcons name='attach-money' size={32} color={color} />
+        }} />
 
-          <Tabs.Screen name='user' options={{
-            href: null,
-          }} />
+        <Tabs.Screen name='user' options={{
+          href: null,
+        }} />
 
-        </Tabs>
-      </ThemeProvider>
-    )
+      </Tabs>
+    </ThemeProvider>
+  )
 }

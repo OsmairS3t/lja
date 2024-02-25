@@ -6,7 +6,7 @@ type Props = {
   colorBackground ?: string;
 }
 
-export const Container = styled.View<Props>`
+export const Container = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -17,7 +17,7 @@ export const Container = styled.View<Props>`
   padding-bottom: 5px;
   padding-right: 10px;
   padding-left: 10px;
-  background-color: ${({ colorBackground }) => colorBackground};
+  background-color: ${({ theme }) => theme.COLORS.BG_HEADER};
 `;
 
 export const GroupUser = styled.View`
@@ -32,16 +32,16 @@ export const GroupUserName = styled.View``;
 export const PhotoUser = styled.Image``;
 
 export const TextUser = styled.Text`
-  font-size: 12px;
-  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
 `;
 
 export const HeaderLogo = styled(Image)``;
 
 
 export const HeaderTitle = styled.Text`
-  font-size: 24px;
-  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+  font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
 `;
 
 export const HeaderSignOut = styled(MaterialIcons)`
