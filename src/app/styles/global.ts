@@ -151,6 +151,11 @@ export const TextItem = styled.Text`
   font-size: ${({theme}) =>theme.FONT_SIZE.MD}px;
 `;
 
+export const TextLabel = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+`;
+
 //styles of pages
 export const GroupTitle = styled.View`
     width: 390px;
