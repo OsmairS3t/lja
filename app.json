@@ -16,7 +16,7 @@
       [
         "expo-secure-store",
         {
-          "faceIDPermission": "Allow LJA to access your Face ID biometric data."
+          "faceIDPermission": "Permitir LJA acessar seus dados de Face ID."
         }
       ],
       "expo-router"

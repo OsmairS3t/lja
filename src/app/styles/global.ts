@@ -3,6 +3,9 @@ import styled from 'styled-components/native';
 interface PropsMenu {
     widthSize: number;
 }
+interface PropsImg {
+    imgFile: string;
+}
 
 export const ContainerLogin = styled.View`
     justify-content: center;
@@ -18,6 +21,17 @@ export const Container = styled.SafeAreaView`
     align-items: center;
     width: fit-content;
     background-color: ${({theme}) =>theme.COLORS.BG_APP}; 
+`;
+
+export const GroupCredit = styled.View`
+    margin-top: 60px;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const Credits = styled.Image`
+    width: 20px;
+    height: 20px;
 `;
 
 export const Logo = styled.Image`

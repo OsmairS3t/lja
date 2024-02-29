@@ -11,20 +11,12 @@ import {
   GroupNameUser,
   ContainerUserMenu,
   GroupItem,
-  TextItem,
-  TextLabel
+  TextItem
 } from '../styles/global';
 
 export default function UserMenu() {
-  const [isDark, setIsDark] = useState(false)
-  const [tema, setTema] = useState('dark')
   const { height, width } = useWindowDimensions()
   const { signOut } = useSession()
-
-  function toggleSwitch() {
-    setIsDark(!isDark)
-    tema === 'light' ? setTema('dark') : setTema('light')
-  }
 
   function handleSubmitPage(href: string) {
     router.navigate(href)
@@ -63,22 +55,6 @@ export default function UserMenu() {
             <GroupItem>
               <Feather name='key' size={24} />
               <TextItem>Alterar Senha</TextItem>
-            </GroupItem>
-          </Pressable>
-
-          <Pressable>
-            <GroupItem>
-              <Feather name='settings' size={24} />
-              <TextItem>Mudar Tema</TextItem>
-              <Switch
-                trackColor={{ false: '#001d3f', true: '#001d3f' }}
-                thumbColor={isDark ? '#f7be02' : '#1d8675'}
-                ios_backgroundColor="#3e3e3e"
-                onValueChange={toggleSwitch}
-                value={isDark}
-              />
-              <TextLabel>{tema}</TextLabel>
-              
             </GroupItem>
           </Pressable>
 

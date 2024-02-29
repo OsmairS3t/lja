@@ -3,20 +3,37 @@ import { useSession } from '../ctx';
 
 import {
   ContainerLogin,
-  Container,
   Logo,
   Form,
+  GroupCredit,
+  Credits,
   GroupInput,
-  LabelItem,
   InputItem,
   BtnSignIn,
   GroupRegister,
   TextRegister,
   TextBtn
 } from './styles/global'
+import { Pressable } from 'react-native';
+import { useState } from 'react';
 
 export default function SignIn() {
   const { signIn } = useSession();
+  const [tema, setTema] = useState('dark')
+  const [isDark, setIsDark] = useState(false)
+  const [img, setImg] = useState(require('../assets/credit_light.png'))
+
+  function toggleSwitch() {
+    if (tema === 'light') {
+      setIsDark(false)
+      setTema('dark')
+      setImg(require('../assets/credit_dark.png'))
+    } else {
+      setIsDark(true)
+      setTema('light')
+      setImg(require('../assets/credit_light.png'))
+    }
+  }
 
   return (
     <ContainerLogin>
@@ -43,8 +60,16 @@ export default function SignIn() {
           <TextRegister>|</TextRegister>
           <TextRegister>Esqueci a senha</TextRegister>
         </GroupRegister>
-
+        
       </Form>
+        
+      <GroupCredit>
+        <Pressable onPress={toggleSwitch}>
+          <Credits source={img} />
+        </Pressable>
+
+      </GroupCredit>
+
     </ContainerLogin>
   );
 }
