@@ -3,15 +3,20 @@ import { Alert } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Crypto from 'expo-crypto';
+import { KEY_ASYNCSTORAGE_REUNIAO } from '@env'
 
-import { Form,
-GroupInput,
-Label,
-Input,
-InputMask,
-BtnSubmit, 
-TextBtnSubmit,
-ErrorMessage } from '../styles/formularios';
+import {
+  Form,
+  GroupInput,
+  Label,
+  Input,
+  InputMask,
+  BtnSubmit,
+  TextBtnSubmit,
+  ErrorMessage
+} from '../styles/formularios';
 
 interface Props {
   setCloseModal: (value: boolean) => void;
@@ -33,80 +38,96 @@ export default function Reunioes({ setCloseModal }: Props) {
     control,
     handleSubmit,
     reset,
-    formState: {errors}
+    formState: { errors }
   } = useForm<TReuniao>({
     resolver: zodResolver(reuniaoSchema)
   })
-  function handleSave(data: TReuniao) {
-    console.log(data)
-    Alert.alert('Dizem que gravou com sucesso!')
-    reset()
-    setCloseModal(false);
+
+  async function handleSave(data: TReuniao) {
+    const dataInclude = {
+      id: Crypto.randomUUID(),
+      nome: data.nome,
+      tema: data.tema,
+      pregador: data.pregador,
+      dia: data.dia,
+      inicio: data.inicio,
+      fim: data.fim
+    }
+    try {
+      // console.log(dataInclude)
+      const strData = JSON.stringify(dataInclude)
+      await AsyncStorage.setItem(KEY_ASYNCSTORAGE_REUNIAO, strData)
+      Alert.alert('Reunião incluída com sucesso!')
+      // reset()
+      setCloseModal(false);
+    } catch (error) {
+      console.log('Um erro ocorreu ao tentar gravar.')
+    }
   }
 
   return (
     <Form>
       <GroupInput size={100}>
         <Label>Nome:</Label>
-        <Controller 
+        <Controller
           control={control}
           rules={{ maxLength: 100 }}
-          render={({ field: {onChange, onBlur, value} }) => (
-            <Input 
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
               placeholder='Nome'
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
             />
-            )}
-            name='nome'
+          )}
+          name='nome'
         />
         {errors.nome && <ErrorMessage>{errors.nome.message}</ErrorMessage>}
       </GroupInput>
 
       <GroupInput size={100}>
         <Label>Tema:</Label>
-        <Controller 
+        <Controller
           control={control}
           rules={{ maxLength: 100 }}
-          render={({ field: {onChange, onBlur, value} }) => (
-            <Input 
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
               placeholder='Tema'
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
             />
-            )}
-            name='tema'
+          )}
+          name='tema'
         />
         {errors.tema && <ErrorMessage>{errors.tema.message}</ErrorMessage>}
       </GroupInput>
 
       <GroupInput size={100}>
         <Label>Pregador:</Label>
-        <Controller 
+        <Controller
           control={control}
           rules={{ maxLength: 100 }}
-          render={({ field: {onChange, onBlur, value} }) => (
-            <Input 
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
               placeholder='Nome do pregador'
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
             />
-            )}
-            name='pregador'
+          )}
+          name='pregador'
         />
         {errors.pregador && <ErrorMessage>{errors.pregador.message}</ErrorMessage>}
       </GroupInput>
 
       <GroupInput size={100}>
         <Label>Dia:</Label>
-        <Controller 
+        <Controller
           control={control}
           rules={{ maxLength: 100 }}
-          render={({ field: {onChange, onBlur, value} }) => (
-            <InputMask 
+          render={({ field: { onChange, onBlur, value } }) => (
+            <InputMask
               type='datetime'
               options={{
                 maskType: 'BRL',
@@ -127,50 +148,50 @@ export default function Reunioes({ setCloseModal }: Props) {
       <GroupInput size={100} direction='row'>
         <GroupInput size={40}>
           <Label>Inicio:</Label>
-          <Controller 
-          control={control}
-          rules={{ maxLength: 100 }}
-          render={({ field: {onChange, onBlur, value} }) => (
-            <InputMask 
-              type='datetime'
-              options={{
-                maskType: 'BRL',
-                format: 'HH:mm',
-              }}
-              placeholder="HH:mm"
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              keyboardType='phone-pad'
-            />
+          <Controller
+            control={control}
+            rules={{ maxLength: 100 }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <InputMask
+                type='datetime'
+                options={{
+                  maskType: 'BRL',
+                  format: 'HH:mm',
+                }}
+                placeholder="HH:mm"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+                keyboardType='phone-pad'
+              />
             )}
             name='inicio'
-        />
-        {errors.inicio && <ErrorMessage>{errors.inicio.message}</ErrorMessage>}
+          />
+          {errors.inicio && <ErrorMessage>{errors.inicio.message}</ErrorMessage>}
         </GroupInput>
 
         <GroupInput size={40}>
           <Label>Fim:</Label>
-          <Controller 
-          control={control}
-          rules={{ maxLength: 100 }}
-          render={({ field: {onChange, onBlur, value} }) => (
-            <InputMask 
-              type='datetime'
-              options={{
-                maskType: 'BRL',
-                format: 'HH:mm',
-              }}
-              placeholder="HH:mm"
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              keyboardType='phone-pad'
-            />
+          <Controller
+            control={control}
+            rules={{ maxLength: 100 }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <InputMask
+                type='datetime'
+                options={{
+                  maskType: 'BRL',
+                  format: 'HH:mm',
+                }}
+                placeholder="HH:mm"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+                keyboardType='phone-pad'
+              />
             )}
             name='fim'
-        />
-        {errors.fim && <ErrorMessage>{errors.fim.message}</ErrorMessage>}
+          />
+          {errors.fim && <ErrorMessage>{errors.fim.message}</ErrorMessage>}
         </GroupInput>
       </GroupInput>
 
@@ -180,5 +201,5 @@ export default function Reunioes({ setCloseModal }: Props) {
         </BtnSubmit>
       </GroupInput>
     </Form>
-   )
+  )
 }

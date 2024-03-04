@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Pressable, View, Text, Alert } from 'react-native';
+import { Pressable, View, Text, Alert, Button } from 'react-native';
 import Modal from 'react-native-modal'
 import Header from '../Header';
 import { reunioes, funcoes, servos, escalas } from '../../utils/database'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Crypto from 'expo-crypto';
+import Reunioes from '../cadastros/reunioes';
+import Funcoes from '../cadastros/funcoes';
+import Servos from '../cadastros/servos';
+import { Feather } from '@expo/vector-icons';
+import { router } from 'expo-router';
+import { IEscala, IReuniao } from '../../utils/interface';
+import { KEY_ASYNCSTORAGE_ESCALA, KEY_ASYNCSTORAGE_REUNIAO } from '@env'
 
 import { Container, ContainerPage, TitlePage, BtnSubmit, TextBtnSubmit } from '../styles/global';
 import {
@@ -30,12 +39,6 @@ import {
   CloseModalServo,
   TextTitleModal
 } from '../styles/escalas';
-import Reunioes from '../cadastros/reunioes';
-import Funcoes from '../cadastros/funcoes';
-import Servos from '../cadastros/servos';
-import { Feather } from '@expo/vector-icons';
-import { router } from 'expo-router';
-import { IEscala } from '../../utils/interface';
 
 const Escalas: React.FC = () => {
   const [isModalVisibleReuniao, setIsModalVisibleReuniao] = useState(false);
@@ -49,10 +52,12 @@ const Escalas: React.FC = () => {
   const [funcao, setFuncao] = useState(0);
   const [servo, setServo] = useState(0);
 
-  function loadReunioes() {
+  async function loadReunioes() {
     let arrReu: string[] = []
-    reunioes.map(reun => {
-      arrReu.push(reun.dia)
+    const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_REUNIAO)
+    const meeting: IReuniao[] = response ? JSON.parse(response) : []
+    meeting.map(meet => {
+      arrReu.push(meet.dia)
     })
     setObjReunioes(arrReu)
   }
@@ -87,13 +92,19 @@ const Escalas: React.FC = () => {
 
   function handleSave() {
     const data = {
-      id: 'a',
+      id: Crypto.randomUUID(),
       diareuniao: diaReuniao,
       ordem: 1,
       funcao: funcao,
       servo: servo,
     }
     console.log(data)
+    // try {
+    //   const jsonValue = JSON.stringify(data);
+    //   await AsyncStorage.setItem(KEY_ASYNCSTORAGE_REUNIAO, jsonValue);
+    // } catch (e) {
+    //   console.log('Ocorreu um erro ao tentar salvar.')
+    // }
   }
 
   useEffect(() => {
