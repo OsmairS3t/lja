@@ -68,6 +68,8 @@ export const InputItem = styled.TextInput`
     border-width: 1px;
     border-color: ${({theme}) =>theme.COLORS.BORDER_INPUT};
     background-color: ${({theme}) =>theme.COLORS.BG_INPUT};
+    color: ${({theme}) =>theme.COLORS.TEXT_INPUT};
+    font-size: ${({theme}) =>theme.FONT_SIZE.MD}px;
 `;
 
 export const BtnSignIn = styled.Pressable`

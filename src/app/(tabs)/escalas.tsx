@@ -115,7 +115,7 @@ const Escalas: React.FC = () => {
 
   return (
     <Container>
-      <Header title='Escalas' cor='#cccccc' />
+      <Header title='Escalas' />
       <ContainerPage>
         <TitleHeader>
           <TitlePage>Incluir escalas:</TitlePage>

@@ -21,7 +21,7 @@ export default function SignIn() {
   const { signIn } = useSession();
   const [tema, setTema] = useState('dark')
   const [isDark, setIsDark] = useState(false)
-  const [img, setImg] = useState(require('../assets/credit_light.png'))
+  const [img, setImg] = useState(require('../assets/credit_dark.png'))
 
   function toggleSwitch() {
     if (tema === 'light') {
@@ -37,7 +37,7 @@ export default function SignIn() {
 
   return (
     <ContainerLogin>
-      <Logo source={require('../assets/logo.png')} />
+      <Logo source={require('../assets/logo_branco.png')} />
       <Form>
         <GroupInput>
           <InputItem id='email' keyboardType='email-address' placeholder='email@example.com' />
@@ -60,9 +60,9 @@ export default function SignIn() {
           <TextRegister>|</TextRegister>
           <TextRegister>Esqueci a senha</TextRegister>
         </GroupRegister>
-        
+
       </Form>
-        
+
       <GroupCredit>
         <Pressable onPress={toggleSwitch}>
           <Credits source={img} />

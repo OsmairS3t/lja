@@ -10,7 +10,7 @@ export default function Root() {
   // Set up the auth context and render our layout inside of it.
 
   return (
-    <ThemeProvider theme={theme.light}>
+    <ThemeProvider theme={theme.dark}>
       <SessionProvider>
         <Slot />
       </SessionProvider>

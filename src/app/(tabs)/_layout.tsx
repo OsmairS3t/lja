@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components/native';
 
 import { useSession } from '../../ctx';
 import { Text } from 'react-native';
-import theme from '../../theme/light';
+import theme from '../../theme/dark';
 
 export default function AppLayout() {
   const { session, isLoading } = useSession();
