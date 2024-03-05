@@ -1,4 +1,3 @@
-import { Feather } from '@expo/vector-icons';
 import styled from 'styled-components/native'
 
 export const TitleButton = styled.View`
@@ -14,13 +13,13 @@ export const BtnThin = styled.Pressable`
   justify-content: center;
   align-items: center;
   height: 40px;
-  width: 180px;
+  width: 40%;
   background-color: ${({ theme }) => theme.COLORS.BG_BUTTON};
   `;
 
 export const TextBtn = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BUTTON};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const BlockResume = styled.View`
@@ -29,17 +28,17 @@ export const BlockResume = styled.View`
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background-color: ${({ theme }) => theme.COLORS.BG_BLOCK};
+    background-color: ${({ theme }) => theme.COLORS.FG_APP};
 `;
 
 export const TextResumeTitle = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const TextResumePrice = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.XXL}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const BlockListView = styled.ScrollView`
@@ -55,7 +54,7 @@ export const BlockProduct = styled.View`
   margin-bottom: 10px;
   flex-direction: column;
   justify-content: center;
-  background-color: ${({ theme }) => theme.COLORS.BG_BLOCK};
+  background-color: ${({ theme }) => theme.COLORS.FG_APP};
 `;
 
 export const BlockProductText = styled.View`
@@ -72,17 +71,17 @@ export const GroupIncomeOutcome = styled.View`
 export const TextTitleProduct = styled.Text`
   font-weight: bold;
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const TextPriceProduct = styled.Text`
   font-weight: bold;
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const TextSubTitleProduct = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 

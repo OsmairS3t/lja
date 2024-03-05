@@ -25,7 +25,7 @@ export const BtnThin = styled.Pressable`
 
 export const TextBtn = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BUTTON};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const Form = styled.View`
@@ -47,6 +47,7 @@ export const SelectForm = styled(SelectDropdown).attrs(({ theme }) => ({
     borderRadius: 10,
     justifyContent: 'flex-start',
     alignItems: 'center',
+    borderColor: theme.COLORS.BORDER_INPUT,
     backgroundColor: theme.COLORS.BG_INPUT,
   }  
 }))`
@@ -75,7 +76,7 @@ export const IconDefault = styled(Feather)`
 `;
 
 export const IconList = styled(Feather)`
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const ContainerEscala = styled.View`
@@ -88,13 +89,13 @@ export const ListIncluded = styled.ScrollView`
   padding: 0px 10px;
   width: 100%;
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.COLORS.BG_BLOCK};
+  background-color: ${({ theme }) => theme.COLORS.FG_APP};
 `;
 
 export const TitleItems = styled.Text`
   font-weight: 400;
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_TITLE};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const GroupItemsView = styled.View`
@@ -132,7 +133,7 @@ export const IconOrder = styled(Feather)``;
 
 export const TextItem = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const ContainerModal = styled.View<PropsModal>`
@@ -141,7 +142,7 @@ export const ContainerModal = styled.View<PropsModal>`
   padding: 10px;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${({ theme }) => theme.COLORS.BG_BLOCK};
+  background-color: ${({ theme }) => theme.COLORS.FG_APP};
 `;
 
 export const HeaderModal = styled.View`
@@ -171,6 +172,6 @@ export const CloseModalServo = styled.Pressable`
 
 export const TextTitleModal = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 

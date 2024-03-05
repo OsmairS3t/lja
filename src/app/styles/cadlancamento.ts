@@ -24,7 +24,7 @@ export const Title = styled.Text`
   width: fit-content;
   font-weight: bold;
   font-size: ${({theme}) =>theme.FONT_SIZE.LG}px;
-  color: ${({theme}) =>theme.COLORS.TEXT_TITLE};
+  color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const Form = styled.View<Props>`
@@ -100,6 +100,6 @@ export const Select = styled(SelectDropdown).attrs(({ theme }) => ({
 
 export const ErrorMessage = styled.Text`
   margin-bottom: 10px;
-  color: ${({ theme }) => theme.COLORS.TEXT_ERROR};
+  color: ${({ theme }) => theme.COLORS.ERROR};
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;

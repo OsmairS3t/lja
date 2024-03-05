@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components/native';
 
 import { useSession } from '../../ctx';
 import { Text } from 'react-native';
-import theme from '../../theme/dark';
+import theme from '../../theme/default';
 
 export default function AppLayout() {
   const { session, isLoading } = useSession();
@@ -32,9 +32,9 @@ export default function AppLayout() {
           tabBarActiveTintColor: theme.COLORS.ICON_ACTIVE,
           tabBarStyle: {
             height: 60,
-            backgroundColor: theme.COLORS.BG_HEADER,
+            backgroundColor: theme.COLORS.FG_APP,
             borderWidth: 0,
-            borderColor: theme.COLORS.BG_HEADER,
+            borderColor: theme.COLORS.FG_APP,
           },
         }}
       >

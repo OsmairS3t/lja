@@ -19,6 +19,7 @@ import {
   TextPriceProduct,
   TextSubTitleProduct,
 } from '../styles/financeiro';
+import theme from '../../theme';
 
 export default function Financeiro() {
   function handleRoute(url: string) {
@@ -52,7 +53,7 @@ export default function Financeiro() {
             </BlockProductText>
             <BlockProductText>
               <GroupIncomeOutcome>
-                <Feather name="chevrons-up" size={24} />
+                <Feather name="chevrons-up" size={20} color={theme.def.COLORS.ICON_DEFAULT} />
                 <TextSubTitleProduct>Entrada</TextSubTitleProduct>
               </GroupIncomeOutcome>
               <TextSubTitleProduct>01/01/2024</TextSubTitleProduct>

@@ -24,7 +24,7 @@ export const GroupInput = styled.View<Props>`
 export const Label = styled.Text`
   font-weight: 500;
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const Input = styled.TextInput`
@@ -71,10 +71,10 @@ export const BtnSubmit = styled.Pressable`
 
 export const TextBtnSubmit = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BUTTON};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const ErrorMessage = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_ERROR};
+  color: ${({ theme }) => theme.COLORS.ERROR};
 `;

@@ -17,7 +17,7 @@ export const Container = styled.View`
   padding-bottom: 5px;
   padding-right: 10px;
   padding-left: 10px;
-  background-color: ${({ theme }) => theme.COLORS.BG_HEADER};
+  background-color: ${({ theme }) => theme.COLORS.FG_APP};
 `;
 
 export const GroupUser = styled.View`
@@ -33,7 +33,7 @@ export const PhotoUser = styled.Image``;
 
 export const TextUser = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const HeaderLogo = styled(Image)``;
@@ -41,7 +41,7 @@ export const HeaderLogo = styled(Image)``;
 
 export const HeaderTitle = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const HeaderSignOut = styled(MaterialIcons)`

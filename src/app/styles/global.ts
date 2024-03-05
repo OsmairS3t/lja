@@ -81,7 +81,7 @@ export const BtnSignIn = styled.Pressable`
     align-items: center;
     border-width: 1px;
     border-radius: 15px;
-    background-color: ${({theme}) =>theme.COLORS.BG_SUBMIT};
+    background-color: ${({theme}) =>theme.COLORS.BG_BUTTON};
 `;
 
 export const GroupRegister = styled.View`
@@ -92,19 +92,16 @@ export const GroupRegister = styled.View`
 `;
 
 export const TextRegister = styled.Text`
-    color: ${({theme}) =>theme.COLORS.TEXT_BLOCK};
+    color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
     font-size: ${({theme}) =>theme.FONT_SIZE.MD}px;
 `;
 
 export const TextBtn = styled.Text`
-    color: ${({theme}) =>theme.COLORS.TEXT_BLOCK};
+    color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
     font-size: ${({theme}) =>theme.FONT_SIZE.XL}px;
 `;
 
 export const ContainerPage = styled.View`
-    margin-top: 5px;
-    margin-left: 14px;
-    margin-right: 14px;
     flex: 1;
 `;
 
@@ -113,7 +110,7 @@ export const TitlePage = styled.Text`
   font-size: 20px;
   font-weight: bold;
   margin: 14px 0px;
-  color: ${({ theme }) => theme.COLORS.TEXT_TITLE};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
 `;
 
@@ -125,13 +122,13 @@ export const BtnSubmit = styled.Pressable`
     padding: 10px;
     width: 100%;
     height: 60px;
-    background-color: ${({theme}) =>theme.COLORS.BG_SUBMIT};
+    background-color: ${({theme}) =>theme.COLORS.BG_BUTTON};
 `;
 
 export const TextBtnSubmit = styled.Text`
     font-weight: 500;
     font-size: ${({theme}) =>theme.FONT_SIZE.XL}px;
-    color: ${({theme}) =>theme.COLORS.TEXT_BUTTON};
+    color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
 `;
 
 // Styles of menu user
@@ -142,7 +139,7 @@ export const ContainerUserMenu = styled.View<PropsMenu>`
     justify-content: flex-start;
     align-items: flex-start;
     gap: 4px;
-    background-color: ${({theme}) =>theme.COLORS.BG_BLOCK};
+    background-color: ${({theme}) =>theme.COLORS.FG_APP};
 `;
 
 export const GroupNameUser = styled.View`
@@ -163,7 +160,7 @@ export const GroupItem = styled.View`
 `;
 
 export const TextItem = styled.Text`
-  color: ${({theme}) =>theme.COLORS.TEXT_BLOCK};
+  color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
   font-size: ${({theme}) =>theme.FONT_SIZE.MD}px;
 `;
 
@@ -182,6 +179,6 @@ export const GroupTitle = styled.View`
 `;
 
 export const Title = styled.Text`
-    color: ${({theme}) =>theme.COLORS.TEXT_BLOCK};
+    color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
     font-size: ${({theme}) =>theme.FONT_SIZE.LG}px;
 `;
