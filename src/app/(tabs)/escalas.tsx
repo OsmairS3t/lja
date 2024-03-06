@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Pressable, View, Text, Alert, Button } from 'react-native';
+import { Pressable, View, Text, Alert, useWindowDimensions } from 'react-native';
 import Modal from 'react-native-modal'
 import Header from '../Header';
 import { reunioes, funcoes, servos, escalas } from '../../utils/database'
@@ -20,8 +20,8 @@ import {
   TextBtn,
   Form,
   GroupInput,
-  InputForm,
   SelectForm,
+  IconSelect,
   ListIncluded,
   IconList,
   IconDefault,
@@ -41,6 +41,7 @@ import {
 } from '../styles/escalas';
 
 const Escalas: React.FC = () => {
+  const { width, height } = useWindowDimensions();
   const [isModalVisibleReuniao, setIsModalVisibleReuniao] = useState(false);
   const [isModalVisibleFuncao, setIsModalVisibleFuncao] = useState(false);
   const [isModalVisibleServo, setIsModalVisibleServo] = useState(false);
@@ -52,12 +53,20 @@ const Escalas: React.FC = () => {
   const [funcao, setFuncao] = useState(0);
   const [servo, setServo] = useState(0);
 
-  async function loadReunioes() {
+  async function loadReunioes1() {
     let arrReu: string[] = []
     const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_REUNIAO)
     const meeting: IReuniao[] = response ? JSON.parse(response) : []
     meeting.map(meet => {
       arrReu.push(meet.dia)
+    })
+    setObjReunioes(arrReu)
+  }
+
+  function loadReunioes() {
+    let arrReu: string[] = []
+    reunioes.map(reu => {
+      arrReu.push(reu.dia)
     })
     setObjReunioes(arrReu)
   }
@@ -140,7 +149,7 @@ const Escalas: React.FC = () => {
               defaultButtonText="Reuniao"
               dropdownIconPosition='right'
               renderDropdownIcon={() => (
-                <Feather name="chevron-down" size={24} color="black" />
+                <IconSelect name="chevron-down" size={24} />
               )}
             />
             <Pressable onPress={() => toggleModal('reuniao')}>
@@ -163,7 +172,7 @@ const Escalas: React.FC = () => {
               defaultButtonText="Funcao"
               dropdownIconPosition='right'
               renderDropdownIcon={() => (
-                <Feather name="chevron-down" size={24} color="black" />
+                <IconSelect name="chevron-down" size={24} />
               )}
             />
             <Pressable onPress={() => toggleModal('funcao')}>
@@ -186,7 +195,7 @@ const Escalas: React.FC = () => {
               defaultButtonText="Servo"
               dropdownIconPosition='right'
               renderDropdownIcon={() => (
-                <Feather name="chevron-down" size={24} color="black" />
+                <IconSelect name="chevron-down" size={24} />
               )}
             />
             <Pressable onPress={() => toggleModal('servo')}>
@@ -207,10 +216,10 @@ const Escalas: React.FC = () => {
                 <IconDefault name='printer' size={24} />
               </Pressable>
             </GroupItemsListView>
+            
             <ListIncluded>
-
               {
-                listEscalas.map((escala, index) => (
+                listEscalas.map((escala) => (
                   <GroupItemsView key={escala.id}>
                     <GroupItemsText>
                       <TextItem>{escala.funcao}:</TextItem>
@@ -224,7 +233,6 @@ const Escalas: React.FC = () => {
                   </GroupItemsView>
                 ))
               }
-
             </ListIncluded>
           </ContainerEscala>
         }

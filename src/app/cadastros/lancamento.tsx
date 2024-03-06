@@ -15,6 +15,7 @@ import {
   Form,
   GroupInput,
   GroupSwitch,
+  SwTurnType,
   TextLabel,
   Input,
   InputMask,
@@ -95,10 +96,8 @@ export default function Lancamento() {
           </GroupInput>
 
           <GroupSwitch>
-            <Switch
-              trackColor={{ false: '#001d3f', true: '#001d3f' }}
-              thumbColor={isSaida ? '#ff2b2b' : '#f4f3f4'}
-              ios_backgroundColor="#3e3e3e"
+            <SwTurnType
+              isSaida={isSaida}
               onValueChange={toggleSwitch}
               value={isSaida}
             />

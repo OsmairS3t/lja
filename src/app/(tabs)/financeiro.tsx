@@ -1,4 +1,5 @@
 import React from 'react';
+import { useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import Header from '../Header';
@@ -13,6 +14,7 @@ import {
   TextResumePrice,
   BlockListView,
   BlockProduct,
+  IconType,
   BlockProductText,
   GroupIncomeOutcome,
   TextTitleProduct,
@@ -22,6 +24,7 @@ import {
 import theme from '../../theme';
 
 export default function Financeiro() {
+  const { height, width } = useWindowDimensions();
   function handleRoute(url: string) {
     router.replace(url);
   }
@@ -46,56 +49,56 @@ export default function Financeiro() {
 
         <TitlePage>Últimos lançamentos:</TitlePage>
         <BlockListView>
-          <BlockProduct>
+          <BlockProduct width={width}>
             <BlockProductText>
               <TextTitleProduct>Produto X</TextTitleProduct>
               <TextPriceProduct>R$ 35,00</TextPriceProduct>
             </BlockProductText>
             <BlockProductText>
               <GroupIncomeOutcome>
-                <Feather name="chevrons-up" size={20} color={theme.def.COLORS.ICON_DEFAULT} />
+                <IconType name="chevrons-up" size={20} />
                 <TextSubTitleProduct>Entrada</TextSubTitleProduct>
               </GroupIncomeOutcome>
               <TextSubTitleProduct>01/01/2024</TextSubTitleProduct>
             </BlockProductText>
           </BlockProduct>
 
-          <BlockProduct>
+          <BlockProduct width={width}>
             <BlockProductText>
               <TextTitleProduct>Produto X</TextTitleProduct>
               <TextPriceProduct>R$ 35,00</TextPriceProduct>
             </BlockProductText>
             <BlockProductText>
               <GroupIncomeOutcome>
-                <Feather name="chevrons-up" size={24} />
+                <IconType name="chevrons-up" size={24} />
                 <TextSubTitleProduct>Entrada</TextSubTitleProduct>
               </GroupIncomeOutcome>
               <TextSubTitleProduct>01/01/2024</TextSubTitleProduct>
             </BlockProductText>
           </BlockProduct>
 
-          <BlockProduct>
+          <BlockProduct width={width}>
             <BlockProductText>
               <TextTitleProduct>Produto X</TextTitleProduct>
               <TextPriceProduct>R$ 35,00</TextPriceProduct>
             </BlockProductText>
             <BlockProductText>
               <GroupIncomeOutcome>
-                <Feather name="chevrons-up" size={24} />
+                <IconType name="chevrons-up" size={24} />
                 <TextSubTitleProduct>Entrada</TextSubTitleProduct>
               </GroupIncomeOutcome>
               <TextSubTitleProduct>01/01/2024</TextSubTitleProduct>
             </BlockProductText>
           </BlockProduct>
 
-          <BlockProduct>
+          <BlockProduct width={width}>
             <BlockProductText>
               <TextTitleProduct>Produto X</TextTitleProduct>
               <TextPriceProduct>- R$ 35,00</TextPriceProduct>
             </BlockProductText>
             <BlockProductText>
               <GroupIncomeOutcome>
-                <Feather name="chevrons-down" size={24} />
+                <IconType name="chevrons-down" size={24} />
                 <TextSubTitleProduct>Saída</TextSubTitleProduct>
               </GroupIncomeOutcome>
               <TextSubTitleProduct>01/01/2024</TextSubTitleProduct>

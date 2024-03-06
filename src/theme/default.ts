@@ -1,8 +1,8 @@
 export default {
     COLORS: {
         BG_APP: '#19191D',
-        FG_APP: '#202024',
-        
+        FG_APP: '#414146',
+        BG_RESUME: '#4B3A58',
         BG_BUTTON: '#414146',
         BG_INPUT: '#000000',
 
@@ -15,12 +15,21 @@ export default {
         
         TEXT_DEFAULT: '#F5F5F7',
         TEXT_INPUT: '#868686',
+        TEXT_BUTTON: '#868686',
+        TEXT_PLACEHOLDER: '#868686',
 
         ICON_INACTIVE: '#414146',
-        ICON_ACTIVE: '#000000',
+        ICON_ACTIVE: '#FFFFFF',
         ICON_DEFAULT: '#F5F5F7',
+
+        SWITCH_FALSE: '#F5F5F5',
+        SWITCH_TRUE: '#F5F5F5',
+        SWITCH_TUMB_FALSE: '#990000',
+        SWITCH_TUMB_TRUE: '#000099',
+        SWITCH_IOS_BG: '#3E3E3E',
+
     },
-    FONT_FAMILY: {
+        FONT_FAMILY: {
         REGULAR: 'IstokWeb_400Regular',
         BOLD: 'IstokWeb_700Bold',
     },

@@ -1,10 +1,9 @@
 import { Redirect, Tabs } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons'
-import { ThemeProvider } from 'styled-components/native';
 
 import { useSession } from '../../ctx';
 import { Text } from 'react-native';
-import theme from '../../theme/default';
+import theme from '../../theme/light';
 
 export default function AppLayout() {
   const { session, isLoading } = useSession();
@@ -24,7 +23,6 @@ export default function AppLayout() {
 
   // This layout can be deferred because it's not the root layout.
   return (
-    <ThemeProvider theme={theme}>
       <Tabs
         screenOptions={{
           headerTintColor: 'white',
@@ -61,6 +59,5 @@ export default function AppLayout() {
         }} />
 
       </Tabs>
-    </ThemeProvider>
   )
 }

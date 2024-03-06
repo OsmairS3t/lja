@@ -5,7 +5,7 @@ export default function Home() {
 
   return (
     <Container>
-      <Header title='Home' cor='#cccccc' />
+      <Header title='Home' />
       <ContainerPage>
         <TitlePage>Principal stack</TitlePage>
       </ContainerPage>

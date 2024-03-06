@@ -5,10 +5,13 @@ import styled from 'styled-components/native'
 interface PropsModal {
   size: number;
 }
+interface Props {
+  height?: number;
+}
 
 export const TitleHeader = styled.View`
   width: 100%;
-  margin: 14px 0px;
+  margin-bottom: 10px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -19,13 +22,13 @@ export const BtnThin = styled.Pressable`
   justify-content: center;
   align-items: center;
   height: 40px;
-  width: 180px;
+  width: 40%;
   background-color: ${({ theme }) => theme.COLORS.BG_BUTTON};
 `;
 
 export const TextBtn = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_BUTTON};
 `;
 
 export const Form = styled.View`
@@ -35,21 +38,26 @@ export const Form = styled.View`
 `;
 
 export const GroupInput = styled.View`
-  width: fit-content;
+  width: 100%;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
 `;
 
 export const SelectForm = styled(SelectDropdown).attrs(({ theme }) => ({
   buttonStyle: {
-    width: 320,
+    width: '75%',
     borderRadius: 10,
     justifyContent: 'flex-start',
     alignItems: 'center',
     borderColor: theme.COLORS.BORDER_INPUT,
     backgroundColor: theme.COLORS.BG_INPUT,
-  }  
+  },
+  buttonTextStyle: {
+    color: theme.COLORS.TEXT_DEFAULT,
+    fontWeight: '400',
+  }
 }))`
   height: 60px;
   padding: 14px;
@@ -59,15 +67,8 @@ export const SelectForm = styled(SelectDropdown).attrs(({ theme }) => ({
   background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
 `;
 
-export const InputForm = styled.TextInput`
-  width: 320px;
-  height: 60px;
-  padding: 14px;
-  border: 1px;
-  border-color: #29292E;
-  border-radius: 10px;
-  background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+export const IconSelect = styled(Feather)`
+  color: ${({ theme }) => theme.COLORS.ICON_DEFAULT};
 `;
 
 export const IconDefault = styled(Feather)`
@@ -76,18 +77,24 @@ export const IconDefault = styled(Feather)`
 `;
 
 export const IconList = styled(Feather)`
-  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+  color: ${({ theme }) => theme.COLORS.ICON_DEFAULT};
 `;
 
-export const ContainerEscala = styled.View`
-  height: 350px;
+export const ContainerEscala = styled.View<Props>`
+  height: ${({height}) => height ? height : 350 }px;
+`;
+
+export const GroupItemsListView = styled.View`
+  margin: 10px 0px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const ListIncluded = styled.ScrollView`
-  margin-top: 10px;
-  margin-bottom: 14px;
-  padding: 0px 10px;
   width: 100%;
+  margin-bottom: 10px;
+  padding: 0px 10px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.COLORS.FG_APP};
 `;
@@ -108,14 +115,6 @@ export const GroupItemsView = styled.View`
   border-bottom-width: 1px;
   border-bottom-style: dashed;
   border-bottom-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
-`;
-
-export const GroupItemsListView = styled.View`
-  margin-top: 14px;
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 `;
 
 export const GroupItemsText = styled.View`
@@ -146,7 +145,7 @@ export const ContainerModal = styled.View<PropsModal>`
 `;
 
 export const HeaderModal = styled.View`
-  width: 350px;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

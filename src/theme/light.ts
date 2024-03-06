@@ -1,39 +1,43 @@
 export default {
-  COLORS: {
-      BG_APP: '#EDEDED',
-      BG_APP2: '#EDEDED',
-      BG_HEADER: '#FFFFFF',
-      BG_BLOCK: '#F5F5F5',
-      BG_BUTTON: '#00C2FF',
-      BG_INPUT: '#FFFFFF',
-      BG_SUBMIT: '#00C2FF',
-      BG_BUTTON_ERROR: '#AA0000',
-      BG_BUTTON_INSERT: '#007700',
-      BG_BUTTON_UPDATE: '#000077',
+    COLORS: {
+        BG_APP: '#FFFFFF',
+        FG_APP: '#F6F6F6',
+        BG_RESUME: '#F6F6F6',
+        BG_BUTTON: '#8919E0',
+        BG_INPUT: '#FFFFFF',
 
-      BORDER_INPUT: '#434343',
+        ERROR: '#990000',
+        SUCCESS: '#009900',
+        ALERT: '#FFC700',
+        
+        BORDER_INPUT: '#868686',
+        BORDER_BUTTON: '#414146',
+        
+        TEXT_DEFAULT: '#646464',
+        TEXT_INPUT: '#868686',
+        TEXT_BUTTON: '#FFFFFF',
+        TEXT_PLACEHOLDER: '#868686',
 
-      TEXT_DEFAULT: '#434343',
-      TEXT_BLOCK: '#000000',
-      TEXT_BUTTON: '#000000',
-      TEXT_TITLE: '#434343',
-      TEXT_INPUT: '#FFFFFF',
-      TEXT_PLACEHOLDER: '#434343',
-      TEXT_ERROR: '#990000',
+        ICON_INACTIVE: '#414146',
+        ICON_ACTIVE: '#8919E0',
+        ICON_DEFAULT: '#646464',
 
-      ICON_INACTIVE: '#9E9E9E',
-      ICON_ACTIVE: '#000000',
-      ICON_DEFAULT: '#5C5C5C',
-  },
-  FONT_FAMILY: {
-      REGULAR: 'IstokWeb_400Regular',
-      BOLD: 'IstokWeb_700Bold',
-  },
-  FONT_SIZE: {
-      SM: 14,
-      MD: 16,
-      LG: 18,
-      XL: 24,
-      XXL: 32,
-  }
+        SWITCH_FALSE: '#F5F5F5',
+        SWITCH_TRUE: '#F5F5F5',
+        SWITCH_TUMB_FALSE: '#990000',
+        SWITCH_TUMB_TRUE: '#000099',
+        SWITCH_IOS_BG: '#3E3E3E',
+
+    },
+        FONT_FAMILY: {
+        REGULAR: 'IstokWeb_400Regular',
+        BOLD: 'IstokWeb_700Bold',
+    },
+    FONT_SIZE: {
+        SM: 14,
+        MD: 16,
+        LG: 18,
+        XL: 24,
+        XXL: 32,
+    }
 }

@@ -11,6 +11,7 @@ import {
   Title,   
   BlockListView,
   BlockProduct,
+  IconList,
   BlockProductText,
   GroupIncomeOutcome,
   TextTitleProduct,
@@ -33,7 +34,7 @@ export default function Lancamentos() {
 
   return (
     <Container>
-      <Header title='Financeiro' cor='#cccccc' />
+      <Header title='Financeiro' />
       <ContainerPage>
         
         <GroupTitle>
@@ -54,7 +55,7 @@ export default function Lancamentos() {
             </BlockProductText>
             <BlockProductText>
               <GroupIncomeOutcome>
-                <Feather name='chevrons-up' size={24} />
+                <IconList name='chevrons-up' size={20} />
                 <TextSubTitleProduct>Entrada</TextSubTitleProduct>
               </GroupIncomeOutcome>
               <TextSubTitleProduct>01/01/2024</TextSubTitleProduct>

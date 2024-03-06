@@ -8,12 +8,17 @@ interface Props {
   direction?: string;
 }
 
+interface SwitchProps {
+  isSaida: boolean;
+}
+
 export const GroupTitle = styled.View`
+  margin: 10px 0px;
+  width: 100%;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   gap: 70px;
-  padding: 14px;
 `;
 
 export const IconBack = styled(Feather)`
@@ -22,7 +27,7 @@ export const IconBack = styled(Feather)`
 
 export const Title = styled.Text`
   width: fit-content;
-  font-weight: bold;
+  font-weight: 500;
   font-size: ${({theme}) =>theme.FONT_SIZE.LG}px;
   color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
 `;
@@ -56,6 +61,12 @@ export const GroupSwitch = styled.View`
   align-items: center;
   gap: 8px;
 `;
+
+export const SwTurnType = styled.Switch.attrs<SwitchProps>(({ theme, isSaida }) => ({
+  trackColor: { false: theme.COLORS.SWITCH_FALSE, true: theme.COLORS.SWITCH_TRUE },
+  thumbColor: isSaida ? theme.COLORS.TUMB_TRUE : theme.COLORS.SWITCH_TUMB_FALSE,
+  ios_backgroundColor: theme.COLORS.SWITCH_IOS_BG,
+}))``;
 
 export const TextLabel = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;

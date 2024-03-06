@@ -27,8 +27,8 @@ export const IconFilter = styled(Feather)`
 
 export const Title = styled.Text`
   width: fit-content;
-  font-weight: bold;
-  font-size:  ${({ theme }) => theme.FONT_SIZE.LG}px;
+  font-weight: 500;
+  font-size:  ${({ theme }) => theme.FONT_SIZE.MD}px;
   color:  ${({ theme }) => theme.COLORS.TEXT_TITLE};
 `;
 
@@ -40,12 +40,12 @@ export const BlockListView = styled.ScrollView`
 export const BlockProduct = styled.View`
   flex-direction: column;
   justify-content: center;
-  width: 380px;
-  height: 70px;
+  width: 100%;
+  height: 60px;
   padding: 8px;
   border-radius: 10px;
   margin-bottom: 10px;
-  background-color: ${({ theme }) => theme.COLORS.BG_BLOCK};
+  background-color: ${({ theme }) => theme.COLORS.FG_APP};
 `;
 
 export const BlockProductText = styled.View`
@@ -60,19 +60,29 @@ export const GroupIncomeOutcome = styled.View`
 `;
 
 export const TextTitleProduct = styled.Text`
-  font-weight: bold;
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  font-weight: 500;
+  color:  ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;
 
 export const TextPriceProduct = styled.Text`
-  font-weight: bold;
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  font-weight: 500;
+  color:  ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;
 
-export const TextSubTitleProduct = styled.Text``;
+export const TextSubTitleProduct = styled.Text`
+  font-weight: 400;
+  color:  ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
+`;
+
+export const IconList = styled(Feather)`
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+`;
 
 export const ContainerModal = styled.View<PropsModal>`
-  width: '80%';
+  width: 100%;
   height: ${({ size }) => size}px;
   padding: 10px;
   justify-content: flex-start;
@@ -81,7 +91,7 @@ export const ContainerModal = styled.View<PropsModal>`
 `;
 
 export const HeaderModal = styled.View`
-  width: 350px;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -93,16 +103,16 @@ export const CloseModalFilter = styled.Pressable`
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: ${({ theme }) => theme.COLORS.BG_BUTTON_ERROR};
+  background-color: ${({ theme }) => theme.COLORS.ERROR};
 `;
 
 export const TextCloseModal = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const TextTitleModal = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BLOCK};
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 

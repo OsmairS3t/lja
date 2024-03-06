@@ -1,3 +1,4 @@
+import { Feather } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 
 interface PropsMenu {
@@ -7,20 +8,13 @@ interface PropsImg {
     imgFile: string;
 }
 
+//LOGIN
 export const ContainerLogin = styled.View`
     justify-content: center;
     align-items: center;
     width: fit-content;
     height: 100%;
     background-color: ${({theme}) =>theme.COLORS.BG_APP};
-`;
-
-export const Container = styled.SafeAreaView`
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    background-color: ${({theme}) =>theme.COLORS.BG_APP}; 
 `;
 
 export const GroupCredit = styled.View`
@@ -101,34 +95,42 @@ export const TextBtn = styled.Text`
     font-size: ${({theme}) =>theme.FONT_SIZE.XL}px;
 `;
 
+//SCREENS
+export const Container = styled.SafeAreaView`
+    flex: 1;
+    background-color: ${({theme}) =>theme.COLORS.BG_APP}; 
+`;
+
 export const ContainerPage = styled.View`
     flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
 `;
 
 export const TitlePage = styled.Text`
-  width: fit-content;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 14px 0px;
+  margin: 10px 0px;
   color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
 `;
 
+//OTHERS
 export const BtnSubmit = styled.Pressable`
-    margin-top: 14px;
+    width: 330px;
+    height: 50px;
+    margin-top: 10px;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    padding: 10px;
-    width: 100%;
-    height: 60px;
+    border-width: 1px;
+    border-color: ${({theme}) =>theme.COLORS.BORDER_BUTTON};
     background-color: ${({theme}) =>theme.COLORS.BG_BUTTON};
 `;
 
 export const TextBtnSubmit = styled.Text`
     font-weight: 500;
-    font-size: ${({theme}) =>theme.FONT_SIZE.XL}px;
-    color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
+    font-size: ${({theme}) =>theme.FONT_SIZE.LG}px;
+    color: ${({theme}) =>theme.COLORS.TEXT_BUTTON};
 `;
 
 // Styles of menu user
@@ -150,13 +152,17 @@ export const GroupNameUser = styled.View`
 `;
 
 export const GroupItem = styled.View`
-    width: '100%';
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     height: 50px;
     gap: 10px;
+`;
+
+export const IconMenu = styled(Feather)`
+    color: ${({ theme }) => theme.COLORS.ICON_DEFAULT};
 `;
 
 export const TextItem = styled.Text`
@@ -170,15 +176,15 @@ export const TextLabel = styled.Text`
 `;
 
 //styles of pages
-export const GroupTitle = styled.View`
-    width: 390px;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 70px;
-`;
+// export const GroupTitle = styled.View`
+//     width: 390px;
+//     flex-direction: row;
+//     justify-content: flex-start;
+//     align-items: center;
+//     gap: 70px;
+// `;
 
-export const Title = styled.Text`
-    color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
-    font-size: ${({theme}) =>theme.FONT_SIZE.LG}px;
-`;
+// export const Title = styled.Text`
+//     color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
+//     font-size: ${({theme}) =>theme.FONT_SIZE.LG}px;
+// `;

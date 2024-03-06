@@ -1,8 +1,13 @@
+import { Feather } from '@expo/vector-icons';
 import styled from 'styled-components/native'
+
+interface Props {
+  width: number;
+}
 
 export const TitleButton = styled.View`
   width: 100%;
-  margin: 14px 0px;
+  margin-bottom: 10px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -19,16 +24,16 @@ export const BtnThin = styled.Pressable`
 
 export const TextBtn = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+  color: ${({ theme }) => theme.COLORS.TEXT_BUTTON};
 `;
 
 export const BlockResume = styled.View`
-    width: 380px;
-    height: 115px;
+    width: 250px;
+    height: 100px;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background-color: ${({ theme }) => theme.COLORS.FG_APP};
+    background-color: ${({ theme }) => theme.COLORS.BG_RESUME};
 `;
 
 export const TextResumeTitle = styled.Text`
@@ -37,7 +42,7 @@ export const TextResumeTitle = styled.Text`
 `;
 
 export const TextResumePrice = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.XXL}px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
   color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
@@ -46,13 +51,11 @@ export const BlockListView = styled.ScrollView`
   height: 100%;
 `;
 
-export const BlockProduct = styled.View`
-  width: 380px;
-  height: 70px;
-  padding: 16px;
+export const BlockProduct = styled.View<Props>`
+  width: 100%;
+  padding: 10px;
   border-radius: 10px;
-  margin-bottom: 10px;
-  flex-direction: column;
+  margin-bottom: 5px;
   justify-content: center;
   background-color: ${({ theme }) => theme.COLORS.FG_APP};
 `;
@@ -68,15 +71,19 @@ export const GroupIncomeOutcome = styled.View`
   align-items: center;
 `;
 
+export const IconType = styled(Feather)`
+  color: ${({ theme }) => theme.COLORS.ICON_DEFAULT};
+`;
+
 export const TextTitleProduct = styled.Text`
-  font-weight: bold;
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const TextPriceProduct = styled.Text`
-  font-weight: bold;
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 

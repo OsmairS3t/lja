@@ -27,7 +27,9 @@ export const Label = styled.Text`
   color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
-export const Input = styled.TextInput`
+export const Input = styled.TextInput.attrs(({theme}) => ({
+  placeholderTextColor: theme.COLORS.TEXT_PLACEHOLDER,
+}))`
   padding: 10px;
   margin-bottom: 10px;
   width: 100%;
@@ -36,9 +38,12 @@ export const Input = styled.TextInput`
   border-radius: 8px;
   border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
   background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
-export const Select = styled(SelectDropdown)`
+export const Select = styled(SelectDropdown).attrs(({theme}) => ({
+  searchPlaceHolderColor: theme.COLORS.TEXT_DEFAULT,  
+}))`
   height: 60px;
   padding: 14px;
   border: 1px;
@@ -47,7 +52,9 @@ export const Select = styled(SelectDropdown)`
   background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
 `;
 
-export const InputMask = styled(TextInputMask)`
+export const InputMask = styled(TextInputMask).attrs(({theme}) => ({
+  placeholderTextColor: theme.COLORS.TEXT_PLACEHOLDER,
+}))`
   padding: 10px;
   margin-bottom: 10px;
   width: 100%;

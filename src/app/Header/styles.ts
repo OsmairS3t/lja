@@ -21,8 +21,8 @@ export const Container = styled.View`
 `;
 
 export const GroupUser = styled.View`
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 4px;
 `;
@@ -36,11 +36,13 @@ export const TextUser = styled.Text`
   color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
-export const HeaderLogo = styled(Image)``;
-
+export const HeaderLogo = styled(Image)`
+  width: 65px;
+  height: 65px;
+`;
 
 export const HeaderTitle = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
   color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
