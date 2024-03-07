@@ -3,7 +3,7 @@ export default {
         BG_APP: '#19191D',
         FG_APP: '#414146',
         BG_RESUME: '#4B3A58',
-        BG_BUTTON: '#414146',
+        BG_BUTTON: '#313131',
         BG_INPUT: '#000000',
 
         ERROR: '#990000',

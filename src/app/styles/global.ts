@@ -53,7 +53,9 @@ export const LabelItem = styled.Text`
     color: ${({theme}) =>theme.COLORS.TEXT_BLOCK};
 `;
 
-export const InputItem = styled.TextInput`
+export const InputItem = styled.TextInput.attrs(({theme}) => ({
+    placeholderTextColor: theme.COLORS.TEXT_PLACEHOLDER,
+  }))`
     width: 100%;
     height: 60px;
     padding: 10px;

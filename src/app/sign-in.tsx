@@ -21,6 +21,7 @@ export default function SignIn() {
   const { signIn } = useSession();
   const [tema, setTema] = useState('dark')
   const [isDark, setIsDark] = useState(false)
+  const [imgLogo, setImgLogo] = useState(require('../assets/logo_branco.png'))
   const [img, setImg] = useState(require('../assets/credit_dark.png'))
 
   function toggleSwitch() {
@@ -28,23 +29,25 @@ export default function SignIn() {
       setIsDark(false)
       setTema('dark')
       setImg(require('../assets/credit_dark.png'))
+      setImgLogo(require('../assets/logo_branco.png'))
     } else {
       setIsDark(true)
       setTema('light')
+      setImgLogo(require('../assets/logo.png'))
       setImg(require('../assets/credit_light.png'))
     }
   }
 
   return (
     <ContainerLogin>
-      <Logo source={require('../assets/logo_branco.png')} />
+      <Logo source={imgLogo} />
       <Form>
         <GroupInput>
           <InputItem id='email' keyboardType='email-address' placeholder='email@example.com' />
         </GroupInput>
 
         <GroupInput>
-          <InputItem id='email' keyboardType='visible-password' placeholder='email@example.com' />
+          <InputItem id='email' secureTextEntry placeholder='email@example.com' />
         </GroupInput>
 
         <BtnSignIn
