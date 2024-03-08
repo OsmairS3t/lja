@@ -1,11 +1,11 @@
 import { Redirect, Tabs } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons'
-
 import { useSession } from '../../ctx';
+import { useTheme } from 'styled-components/native';
 import { Text } from 'react-native';
-import theme from '../../theme/default';
 
 export default function AppLayout() {
+  const theme = useTheme()
   const { session, isLoading } = useSession();
 
   if (isLoading) {

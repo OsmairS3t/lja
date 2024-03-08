@@ -11,7 +11,7 @@ import Servos from '../cadastros/servos';
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { IEscala, IReuniao } from '../../utils/interface';
-import { KEY_ASYNCSTORAGE_ESCALA, KEY_ASYNCSTORAGE_REUNIAO } from '@env'
+import { KEY_ASYNCSTORAGE_ESCALA, KEY_ASYNCSTORAGE_MEETING } from '@env'
 
 import { Container, ContainerPage, TitlePage, BtnSubmit, TextBtnSubmit } from '../styles/global';
 import {
@@ -53,22 +53,18 @@ const Escalas: React.FC = () => {
   const [funcao, setFuncao] = useState(0);
   const [servo, setServo] = useState(0);
 
-  async function loadReunioes1() {
-    let arrReu: string[] = []
-    const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_REUNIAO)
-    const meeting: IReuniao[] = response ? JSON.parse(response) : []
-    meeting.map(meet => {
-      arrReu.push(meet.dia)
-    })
-    setObjReunioes(arrReu)
-  }
-
-  function loadReunioes() {
-    let arrReu: string[] = []
-    reunioes.map(reu => {
-      arrReu.push(reu.dia)
-    })
-    setObjReunioes(arrReu)
+  async function loadReunioes() {
+    try {
+      let arrReu: string[] = []
+      const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_MEETING)
+      const meeting: IReuniao[] = response ? JSON.parse(response) : []
+      meeting.map(meet => {
+        arrReu.push(meet.dia)
+      })
+      setObjReunioes(arrReu)
+    } catch (error) {
+      console.log('Ocorreu um erro: ', error)      
+    }
   }
 
   function loadFuncoes() {
@@ -110,7 +106,7 @@ const Escalas: React.FC = () => {
     console.log(data)
     // try {
     //   const jsonValue = JSON.stringify(data);
-    //   await AsyncStorage.setItem(KEY_ASYNCSTORAGE_REUNIAO, jsonValue);
+    //   await AsyncStorage.setItem(KEY_ASYNCSTORAGE_MEETING, jsonValue);
     // } catch (e) {
     //   console.log('Ocorreu um erro ao tentar salvar.')
     // }

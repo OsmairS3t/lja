@@ -1,32 +1,36 @@
-//https://www.youtube.com/watch?v=2sNGxj0IV_k
 export default {
+    TYPE: 'dark',
     COLORS: {
         BG_APP: '#19191D',
-        BG_APP2: '#000000',
-        BG_HEADER: '#AFAFAF',
-        BG_BLOCK: '#48444B',
-        BG_BUTTON: '#48444B',
+        FG_APP: '#414146',
+        BG_RESUME: '#4B3A58',
+        BG_BUTTON: '#121212',
         BG_INPUT: '#000000',
-        BG_SUBMIT: '#48444B',
-        BG_BUTTON_ERROR: '#AA0000',
-        BG_BUTTON_INSERT: '#007700',
-        BG_BUTTON_UPDATE: '#000077',
 
+        ERROR: '#990000',
+        SUCCESS: '#009900',
+        ALERT: '#FFC700',
+        
         BORDER_INPUT: '#868686',
-
+        BORDER_BUTTON: '#414146',
+        
         TEXT_DEFAULT: '#F5F5F7',
-        TEXT_BLOCK: '#F5F5F7',
-        TEXT_BUTTON: '#F5F5F7',
-        TEXT_TITLE: '#F5F5F7',
-        TEXT_INPUT: '#868686',
+        TEXT_INPUT: '#F5F5F5',
+        TEXT_BUTTON: '#868686',
         TEXT_PLACEHOLDER: '#868686',
-        TEXT_ERROR: '#990000',
 
         ICON_INACTIVE: '#414146',
-        ICON_ACTIVE: '#000000',
+        ICON_ACTIVE: '#FFFFFF',
         ICON_DEFAULT: '#F5F5F7',
+
+        SWITCH_FALSE: '#F5F5F5',
+        SWITCH_TRUE: '#F5F5F5',
+        SWITCH_TUMB_FALSE: '#990000',
+        SWITCH_TUMB_TRUE: '#000099',
+        SWITCH_IOS_BG: '#3E3E3E',
+
     },
-    FONT_FAMILY: {
+        FONT_FAMILY: {
         REGULAR: 'IstokWeb_400Regular',
         BOLD: 'IstokWeb_700Bold',
     },

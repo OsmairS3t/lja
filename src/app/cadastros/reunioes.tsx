@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Crypto from 'expo-crypto';
-import { KEY_ASYNCSTORAGE_REUNIAO } from '@env'
+import { KEY_ASYNCSTORAGE_MEETING } from '@env'
 
 import {
   Form,
@@ -17,6 +17,7 @@ import {
   TextBtnSubmit,
   ErrorMessage
 } from '../styles/formularios';
+import { IReuniao } from '../../utils/interface';
 
 interface Props {
   setCloseModal: (value: boolean) => void;
@@ -44,7 +45,7 @@ export default function Reunioes({ setCloseModal }: Props) {
   })
 
   async function handleSave(data: TReuniao) {
-    const dataInclude = {
+    const dataInclude:IReuniao = {
       id: Crypto.randomUUID(),
       nome: data.nome,
       tema: data.tema,
@@ -54,14 +55,20 @@ export default function Reunioes({ setCloseModal }: Props) {
       fim: data.fim
     }
     try {
-      // console.log(dataInclude)
-      const strData = JSON.stringify(dataInclude)
-      await AsyncStorage.setItem(KEY_ASYNCSTORAGE_REUNIAO, strData)
+      //recupera dados ja salvos
+      const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_MEETING)
+      const oldData: IReuniao[] = response ? JSON.parse(response) : []
+
+      //cria novo array com todos os dados
+      const newData = [oldData, dataInclude]
+
+      //inclui dados completos
+      await AsyncStorage.setItem(KEY_ASYNCSTORAGE_MEETING, JSON.stringify(newData))
       Alert.alert('Reunião incluída com sucesso!')
       // reset()
       setCloseModal(false);
     } catch (error) {
-      console.log('Um erro ocorreu ao tentar gravar.')
+      console.log('Um erro ocorreu ao tentar gravar.', error)
     }
   }
 

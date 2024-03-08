@@ -64,7 +64,7 @@ export default function Lancamento() {
 
   return (
     <Container>
-      <Header title='Financeiro' cor='#cccccc' />
+      <Header title='Financeiro' />
       <ContainerPage>
 
         <GroupTitle>

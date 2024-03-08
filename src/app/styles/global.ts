@@ -5,7 +5,7 @@ interface PropsMenu {
     widthSize: number;
 }
 interface PropsImg {
-    imgFile: string;
+    tema: string;
 }
 
 //LOGIN
@@ -23,12 +23,16 @@ export const GroupCredit = styled.View`
     align-items: center;
 `;
 
-export const Credits = styled.Image`
+export const Credits = styled.Image.attrs<PropsImg>(({ tema }) => ({
+    source: tema === 'light' ? require('../../assets/credit_light.png') : require('../../assets/credit_dark.png')
+}))`
     width: 20px;
     height: 20px;
 `;
 
-export const Logo = styled.Image`
+export const Logo = styled.Image.attrs<PropsImg>(({ tema }) => ({
+    source: tema === 'light' ? require('../../assets/logo.png') : require('../../assets/logo_branco.png')
+}))`
     margin-bottom: 10px;
     width: 150px;
     height: 150px;

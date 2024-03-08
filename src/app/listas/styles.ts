@@ -29,7 +29,7 @@ export const Title = styled.Text`
   width: fit-content;
   font-weight: 500;
   font-size:  ${({ theme }) => theme.FONT_SIZE.MD}px;
-  color:  ${({ theme }) => theme.COLORS.TEXT_TITLE};
+  color:  ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
 export const BlockListView = styled.ScrollView`
@@ -87,7 +87,7 @@ export const ContainerModal = styled.View<PropsModal>`
   padding: 10px;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${({ theme }) => theme.COLORS.BG_BLOCK};
+  background-color: ${({ theme }) => theme.COLORS.FG_APP};
 `;
 
 export const HeaderModal = styled.View`

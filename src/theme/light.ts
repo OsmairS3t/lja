@@ -1,4 +1,5 @@
 export default {
+    TYPE: 'light',
     COLORS: {
         BG_APP: '#FFFFFF',
         FG_APP: '#F6F6F6',

@@ -1,5 +1,6 @@
 import { router } from 'expo-router';
 import { useSession } from '../ctx';
+import { useTheme } from 'styled-components/native';
 
 import {
   ContainerLogin,
@@ -18,29 +19,21 @@ import { Pressable } from 'react-native';
 import { useState } from 'react';
 
 export default function SignIn() {
+  const theme = useTheme()
   const { signIn } = useSession();
-  const [tema, setTema] = useState('dark')
-  const [isDark, setIsDark] = useState(false)
-  const [imgLogo, setImgLogo] = useState(require('../assets/logo_branco.png'))
-  const [img, setImg] = useState(require('../assets/credit_dark.png'))
+  const [tema, setTema] = useState(theme.TYPE==='light' ? 'light' : 'dark')
 
   function toggleSwitch() {
     if (tema === 'light') {
-      setIsDark(false)
       setTema('dark')
-      setImg(require('../assets/credit_dark.png'))
-      setImgLogo(require('../assets/logo_branco.png'))
     } else {
-      setIsDark(true)
       setTema('light')
-      setImgLogo(require('../assets/logo.png'))
-      setImg(require('../assets/credit_light.png'))
     }
   }
 
   return (
     <ContainerLogin>
-      <Logo source={imgLogo} />
+      <Logo tema={tema} />
       <Form>
         <GroupInput>
           <InputItem id='email' keyboardType='email-address' placeholder='email@example.com' />
@@ -68,7 +61,7 @@ export default function SignIn() {
 
       <GroupCredit>
         <Pressable onPress={toggleSwitch}>
-          <Credits source={img} />
+          <Credits tema={tema} />
         </Pressable>
 
       </GroupCredit>

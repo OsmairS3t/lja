@@ -62,6 +62,7 @@ export const InputMask = styled(TextInputMask).attrs(({theme}) => ({
   height: 50px;
   border: 1px;
   border-radius: 8px;
+  color: ${({ theme }) => theme.COLORS.TEXT_INPUT};
   border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
   background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
 `;
@@ -72,7 +73,8 @@ export const BtnSubmit = styled.Pressable`
   align-items: center;
   width: 100%;
   height: 50px;
-  border: 0px;
+  border-width: 1px;
+  border-style: solid;
   border-radius: 8px;
   border-color: ${({ theme }) => theme.COLORS.BORDER_BUTTON};
   background-color: ${({ theme }) => theme.COLORS.BG_BUTTON};
