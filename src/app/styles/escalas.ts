@@ -17,18 +17,18 @@ export const TitleHeader = styled.View`
   align-items: center;
 `;
 
-export const BtnThin = styled.Pressable`
+export const ButtonNavigation = styled.Pressable`
   border-radius: 8px;
   justify-content: center;
   align-items: center;
   height: 40px;
   width: 40%;
-  background-color: ${({ theme }) => theme.COLORS.BG_BUTTON};
+  background-color: ${({ theme }) => theme.COLORS.BG_BTN_NAV};
 `;
 
-export const TextBtn = styled.Text`
+export const TextButtonNavigation = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BUTTON};
+  color: ${({ theme }) => theme.COLORS.TEXT_BTN_NAV};
 `;
 
 export const Form = styled.View`
@@ -117,9 +117,7 @@ export const GroupItemsView = styled.View`
   border-bottom-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
 `;
 
-export const GroupItemsText = styled.View`
-  
-`;
+export const GroupItemsText = styled.View``;
 
 export const GroupItemsOrder = styled.View`
   flex-direction: row;

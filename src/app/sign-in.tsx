@@ -13,7 +13,7 @@ import {
   BtnSignIn,
   GroupRegister,
   TextRegister,
-  TextBtn
+  TextBtnSignIn
 } from './styles/global'
 import { Pressable } from 'react-native';
 import { useState } from 'react';
@@ -48,7 +48,7 @@ export default function SignIn() {
             signIn();
             router.replace('/');
           }}>
-          <TextBtn>Acessar</TextBtn>
+          <TextBtnSignIn>Acessar</TextBtnSignIn>
         </BtnSignIn>
 
         <GroupRegister>

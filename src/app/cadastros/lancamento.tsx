@@ -7,22 +7,25 @@ import { z } from 'zod';
 import Header from '../Header';
 import { categorias } from '../../utils/database';
 
-import { Container, ContainerPage, BtnSubmit, TextBtnSubmit } from '../styles/global';
+import { Container, 
+  ContainerPage, 
+  BtnSubmit, 
+  TextBtnSubmit, 
+  GroupTitle, 
+  IconBack, 
+  Title } from '../styles/global';
 import {
-  GroupTitle,
-  IconBack,
-  Title,
   Form,
   GroupInput,
   GroupSwitch,
   SwTurnType,
   TextLabel,
   Input,
-  InputMask,
   Select,
+  IconSelect,
+  InputMask,
   ErrorMessage
-} from '../styles/cadlancamento'
-import { Feather } from '@expo/vector-icons';
+} from '../styles/formularios';
 
 const lancamentoSchema = z.object({
   descricao: z.string().min(3, 'A descrição deve ter no mínimo 3 caracteres.'),
@@ -74,7 +77,7 @@ export default function Lancamento() {
           <Title>Incluir Lançamento</Title>
         </GroupTitle>
 
-        <Form size={width}>
+        <Form>
           <GroupInput size={100}>
             <Select
               data={categorias}
@@ -90,7 +93,7 @@ export default function Lancamento() {
               defaultButtonText="Categoria"
               dropdownIconPosition='right'
               renderDropdownIcon={() => (
-                <Feather name="chevron-down" size={24} color="black" />
+                <IconSelect name="chevron-down" size={24} />
               )}
             />
           </GroupInput>

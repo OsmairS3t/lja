@@ -7,7 +7,7 @@ export default {
         FG_APP: '#414146',
         BG_RESUME: '#4B3A58',
         BG_MODAL: '#414146',
-        BG_BUTTON: '#121212',
+        BG_BUTTON: '#F5F5F5',
         BG_BTN_SUB: '#121212',
         BG_BTN_NAV: '#414146',
         BG_BTN_CLOSE: '#AA0000',
@@ -22,7 +22,7 @@ export default {
         
         TEXT_DEFAULT: '#F5F5F7',
         TEXT_INPUT: '#F5F5F5',
-        TEXT_BUTTON: '#868686',
+        TEXT_BUTTON: '#050505',
         TEXT_BTN_SUB: '#868686',
         TEXT_BTN_NAV: '#F5F5F5',
         TEXT_BTN_CLOSE: '#FFFFFF',
@@ -32,10 +32,10 @@ export default {
         ICON_ACTIVE: '#FFFFFF',
         ICON_DEFAULT: '#F5F5F7',
 
-        SWITCH_FALSE: '#F5F5F5',
-        SWITCH_TRUE: '#F5F5F5',
-        SWITCH_TUMB_FALSE: '#990000',
-        SWITCH_TUMB_TRUE: '#000099',
+        SWITCH_FALSE: '#414146',
+        SWITCH_TRUE: '#414146',
+        SWITCH_TUMB_FALSE: '#009900',
+        SWITCH_TUMB_TRUE: '#F25E1A',
         SWITCH_IOS_BG: '#3E3E3E',
 
     },

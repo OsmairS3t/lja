@@ -21,7 +21,6 @@ import {
   TextPriceProduct,
   TextSubTitleProduct,
 } from '../styles/financeiro';
-import theme from '../../theme';
 
 export default function Financeiro() {
   const { height, width } = useWindowDimensions();

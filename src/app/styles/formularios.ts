@@ -1,18 +1,22 @@
 import styled from "styled-components/native";
 import { TextInputMask } from "react-native-masked-text";
 import SelectDropdown from "react-native-select-dropdown";
+import { Feather } from "@expo/vector-icons";
 
 interface Props {
   direction ?: string;
   size: number;
 }
+interface SwitchProps {
+  isSaida: boolean;
+}
 
 export const Form = styled.View`
   flex: 1;
-  justify-content: center;
-  align-items: center;
+  padding-top: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
-  padding: 10px;
 `;
 
 export const GroupInput = styled.View<Props>`
@@ -21,10 +25,29 @@ export const GroupInput = styled.View<Props>`
   width: ${({ size }) => size}%;
 `;
 
+export const GroupSwitch = styled.View`
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const SwTurnType = styled.Switch.attrs<SwitchProps>(({ theme, isSaida }) => ({
+  trackColor: { false: theme.COLORS.SWITCH_FALSE, true: theme.COLORS.SWITCH_TRUE },
+  thumbColor: isSaida ? theme.COLORS.SWITCH_TUMB_TRUE : theme.COLORS.SWITCH_TUMB_FALSE,
+  ios_backgroundColor: theme.COLORS.SWITCH_IOS_BG,
+}))``;
+
+
 export const Label = styled.Text`
   font-weight: 400;
   margin-bottom: 5px;
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+`;
+
+export const TextLabel = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
 
@@ -43,14 +66,21 @@ export const Input = styled.TextInput.attrs(({theme}) => ({
 `;
 
 export const Select = styled(SelectDropdown).attrs(({theme}) => ({
-  searchPlaceHolderColor: theme.COLORS.TEXT_DEFAULT,  
+  searchInputTxtColor: theme.COLORS.TEXT_INPUT,
+  searchPlaceHolderColor: theme.COLORS.TEXT_INPUT,
+  buttonTextStyle: {
+    color: theme.COLORS.TEXT_INPUT,
+  },
+  buttonStyle: {
+    width: '100%',
+    color: theme.COLORS.TEXT_INPUT,
+    backgroundColor: theme.COLORS.BG_INPUT,
+  },
 }))`
-  height: 60px;
-  padding: 14px;
-  border: 1px;
-  border-radius: 10px;
-  border-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
-  background-color: ${({ theme }) => theme.COLORS.BG_INPUT};
+`;
+
+export const IconSelect = styled(Feather)`
+  color: ${({ theme }) => theme.COLORS.TEXT_INPUT};
 `;
 
 export const InputMask = styled(TextInputMask).attrs(({theme}) => ({
@@ -86,6 +116,7 @@ export const TextBtnSubmit = styled.Text`
 `;
 
 export const ErrorMessage = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
+  margin-bottom: 5px;
   color: ${({ theme }) => theme.COLORS.ERROR};
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;

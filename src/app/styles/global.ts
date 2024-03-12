@@ -75,13 +75,18 @@ export const InputItem = styled.TextInput.attrs(({theme}) => ({
 export const BtnSignIn = styled.Pressable`
     padding: 10px;
     width: 340px;
-    height: 70px;
+    height: 60px;
     margin-top: 40px;
     justify-content: center;
     align-items: center;
     border-width: 1px;
     border-radius: 15px;
     background-color: ${({theme}) =>theme.COLORS.BG_BUTTON};
+`;
+
+export const TextBtnSignIn = styled.Text`
+    color: ${({theme}) =>theme.COLORS.TEXT_BUTTON};
+    font-size: ${({theme}) =>theme.FONT_SIZE.XL}px;
 `;
 
 export const GroupRegister = styled.View`
@@ -94,11 +99,6 @@ export const GroupRegister = styled.View`
 export const TextRegister = styled.Text`
     color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
     font-size: ${({theme}) =>theme.FONT_SIZE.MD}px;
-`;
-
-export const TextBtn = styled.Text`
-    color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
-    font-size: ${({theme}) =>theme.FONT_SIZE.XL}px;
 `;
 
 //SCREENS
@@ -118,6 +118,26 @@ export const TitlePage = styled.Text`
   margin: 10px 0px;
   color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+`;
+
+export const GroupTitle = styled.View`
+  margin: 10px 0px;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 70px;
+`;
+
+export const IconBack = styled(Feather)`
+  color: ${({theme}) =>theme.COLORS.ICON_DEFAULT};
+`
+
+export const Title = styled.Text`
+  width: fit-content;
+  font-weight: 500;
+  font-size: ${({theme}) =>theme.FONT_SIZE.LG}px;
+  color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
 `;
 
 //OTHERS
@@ -180,17 +200,3 @@ export const TextLabel = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
-
-//styles of pages
-// export const GroupTitle = styled.View`
-//     width: 390px;
-//     flex-direction: row;
-//     justify-content: flex-start;
-//     align-items: center;
-//     gap: 70px;
-// `;
-
-// export const Title = styled.Text`
-//     color: ${({theme}) =>theme.COLORS.TEXT_DEFAULT};
-//     font-size: ${({theme}) =>theme.FONT_SIZE.LG}px;
-// `;

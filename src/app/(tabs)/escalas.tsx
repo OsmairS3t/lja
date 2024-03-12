@@ -16,8 +16,8 @@ import { KEY_ASYNCSTORAGE_ESCALA, KEY_ASYNCSTORAGE_MEETING } from '@env'
 import { Container, ContainerPage, TitlePage, BtnSubmit, TextBtnSubmit } from '../styles/global';
 import {
   TitleHeader,
-  BtnThin,
-  TextBtn,
+  ButtonNavigation,
+  TextButtonNavigation,
   Form,
   GroupInput,
   SelectForm,
@@ -83,6 +83,10 @@ const Escalas: React.FC = () => {
     setObjServos(arrSer)
   }
 
+  function loadIncluded(diaReuniao: string) {
+    
+  }
+
   function toggleModal(screen: string) {
     if (screen === 'reuniao') {
       setIsModalVisibleReuniao(!isModalVisibleReuniao);
@@ -121,12 +125,13 @@ const Escalas: React.FC = () => {
   return (
     <Container>
       <Header title='Escalas' />
+      
       <ContainerPage>
         <TitleHeader>
           <TitlePage>Incluir escalas:</TitlePage>
-          <BtnThin onPress={() => router.replace('../listas/escalas')}>
-            <TextBtn>Listar</TextBtn>
-          </BtnThin>
+          <ButtonNavigation onPress={() => router.replace('../listas/escalas')}>
+            <TextButtonNavigation>Listar</TextButtonNavigation>
+          </ButtonNavigation>
         </TitleHeader>
 
         <Form>
