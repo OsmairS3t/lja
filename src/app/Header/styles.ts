@@ -2,10 +2,6 @@ import styled from 'styled-components/native'
 import { MaterialIcons } from '@expo/vector-icons'
 import { Image } from 'react-native'
 
-type Props = {
-  colorBackground ?: string;
-}
-
 export const Container = styled.View`
   display: flex;
   flex-direction: row;
@@ -17,7 +13,7 @@ export const Container = styled.View`
   padding-bottom: 5px;
   padding-right: 10px;
   padding-left: 10px;
-  background-color: ${({ theme }) => theme.COLORS.FG_APP};
+  background-color: ${({ theme }) => theme.COLORS.BG_HEADER};
 `;
 
 export const GroupUser = styled.View`

@@ -5,7 +5,7 @@ interface Props {
   width: number;
 }
 
-export const TitleButton = styled.View`
+export const GroupButtonHeader = styled.View`
   width: 100%;
   margin-bottom: 10px;
   flex-direction: row;
@@ -13,18 +13,18 @@ export const TitleButton = styled.View`
   align-items: center;
 `;
 
-export const BtnThin = styled.Pressable`
+export const ButtonNavigation = styled.Pressable`
   border-radius: 8px;
   justify-content: center;
   align-items: center;
   height: 40px;
   width: 40%;
-  background-color: ${({ theme }) => theme.COLORS.BG_BUTTON};
+  background-color: ${({ theme }) => theme.COLORS.BG_BTN_NAV};
   `;
 
-export const TextBtn = styled.Text`
+export const TextButtonNavigation = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_BUTTON};
+  color: ${({ theme }) => theme.COLORS.TEXT_BTN_NAV};
 `;
 
 export const BlockResume = styled.View`

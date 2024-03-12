@@ -4,24 +4,23 @@ import Modal from 'react-native-modal';
 import Header from '../Header';
 
 import { Container, ContainerPage } from '../styles/global';
-import { 
-  GroupTitle, 
-  IconBack, 
-  IconFilter, 
-  Title,   
+import {
+  GroupTitle,
+  IconBack,
+  IconFilter,
+  Title,
   BlockListView,
   BlockProduct,
-  IconList,
-  BlockProductText,
-  GroupIncomeOutcome,
+  IconIncomeOutcome,
   TextTitleProduct,
   TextPriceProduct,
-  TextSubTitleProduct,
+  TextDateProduct,
   ContainerModal,
   HeaderModal,
   TextTitleModal,
   TextCloseModal,
-  CloseModalFilter } from './styles'
+  ButtonCloseModalFilter
+} from './styles'
 import { Feather } from '@expo/vector-icons';
 import { Pressable } from 'react-native';
 
@@ -36,7 +35,7 @@ export default function Lancamentos() {
     <Container>
       <Header title='Financeiro' />
       <ContainerPage>
-        
+
         <GroupTitle>
           <Link href='../financeiro'>
             <IconBack name='arrow-left' size={24} />
@@ -49,27 +48,38 @@ export default function Lancamentos() {
 
         <BlockListView>
           <BlockProduct>
-            <BlockProductText>
-              <TextTitleProduct>Produto X</TextTitleProduct>
-              <TextPriceProduct>R$ 35,00</TextPriceProduct>
-            </BlockProductText>
-            <BlockProductText>
-              <GroupIncomeOutcome>
-                <IconList name='chevrons-up' size={20} />
-                <TextSubTitleProduct>Entrada</TextSubTitleProduct>
-              </GroupIncomeOutcome>
-              <TextSubTitleProduct>01/01/2024</TextSubTitleProduct>
-            </BlockProductText>
+            <IconIncomeOutcome name='chevrons-up' size={20} />
+            <TextDateProduct>01/01/2024</TextDateProduct>
+            <TextTitleProduct>Produto X</TextTitleProduct>
+            <TextPriceProduct>R$ 35,00</TextPriceProduct>
+          </BlockProduct>
+          <BlockProduct>
+            <IconIncomeOutcome name='chevrons-up' size={20} />
+            <TextDateProduct>01/01/2024</TextDateProduct>
+            <TextTitleProduct>Produto X</TextTitleProduct>
+            <TextPriceProduct>R$ 35,00</TextPriceProduct>
+          </BlockProduct>
+          <BlockProduct>
+            <IconIncomeOutcome name='chevrons-up' size={20} />
+            <TextDateProduct>01/01/2024</TextDateProduct>
+            <TextTitleProduct>Produto X</TextTitleProduct>
+            <TextPriceProduct>R$ 35,00</TextPriceProduct>
+          </BlockProduct>
+          <BlockProduct>
+            <IconIncomeOutcome name='chevrons-up' size={20} />
+            <TextDateProduct>01/01/2024</TextDateProduct>
+            <TextTitleProduct>Produto X</TextTitleProduct>
+            <TextPriceProduct>R$ 35,00</TextPriceProduct>
           </BlockProduct>
         </BlockListView>
 
         <Modal isVisible={isModalVisible}>
-          <ContainerModal size={250}>
+          <ContainerModal heightSize={250}>
             <HeaderModal>
               <TextTitleModal>Filtrar</TextTitleModal>
-              <CloseModalFilter onPress={toggleModal}>
+              <ButtonCloseModalFilter onPress={toggleModal}>
                 <TextCloseModal>X</TextCloseModal>
-              </CloseModalFilter>
+              </ButtonCloseModalFilter>
             </HeaderModal>
 
           </ContainerModal>
@@ -77,6 +87,6 @@ export default function Lancamentos() {
 
       </ContainerPage>
     </Container>
-    )
+  )
 }
 

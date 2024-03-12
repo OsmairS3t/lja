@@ -10,17 +10,13 @@ import {
   IconFilter,
   Title,
   BlockListView,
-  BlockProduct,
-  BlockProductText,
-  GroupIncomeOutcome,
-  TextTitleProduct,
-  TextPriceProduct,
-  TextSubTitleProduct,
+  BlockScale,
+  TextMeeting,
   ContainerModal,
   HeaderModal,
   TextTitleModal,
   TextCloseModal,
-  CloseModalFilter
+  ButtonCloseModalFilter
 } from './styles'
 import { Pressable } from 'react-native';
 
@@ -46,14 +42,28 @@ export default function ListEscalas() {
           </Pressable>
         </GroupTitle>
 
+        <BlockListView>
+          <BlockScale>
+            <TextMeeting>01/01/2024</TextMeeting>
+          </BlockScale>
+          <BlockScale>
+            <TextMeeting>08/01/2024</TextMeeting>
+          </BlockScale>
+          <BlockScale>
+            <TextMeeting>16/01/2024</TextMeeting>
+          </BlockScale>
+          <BlockScale>
+            <TextMeeting>24/01/2024</TextMeeting>
+          </BlockScale>
+        </BlockListView>
 
         <Modal isVisible={isModalVisible}>
-          <ContainerModal size={250}>
+          <ContainerModal heightSize={250}>
             <HeaderModal>
               <TextTitleModal>Filtrar</TextTitleModal>
-              <CloseModalFilter onPress={toggleModal}>
+              <ButtonCloseModalFilter onPress={toggleModal}>
                 <TextCloseModal>X</TextCloseModal>
-              </CloseModalFilter>
+              </ButtonCloseModalFilter>
             </HeaderModal>
 
           </ContainerModal>

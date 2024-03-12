@@ -6,9 +6,9 @@ import Header from '../Header';
 
 import { Container, ContainerPage, TitlePage } from '../styles/global';
 import {
-  TitleButton,
-  BtnThin,
-  TextBtn,
+  GroupButtonHeader,
+  ButtonNavigation,
+  TextButtonNavigation,
   BlockResume,
   TextResumeTitle,
   TextResumePrice,
@@ -31,16 +31,17 @@ export default function Financeiro() {
 
   return (
     <Container>
-      <Header title="Financeiro" cor="#cccccc" />
+      <Header title="Financeiro" />
+
       <ContainerPage>
-        <TitleButton>
-          <BtnThin onPress={() => handleRoute('../cadastros/lancamento')}>
-            <TextBtn>+ Lançamento</TextBtn>
-          </BtnThin>
-          <BtnThin onPress={() => handleRoute('../listas/lancamentos')}>
-            <TextBtn>Listar</TextBtn>
-          </BtnThin>
-        </TitleButton>
+        <GroupButtonHeader>
+          <ButtonNavigation onPress={() => handleRoute('../cadastros/lancamento')}>
+            <TextButtonNavigation>+ Lançamento</TextButtonNavigation>
+          </ButtonNavigation>
+          <ButtonNavigation onPress={() => handleRoute('../listas/lancamentos')}>
+            <TextButtonNavigation>Listar</TextButtonNavigation>
+          </ButtonNavigation>
+        </GroupButtonHeader>
 
         <BlockResume>
           <TextResumeTitle>Saldo atual</TextResumeTitle>

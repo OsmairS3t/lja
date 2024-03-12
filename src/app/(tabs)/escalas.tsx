@@ -63,7 +63,7 @@ const Escalas: React.FC = () => {
       })
       setObjReunioes(arrReu)
     } catch (error) {
-      console.log('Ocorreu um erro: ', error)      
+      console.log('Ocorreu um erro: ', error)
     }
   }
 
@@ -212,7 +212,7 @@ const Escalas: React.FC = () => {
                 <IconDefault name='printer' size={24} />
               </Pressable>
             </GroupItemsListView>
-            
+
             <ListIncluded>
               {
                 listEscalas.map((escala) => (

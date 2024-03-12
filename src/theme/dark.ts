@@ -2,9 +2,15 @@ export default {
     TYPE: 'dark',
     COLORS: {
         BG_APP: '#19191D',
+        BG_HEADER: '#414146',
+        BG_FOOTER: '#414146',
         FG_APP: '#414146',
         BG_RESUME: '#4B3A58',
+        BG_MODAL: '#414146',
         BG_BUTTON: '#121212',
+        BG_BTN_SUB: '#121212',
+        BG_BTN_NAV: '#414146',
+        BG_BTN_CLOSE: '#AA0000',
         BG_INPUT: '#000000',
 
         ERROR: '#990000',
@@ -17,6 +23,9 @@ export default {
         TEXT_DEFAULT: '#F5F5F7',
         TEXT_INPUT: '#F5F5F5',
         TEXT_BUTTON: '#868686',
+        TEXT_BTN_SUB: '#868686',
+        TEXT_BTN_NAV: '#F5F5F5',
+        TEXT_BTN_CLOSE: '#FFFFFF',
         TEXT_PLACEHOLDER: '#868686',
 
         ICON_INACTIVE: '#414146',

@@ -13,10 +13,9 @@ import {
 
 interface Props {
   title?: string;
-  cor?: string;
 }
 
-export default function Header({ title, cor }: Props) {
+export default function Header({ title }: Props) {
 
   function handleToggleMenu() {
     router.navigate('../(tabs)/user')
