@@ -48,10 +48,10 @@ const Escalas: React.FC = () => {
   const [objReunioes, setObjReunioes] = useState<string[]>([]);
   const [objFuncoes, setObjFuncoes] = useState<string[]>([]);
   const [objServos, setObjServos] = useState<string[]>([]);
-  const [listEscalas, setListEscalas] = useState<IEscala[]>(escalas)
+  const [listEscalas, setListEscalas] = useState<IEscala[]>([])
   const [diaReuniao, setDiaReuniao] = useState('');
-  const [funcao, setFuncao] = useState(0);
-  const [servo, setServo] = useState(0);
+  const [funcao, setFuncao] = useState('');
+  const [servo, setServo] = useState('');
 
   async function loadReunioes() {
     try {
@@ -83,8 +83,16 @@ const Escalas: React.FC = () => {
     setObjServos(arrSer)
   }
 
-  function loadIncluded(diaReuniao: string) {
-    
+  async function loadIncluded(diaReuniao: string) {
+    try {
+      const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_ESCALA)
+      const escalaArr: IEscala[] = response ? JSON.parse(response) : []
+      const escalaFiltered: IEscala[] = escalaArr.filter(esc => esc.diareuniao === diaReuniao)
+      setListEscalas(escalaFiltered)
+      console.log(escalaFiltered)
+    } catch (error) {
+      console.log('Ocorreu um erro: ', error)
+    }
   }
 
   function toggleModal(screen: string) {
@@ -99,21 +107,29 @@ const Escalas: React.FC = () => {
     }
   };
 
-  function handleSave() {
-    const data = {
+  function lastDay(objEscala: IEscala[], day: string) {
+    const foundEscale = objEscala.findLast(oe => oe.diareuniao === day)
+    return (foundEscale ? foundEscale.ordem + 1 : 1)
+  }
+
+  async function handleSave() {
+    const loadEscale = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_ESCALA)
+    let escales: IEscala[] = loadEscale ? JSON.parse(loadEscale) : []
+    const data: IEscala = {
       id: Crypto.randomUUID(),
       diareuniao: diaReuniao,
-      ordem: 1,
+      ordem: lastDay(escales, diaReuniao),
       funcao: funcao,
       servo: servo,
     }
-    console.log(data)
-    // try {
-    //   const jsonValue = JSON.stringify(data);
-    //   await AsyncStorage.setItem(KEY_ASYNCSTORAGE_MEETING, jsonValue);
-    // } catch (e) {
-    //   console.log('Ocorreu um erro ao tentar salvar.')
-    // }
+    try {
+      escales.push(data)
+      const dataEscale = JSON.stringify(escales);
+      await AsyncStorage.setItem(KEY_ASYNCSTORAGE_ESCALA, dataEscale);
+      Alert.alert('Função da escala incluida com sucesso.')
+    } catch (e) {
+      console.log('Ocorreu um erro ao tentar salvar.')
+    }
   }
 
   useEffect(() => {
@@ -140,6 +156,7 @@ const Escalas: React.FC = () => {
               data={objReunioes}
               onSelect={(selectedItem: string, index) => {
                 setDiaReuniao(selectedItem)
+                loadIncluded(selectedItem)
               }}
               buttonTextAfterSelection={(selectedItem: string, index) => {
                 return selectedItem
@@ -208,8 +225,8 @@ const Escalas: React.FC = () => {
             <TextBtnSubmit>Incluir</TextBtnSubmit>
           </BtnSubmit>
         </Form>
-
-        {diaReuniao !== '' &&
+    
+        {listEscalas && (
           <ContainerEscala>
             <GroupItemsListView>
               <TitleItems>Escala do dia {diaReuniao}</TitleItems>
@@ -218,10 +235,10 @@ const Escalas: React.FC = () => {
               </Pressable>
             </GroupItemsListView>
 
-            <ListIncluded>
-              {
-                listEscalas.map((escala) => (
-                  <GroupItemsView key={escala.id}>
+            {
+              listEscalas.map(escala => (
+                <ListIncluded key={escala.id}>
+                  <GroupItemsView>
                     <GroupItemsText>
                       <TextItem>{escala.funcao}:</TextItem>
                       <TextItem>{escala.servo}</TextItem>
@@ -232,10 +249,11 @@ const Escalas: React.FC = () => {
                       </Pressable>
                     </GroupItemsOrder>
                   </GroupItemsView>
-                ))
-              }
-            </ListIncluded>
+                </ListIncluded>
+              ))
+            }
           </ContainerEscala>
+          )
         }
 
         <Modal isVisible={isModalVisibleReuniao}>

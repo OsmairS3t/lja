@@ -112,7 +112,7 @@ export const BtnSubmit = styled.Pressable`
 
 export const TextBtnSubmit = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+  color: ${({ theme }) => theme.COLORS.TEXT_BUTTON};
 `;
 
 export const ErrorMessage = styled.Text`

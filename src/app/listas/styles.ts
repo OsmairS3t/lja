@@ -22,6 +22,10 @@ export const IconFilter = styled(Feather)`
   color:  ${({ theme }) => theme.COLORS.ICON_DEFAULT};
 `
 
+export const IconLook = styled(Feather)`
+  color:  ${({ theme }) => theme.COLORS.ICON_DEFAULT};
+`
+
 export const Title = styled.Text`
   width: fit-content;
   font-weight: 400;
@@ -72,13 +76,13 @@ export const TextPriceProduct = styled.Text`
 `;
 
 export const BlockScale = styled.View`
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  padding: 8px;
-  border-radius: 10px;
-  margin: 4px 0px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin: 2px 0px;
   background-color: ${({ theme }) => theme.COLORS.FG_APP};
 `;
 
@@ -90,8 +94,9 @@ export const TextMeeting = styled.Text`
 
 export const ContainerModal = styled.View<PropsModal>`
   width: 100%;
+  padding: 10px;
   height: ${({ heightSize }) => heightSize}px;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.COLORS.BG_MODAL};
 `;

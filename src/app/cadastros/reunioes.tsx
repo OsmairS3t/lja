@@ -57,15 +57,15 @@ export default function Reunioes({ setCloseModal }: Props) {
     try {
       //recupera dados ja salvos
       const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_MEETING)
-      const oldData: IReuniao[] = response ? JSON.parse(response) : []
+      let oldData: IReuniao[] = response ? JSON.parse(response) : []
 
       //cria novo array com todos os dados
-      const newData = [oldData, dataInclude]
+      oldData.push(dataInclude)
 
       //inclui dados completos
-      await AsyncStorage.setItem(KEY_ASYNCSTORAGE_MEETING, JSON.stringify(newData))
+      await AsyncStorage.setItem(KEY_ASYNCSTORAGE_MEETING, JSON.stringify(oldData))
       Alert.alert('Reunião incluída com sucesso!')
-      // reset()
+      reset()
       setCloseModal(false);
     } catch (error) {
       console.log('Um erro ocorreu ao tentar gravar.', error)
