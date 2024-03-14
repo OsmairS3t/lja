@@ -74,13 +74,14 @@ export default function Lancamentos() {
         </BlockListView>
 
         <Modal isVisible={isModalVisible}>
+          <HeaderModal>
+            <TextTitleModal>Filtrar</TextTitleModal>
+            <ButtonCloseModalFilter onPress={toggleModal}>
+              <TextCloseModal>X</TextCloseModal>
+            </ButtonCloseModalFilter>
+          </HeaderModal>
+
           <ContainerModal heightSize={250}>
-            <HeaderModal>
-              <TextTitleModal>Filtrar</TextTitleModal>
-              <ButtonCloseModalFilter onPress={toggleModal}>
-                <TextCloseModal>X</TextCloseModal>
-              </ButtonCloseModalFilter>
-            </HeaderModal>
 
           </ContainerModal>
         </Modal>

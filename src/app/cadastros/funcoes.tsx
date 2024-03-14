@@ -1,5 +1,6 @@
 import React from 'react';
 import { Alert } from 'react-native';
+import * as Crypto from 'expo-crypto';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -11,13 +12,16 @@ Input,
 BtnSubmit, 
 TextBtnSubmit,
 ErrorMessage } from '../styles/formularios';
+import { IFuncao } from '../../utils/interface';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { KEY_ASYNCSTORAGE_FUNCAO } from '@env';
 
 interface Props {
   setCloseModal: (value: boolean) => void;
 }
 
 const funcaoSchema = z.object({
-  nome: z.string().min(3,'O nome do servo deve ter pelo menos 3 caracteres.')
+  funcao: z.string().min(3,'O nome do servo deve ter pelo menos 3 caracteres.')
 })
 
 type TFuncao = z.infer<typeof funcaoSchema>
@@ -31,15 +35,28 @@ export default function Funcoes({ setCloseModal }: Props) {
     } = useForm<TFuncao>({
         resolver: zodResolver(funcaoSchema),
         defaultValues: {
-            nome: ''
+            funcao: ''
         },
     })
 
-  function handleSave(data: TFuncao) {
-    console.log(data)
-    Alert.alert('Dizem que foi cadastrado com sucesso!');
-    reset();
-    setCloseModal(false);
+  async function handleSave(data: TFuncao) {
+    const dataInclude: IFuncao = {
+      id: Crypto.randomUUID(),
+      funcao: data.funcao,
+    }
+    try {
+      const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_FUNCAO)
+      let oldData: IFuncao[] = response ? JSON.parse(response) : []
+
+      oldData.push(dataInclude)
+
+      await AsyncStorage.setItem(KEY_ASYNCSTORAGE_FUNCAO, JSON.stringify(oldData))
+      Alert.alert('Função incluída com sucesso!')
+      reset();
+      setCloseModal(false);
+    } catch (error) {
+      console.log('Ocorreu um erro ao tentar salvar: ', error)
+    }
   }
   return (
     <Form>
@@ -58,9 +75,9 @@ export default function Funcoes({ setCloseModal }: Props) {
                 value={value}
             />
             )}
-            name="nome"
+            name="funcao"
         />
-        {errors.nome && <ErrorMessage>{errors.nome.message}</ErrorMessage>}
+        {errors.funcao && <ErrorMessage>{errors.funcao.message}</ErrorMessage>}
       </GroupInput>
 
       <GroupInput size={100}>

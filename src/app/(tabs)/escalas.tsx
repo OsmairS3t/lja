@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Pressable, View, Text, Alert, useWindowDimensions } from 'react-native';
+import { Pressable, Alert } from 'react-native';
 import Modal from 'react-native-modal'
 import Header from '../Header';
 import { reunioes, funcoes, servos, escalas } from '../../utils/database'
@@ -8,7 +8,6 @@ import * as Crypto from 'expo-crypto';
 import Reunioes from '../cadastros/reunioes';
 import Funcoes from '../cadastros/funcoes';
 import Servos from '../cadastros/servos';
-import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { IEscala, IReuniao } from '../../utils/interface';
 import { KEY_ASYNCSTORAGE_ESCALA, KEY_ASYNCSTORAGE_MEETING } from '@env'
@@ -18,20 +17,12 @@ import {
   TitleHeader,
   ButtonNavigation,
   TextButtonNavigation,
+  ContainerForm,
   Form,
   GroupInput,
   SelectForm,
   IconSelect,
-  ListIncluded,
-  IconList,
   IconDefault,
-  TitleItems,
-  ContainerEscala,
-  GroupItemsView,
-  GroupItemsText,
-  GroupItemsOrder,
-  GroupItemsListView,
-  TextItem,
   ContainerModal,
   HeaderModal,
   CloseModalReuniao,
@@ -41,7 +32,6 @@ import {
 } from '../styles/escalas';
 
 const Escalas: React.FC = () => {
-  const { width, height } = useWindowDimensions();
   const [isModalVisibleReuniao, setIsModalVisibleReuniao] = useState(false);
   const [isModalVisibleFuncao, setIsModalVisibleFuncao] = useState(false);
   const [isModalVisibleServo, setIsModalVisibleServo] = useState(false);
@@ -81,18 +71,6 @@ const Escalas: React.FC = () => {
       arrSer.push(ser.nome)
     })
     setObjServos(arrSer)
-  }
-
-  async function loadIncluded(diaReuniao: string) {
-    try {
-      const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_ESCALA)
-      const escalaArr: IEscala[] = response ? JSON.parse(response) : []
-      const escalaFiltered: IEscala[] = escalaArr.filter(esc => esc.diareuniao === diaReuniao)
-      setListEscalas(escalaFiltered)
-      console.log(escalaFiltered)
-    } catch (error) {
-      console.log('Ocorreu um erro: ', error)
-    }
   }
 
   function toggleModal(screen: string) {
@@ -150,111 +128,82 @@ const Escalas: React.FC = () => {
           </ButtonNavigation>
         </TitleHeader>
 
-        <Form>
-          <GroupInput>
-            <SelectForm
-              data={objReunioes}
-              onSelect={(selectedItem: string, index) => {
-                setDiaReuniao(selectedItem)
-                loadIncluded(selectedItem)
-              }}
-              buttonTextAfterSelection={(selectedItem: string, index) => {
-                return selectedItem
-              }}
-              rowTextForSelection={(item: string, index) => {
-                return item
-              }}
-              defaultButtonText="Reuniao"
-              dropdownIconPosition='right'
-              renderDropdownIcon={() => (
-                <IconSelect name="chevron-down" size={24} />
-              )}
-            />
-            <Pressable onPress={() => toggleModal('reuniao')}>
-              <IconDefault name='plus-circle' size={40} />
-            </Pressable>
-          </GroupInput>
+        <ContainerForm>
+          <Form>
+            <GroupInput>
+              <SelectForm
+                data={objReunioes}
+                onSelect={(selectedItem: string, index) => {
+                  setDiaReuniao(selectedItem)
+                }}
+                buttonTextAfterSelection={(selectedItem: string, index) => {
+                  return selectedItem
+                }}
+                rowTextForSelection={(item: string, index) => {
+                  return item
+                }}
+                defaultButtonText="Reuniao"
+                dropdownIconPosition='right'
+                renderDropdownIcon={() => (
+                  <IconSelect name="chevron-down" size={24} />
+                )}
+              />
+              <Pressable onPress={() => toggleModal('reuniao')}>
+                <IconDefault name='plus-circle' size={40} />
+              </Pressable>
+            </GroupInput>
 
-          <GroupInput>
-            <SelectForm
-              data={objFuncoes}
-              onSelect={(selectedItem, index) => {
-                setFuncao(selectedItem)
-              }}
-              buttonTextAfterSelection={(selectedItem, index) => {
-                return selectedItem
-              }}
-              rowTextForSelection={(item, index) => {
-                return item
-              }}
-              defaultButtonText="Funcao"
-              dropdownIconPosition='right'
-              renderDropdownIcon={() => (
-                <IconSelect name="chevron-down" size={24} />
-              )}
-            />
-            <Pressable onPress={() => toggleModal('funcao')}>
-              <IconDefault name='plus-circle' size={40} />
-            </Pressable>
-          </GroupInput>
+            <GroupInput>
+              <SelectForm
+                data={objFuncoes}
+                onSelect={(selectedItem, index) => {
+                  setFuncao(selectedItem)
+                }}
+                buttonTextAfterSelection={(selectedItem, index) => {
+                  return selectedItem
+                }}
+                rowTextForSelection={(item, index) => {
+                  return item
+                }}
+                defaultButtonText="Funcao"
+                dropdownIconPosition='right'
+                renderDropdownIcon={() => (
+                  <IconSelect name="chevron-down" size={24} />
+                )}
+              />
+              <Pressable onPress={() => toggleModal('funcao')}>
+                <IconDefault name='plus-circle' size={40} />
+              </Pressable>
+            </GroupInput>
 
-          <GroupInput>
-            <SelectForm
-              data={objServos}
-              onSelect={(selectedItem, index) => {
-                setServo(selectedItem)
-              }}
-              buttonTextAfterSelection={(selectedItem, index) => {
-                return selectedItem
-              }}
-              rowTextForSelection={(item, index) => {
-                return item
-              }}
-              defaultButtonText="Servo"
-              dropdownIconPosition='right'
-              renderDropdownIcon={() => (
-                <IconSelect name="chevron-down" size={24} />
-              )}
-            />
-            <Pressable onPress={() => toggleModal('servo')}>
-              <IconDefault name='plus-circle' size={40} />
-            </Pressable>
-          </GroupInput>
-
+            <GroupInput>
+              <SelectForm
+                data={objServos}
+                onSelect={(selectedItem, index) => {
+                  setServo(selectedItem)
+                }}
+                buttonTextAfterSelection={(selectedItem, index) => {
+                  return selectedItem
+                }}
+                rowTextForSelection={(item, index) => {
+                  return item
+                }}
+                defaultButtonText="Servo"
+                dropdownIconPosition='right'
+                renderDropdownIcon={() => (
+                  <IconSelect name="chevron-down" size={24} />
+                )}
+              />
+              <Pressable onPress={() => toggleModal('servo')}>
+                <IconDefault name='plus-circle' size={40} />
+              </Pressable>
+            </GroupInput>
+          </Form>
+          
           <BtnSubmit onPress={handleSave}>
             <TextBtnSubmit>Incluir</TextBtnSubmit>
           </BtnSubmit>
-        </Form>
-    
-        {listEscalas && (
-          <ContainerEscala>
-            <GroupItemsListView>
-              <TitleItems>Escala do dia {diaReuniao}</TitleItems>
-              <Pressable onPress={() => Alert.alert('Gerar Imagem ne.. ufa')}>
-                <IconDefault name='printer' size={24} />
-              </Pressable>
-            </GroupItemsListView>
-
-            {
-              listEscalas.map(escala => (
-                <ListIncluded key={escala.id}>
-                  <GroupItemsView>
-                    <GroupItemsText>
-                      <TextItem>{escala.funcao}:</TextItem>
-                      <TextItem>{escala.servo}</TextItem>
-                    </GroupItemsText>
-                    <GroupItemsOrder>
-                      <Pressable onPress={() => Alert.alert('Pronto ecluido! #SQN')}>
-                        <IconList name='trash-2' size={24} />
-                      </Pressable>
-                    </GroupItemsOrder>
-                  </GroupItemsView>
-                </ListIncluded>
-              ))
-            }
-          </ContainerEscala>
-          )
-        }
+        </ContainerForm>
 
         <Modal isVisible={isModalVisibleReuniao}>
           <ContainerModal size={630}>

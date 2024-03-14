@@ -10,41 +10,37 @@ import {
   GroupTitle,
   IconBack,
   IconFilter,
+  IconList,
+  IconDefault,
   Title,
-  BlockListView,
-  BlockScale,
-  IconLook,
-  TextMeeting,
+  ContainerEscala,
+  GroupItemsView,
+  ListIncluded,
+  TitleItems,
+  GroupItemsText,
+  GroupItemsOrder,
+  GroupItemsListView,
+  TextItem,
   ContainerModal,
   HeaderModal,
   TextTitleModal,
   TextCloseModal,
   ButtonCloseModalFilter
 } from './styles'
-import { Pressable } from 'react-native';
+import { Alert, Pressable } from 'react-native';
 import { IEscala } from '../../utils/interface';
 import { BtnSubmit, GroupInput, InputMask, Label, TextBtnSubmit } from '../styles/formularios';
 
 export default function ListEscalas() {
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [filteredDay, setFilteredDay] = useState('')
+  const [filteredDay, setFilteredDay] = useState('09/03/2024')
   const [escalas, setEscalas] = useState<IEscala[]>([])
 
   async function loadEscalas(dia: string) {
     try {
       const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_ESCALA)
       const scales: IEscala[] = response ? JSON.parse(response) : []
-      // const list = scales.reduce((acumulator, scale) => {
-      //   if(!acumulator[scale.diareuniao]) {
-      //     acumulator[scale.diareuniao] = []
-      //   }
-      //   return acumulator
-      // })
-      if (dia === '') {
-        setEscalas(scales)
-      } else {
         setEscalas(scales.filter(sc => sc.diareuniao === dia))
-      }
     } catch (error) {
       console.log('Ocorreu um erro ao tentar carregar: ', error)
     }
@@ -60,8 +56,8 @@ export default function ListEscalas() {
   }
 
   useEffect(() => {
-    loadEscalas('')
-  },[])
+    loadEscalas(filteredDay)
+  },[filteredDay])
 
   return (
     <Container>
@@ -78,16 +74,35 @@ export default function ListEscalas() {
           </Pressable>
         </GroupTitle>
 
-        <BlockListView>
-        {
-          escalas.map( escala => (
-              <BlockScale key={escala.id}>
-                <TextMeeting>{escala.diareuniao}</TextMeeting>
-                <IconLook name='trash-2' size={18} />
-              </BlockScale>
-          ))
+        {escalas && (
+          <ContainerEscala>
+            <GroupItemsListView>
+              <TitleItems>Escala do dia {filteredDay}</TitleItems>
+              <Pressable onPress={() => Alert.alert('Gerar Imagem ne.. ufa')}>
+                <IconDefault name='printer' size={24} />
+              </Pressable>
+            </GroupItemsListView>
+
+            <ListIncluded>
+              {
+                escalas.map(escala => (
+                    <GroupItemsView key={escala.id}>
+                      <GroupItemsText>
+                        <TextItem>{escala.funcao}:</TextItem>
+                        <TextItem>{escala.servo}</TextItem>
+                      </GroupItemsText>
+                      <GroupItemsOrder>
+                        <Pressable onPress={() => Alert.alert('Pronto ecluido! #SQN')}>
+                          <IconList name='trash-2' size={24} />
+                        </Pressable>
+                      </GroupItemsOrder>
+                    </GroupItemsView>
+                ))
+              }
+            </ListIncluded>
+          </ContainerEscala>
+          )
         }
-        </BlockListView>
 
         <Modal isVisible={isModalVisible}>
           <HeaderModal>

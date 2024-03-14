@@ -1,5 +1,6 @@
 import React from 'react';
 import { Alert } from 'react-native';
+import * as Crypto from 'expo-crypto';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -12,6 +13,9 @@ InputMask,
 BtnSubmit, 
 TextBtnSubmit,
 ErrorMessage } from '../styles/formularios';
+import { IServo } from '../../utils/interface';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { KEY_ASYNCSTORAGE_SERVO } from '@env';
 
 interface Props {
   setCloseModal: (value: boolean) => void;
@@ -40,11 +44,26 @@ export default function Servos({ setCloseModal }: Props) {
         },
     })
 
-  function handleSave(data: TServo) {
-    console.log(data)
-    Alert.alert('Dizem que foi cadastrado com sucesso!');
-    reset();
-    setCloseModal(false);
+  async function handleSave(data: TServo) {
+    const dataInclude: IServo = {
+      id: Crypto.randomUUID(),
+      datanas: data.datanas,
+      nome: data.nome
+    }
+    try {
+      const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_SERVO)
+      let oldData: IServo[] = response ? JSON.parse(response) : []
+
+      oldData.push(dataInclude)
+
+      await AsyncStorage.setItem(KEY_ASYNCSTORAGE_SERVO, JSON.stringify(oldData))
+      Alert.alert('Servo incluído com sucesso!')
+      // console.log(oldData)
+      reset();
+      setCloseModal(false);
+    } catch (error) {
+      console.log('Ocorreu um erro ao tentar salvar: ', error)
+    }
   }
 
   return (

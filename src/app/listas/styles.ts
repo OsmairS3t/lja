@@ -5,6 +5,9 @@ import styled from "styled-components/native";
 interface PropsModal {
   heightSize: number;
 }
+interface Props {
+  height?: number;
+}
 
 export const GroupTitle = styled.View`
   width: 100%;
@@ -17,6 +20,15 @@ export const GroupTitle = styled.View`
 export const IconBack = styled(Feather)`
   color:  ${({ theme }) => theme.COLORS.ICON_DEFAULT};
 `
+
+export const IconDefault = styled(Feather)`
+  padding: 4px;
+  color: ${({ theme }) => theme.COLORS.ICON_DEFAULT};
+`;
+
+export const IconList = styled(Feather)`
+  color: ${({ theme }) => theme.COLORS.ICON_DEFAULT};
+`;
 
 export const IconFilter = styled(Feather)`
   color:  ${({ theme }) => theme.COLORS.ICON_DEFAULT};
@@ -32,6 +44,60 @@ export const Title = styled.Text`
   font-size:  ${({ theme }) => theme.FONT_SIZE.MD}px;
   color:  ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
 `;
+
+export const ContainerEscala = styled.View`
+  height: 90%;
+`;
+
+export const GroupItemsListView = styled.View`
+  margin: 10px 0px;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const GroupItemsView = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4px;
+  padding: 10px;
+  border-bottom-width: 1px;
+  border-bottom-style: dotted;
+  border-bottom-color: ${({ theme }) => theme.COLORS.BORDER_INPUT};
+`;
+
+export const ListIncluded = styled.ScrollView`
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.COLORS.FG_APP};
+`;
+
+export const TitleItems = styled.Text`
+  font-weight: 400;
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+`;
+
+export const GroupItemsText = styled.View``;
+
+export const GroupItemsOrder = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+`;
+
+export const IconOrder = styled(Feather)``;
+
+export const TextItem = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  color: ${({ theme }) => theme.COLORS.TEXT_DEFAULT};
+`;
+
 
 export const BlockListView = styled.ScrollView`
   width: 100%;
