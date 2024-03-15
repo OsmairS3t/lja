@@ -9,8 +9,8 @@ import Reunioes from '../cadastros/reunioes';
 import Funcoes from '../cadastros/funcoes';
 import Servos from '../cadastros/servos';
 import { router } from 'expo-router';
-import { IEscala, IReuniao } from '../../utils/interface';
-import { KEY_ASYNCSTORAGE_ESCALA, KEY_ASYNCSTORAGE_MEETING } from '@env'
+import { IEscala, IFuncao, IReuniao, IServo } from '../../utils/interface';
+import { KEY_ASYNCSTORAGE_ESCALA, KEY_ASYNCSTORAGE_FUNCAO, KEY_ASYNCSTORAGE_MEETING, KEY_ASYNCSTORAGE_SERVO } from '@env'
 
 import { Container, ContainerPage, TitlePage, BtnSubmit, TextBtnSubmit } from '../styles/global';
 import {
@@ -57,17 +57,21 @@ const Escalas: React.FC = () => {
     }
   }
 
-  function loadFuncoes() {
+  async function loadFuncoes() {
     let arrFun: string[] = []
-    funcoes.map(fun => {
+    const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_FUNCAO)
+    const functions: IFuncao[] = response ? JSON.parse(response) : []
+    functions.map(fun => {
       arrFun.push(fun.funcao)
     })
     setObjFuncoes(arrFun)
   }
 
-  function loadServos() {
+  async function loadServos() {
     let arrSer: string[] = []
-    servos.map(ser => {
+    const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_SERVO)
+    const servants: IServo[] = response ? JSON.parse(response) : []
+    servants.map(ser => {
       arrSer.push(ser.nome)
     })
     setObjServos(arrSer)

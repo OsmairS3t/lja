@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'expo-router';
 import Modal from 'react-native-modal';
 import Header from '../Header';
@@ -21,15 +21,36 @@ import {
   TextCloseModal,
   ButtonCloseModalFilter
 } from './styles'
-import { Feather } from '@expo/vector-icons';
 import { Pressable } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { KEY_ASYNCSTORAGE_LANCAMENTO } from '@env';
+import { ILancamento } from '../../utils/interface';
 
 export default function Lancamentos() {
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const [balances, setBalances] = useState<ILancamento[]>([])
 
   function toggleModal() {
     setIsModalVisible(!isModalVisible);
   }
+
+  async function loadLancamentos() {
+    const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_LANCAMENTO)
+    const lancamentos: ILancamento[] = response ? JSON.parse(response) : []
+    setBalances(lancamentos)
+  }
+
+  function resume() {
+    let total=0
+    balances.map(bal => {
+      total += Number(bal.valor)
+    })
+    return total
+  }
+
+  useEffect(() => {
+    loadLancamentos()
+  }, [])
 
   return (
     <Container>
@@ -47,30 +68,20 @@ export default function Lancamentos() {
         </GroupTitle>
 
         <BlockListView>
-          <BlockProduct>
-            <IconIncomeOutcome name='chevrons-up' size={20} />
-            <TextDateProduct>01/01/2024</TextDateProduct>
-            <TextTitleProduct>Produto X</TextTitleProduct>
-            <TextPriceProduct>R$ 35,00</TextPriceProduct>
+        {
+          balances.map(lanc => (
+          <BlockProduct key={lanc.id}>
+            <IconIncomeOutcome name={lanc.tipo === 'Entrada' ? 'chevrons-up' : 'chevrons-down'} size={20} />
+            <TextDateProduct>{lanc.datalancamento}</TextDateProduct>
+            <TextTitleProduct>{lanc.categoria}</TextTitleProduct>
+            <TextPriceProduct>{lanc.tipo === 'Entrada' ? '':'-'}{lanc.valor}</TextPriceProduct>
           </BlockProduct>
-          <BlockProduct>
-            <IconIncomeOutcome name='chevrons-up' size={20} />
-            <TextDateProduct>01/01/2024</TextDateProduct>
-            <TextTitleProduct>Produto X</TextTitleProduct>
-            <TextPriceProduct>R$ 35,00</TextPriceProduct>
-          </BlockProduct>
-          <BlockProduct>
-            <IconIncomeOutcome name='chevrons-up' size={20} />
-            <TextDateProduct>01/01/2024</TextDateProduct>
-            <TextTitleProduct>Produto X</TextTitleProduct>
-            <TextPriceProduct>R$ 35,00</TextPriceProduct>
-          </BlockProduct>
-          <BlockProduct>
-            <IconIncomeOutcome name='chevrons-up' size={20} />
-            <TextDateProduct>01/01/2024</TextDateProduct>
-            <TextTitleProduct>Produto X</TextTitleProduct>
-            <TextPriceProduct>R$ 35,00</TextPriceProduct>
-          </BlockProduct>
+          ))
+        }
+        <BlockProduct>
+          <TextDateProduct>Total:</TextDateProduct>
+          <TextPriceProduct>{resume()}</TextPriceProduct>
+        </BlockProduct>
         </BlockListView>
 
         <Modal isVisible={isModalVisible}>

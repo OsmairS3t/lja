@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import {Image as Img} from 'react-native';
 import { TextInputMask } from "react-native-masked-text";
 import SelectDropdown from "react-native-select-dropdown";
 import { Feather } from "@expo/vector-icons";
@@ -10,6 +11,8 @@ interface Props {
 interface SwitchProps {
   isSaida: boolean;
 }
+
+export const ContainerForm = styled.ScrollView``;
 
 export const Form = styled.View`
   flex: 1;
@@ -75,6 +78,9 @@ export const Select = styled(SelectDropdown).attrs(({theme}) => ({
     width: '100%',
     color: theme.COLORS.TEXT_INPUT,
     backgroundColor: theme.COLORS.BG_INPUT,
+    borderColor: theme.COLORS.BORDER_INPUT,
+    borderWidth: 1,
+    borderRadius: 8,
   },
 }))`
 `;
@@ -120,3 +126,55 @@ export const ErrorMessage = styled.Text`
   color: ${({ theme }) => theme.COLORS.ERROR};
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;
+
+export const GroupImage = styled.View`
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+`;
+
+export const GroupButton = styled.View`
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+`;
+
+export const PhotoImage = styled.View`
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const ImgCapture = styled(Img)`
+    width: 280px;
+    height: 280px;
+`;
+
+export const BtnImage = styled.Pressable`
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    background-color: ${({theme }) => theme.COLORS.BG_BUTTON};
+`;
+
+export const IconCamera = styled(Feather).attrs(({theme})=>({
+    size: 32,
+    color: '#000000'
+}))``;
+
+export const IconImage = styled(Feather).attrs(({theme})=>({
+    size: 32,
+    color: '#000000'
+}))``;
+
+export const TexttypeBalance = styled.Text`
+  color: ${({theme }) => theme.COLORS.TEXT_DEFAULT};
+`;
+

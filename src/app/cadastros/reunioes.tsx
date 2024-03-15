@@ -55,14 +55,11 @@ export default function Reunioes({ setCloseModal }: Props) {
       fim: data.fim
     }
     try {
-      //recupera dados ja salvos
       const response = await AsyncStorage.getItem(KEY_ASYNCSTORAGE_MEETING)
       let oldData: IReuniao[] = response ? JSON.parse(response) : []
 
-      //cria novo array com todos os dados
       oldData.push(dataInclude)
 
-      //inclui dados completos
       await AsyncStorage.setItem(KEY_ASYNCSTORAGE_MEETING, JSON.stringify(oldData))
       Alert.alert('Reunião incluída com sucesso!')
       reset()

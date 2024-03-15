@@ -6,5 +6,7 @@ declare module '@env' {
     export const KEY_ASYNCSTORAGE_MEETING: string;
     export const KEY_ASYNCSTORAGE_FUNCAO: string;
     export const KEY_ASYNCSTORAGE_SERVO: string;
+    export const KEY_ASYNCSTORAGE_LANCAMENTO: string;
+
 
 }
